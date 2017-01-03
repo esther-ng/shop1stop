@@ -40,5 +40,5 @@ __Infrastructure - Deployment or Code:__
   - Heroku
   - Fastlane?(continuous delivery)
 
-###__Wireframes__:
+###__Wireframes__
   - see wireframe.jpg
