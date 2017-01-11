@@ -6,7 +6,8 @@ import { CardSection, Input } from './common';
 
 class ListItemForm extends Component {
   render() {
-    const { quantity, item } = this.props.listItem;
+    console.log(this.props);
+    const { quantity, item } = this.props;
 
     return (
       <View>
@@ -33,7 +34,7 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  const { quantity, item } = state.listItemForm;
+  const { quantity, item } = state.listItem;
   return { quantity, item };
 };
 
