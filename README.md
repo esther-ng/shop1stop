@@ -33,11 +33,11 @@ __Front-end:__
 __Back-end:__
   - Ruby on Rails
   - PostgreSQL
-  - Google Sign In API
+  - Google Sign In API?
 
 __Infrastructure - Deployment or Code:__
   - Nuclide
-  - Heroku
+  - OpenShift?
   - Fastlane?(continuous delivery)
 
 ###__Wireframes__
