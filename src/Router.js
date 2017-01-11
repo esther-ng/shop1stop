@@ -1,6 +1,7 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
+import ShoppingListCreate from './components/ShoppingListCreate';
 import ShoppingListForm from './components/ShoppingListForm';
 import ShoppingIndex from './components/ShoppingIndex';
 
@@ -20,7 +21,8 @@ const RouterComponent = () => {
           title="Shopping Lists"
           initial
         />
-        <Scene key="shoppingListCreate" component={ShoppingListForm} title="Shopping List" />
+        <Scene key="shoppingListCreate" component={ShoppingListCreate} title="New Shopping List" />
+        <Scene key="shoppingListForm" component={ShoppingListForm} title="Add Items" />
       </Scene>
     </Router>
   );

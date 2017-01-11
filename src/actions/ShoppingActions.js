@@ -1,26 +1,28 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux'
 import {
-  SHOPPING_LIST_CREATE
+  SHOPPING_LIST_CREATE,
+  SHOPPING_LIST_UPDATE,
+  LIST_ITEMS_FETCH_SUCCESS
 } from './types';
 
 
-export const employeeUpdate = ({ prop, value }) => {
+export const shoppingListUpdate = ({ prop, value }) => {
   return {
-    type: EMPLOYEE_UPDATE,
+    type: SHOPPING_LIST_UPDATE,
     payload: { prop, value }
   };
 };
 
-export const shoppingListCreate = ({ name, items }) => {
+export const shoppingListCreate = ({ name }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/shoppinglists`)
-    .push({ name, items })
+    .push({ name })
     .then(() => {
       dispatch({ type: SHOPPING_LIST_CREATE });
-      // Actions.employeeList({ type: 'reset' });
+      Actions.shoppingListForm({ type: 'reset' });
     });
   };
 };
@@ -29,10 +31,11 @@ export const listItemsFetch = ({ uid }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`users/${currentUser.uid}/shoppinglist/${uid}`)
+    firebase.database().ref(`users/${currentUser.uid}/shoppinglists/${uid}`)
       .on('value', snapshot => {
-        dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
+        dispatch({ type: LIST_ITEMS_FETCH_SUCCESS, payload: snapshot.val() });
       });
+      Actions.shoppingListForm({ type: 'reset' });
   };
 };
 

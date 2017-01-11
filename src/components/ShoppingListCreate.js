@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { employeeUpdate, employeeCreate } from '../actions';
-import { Card, CardSection, Button } from './common';
-import ShoppingListForm from './ShoppingListForm';
+import { connect } from 'react-redux';
+import { shoppingListUpdate, shoppingListCreate } from '../actions';
+import { Card, CardSection, Button, Input } from './common';
+// import ShoppingListForm from './ShoppingListForm';
 
 class ShoppingListCreate extends Component {
-  // onButtonPress() {
-  //   const { name, phone, shift } = this.props;
-  //
-  //   this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
-  // }
+  onButtonPress() {
+    const { name } = this.props;
+
+    this.props.shoppingListCreate({ name });
+  }
 
   render() {
     return (
       <Card>
-        <ShoppingListForm {...this.props} />
+        <CardSection>
+          <Input
+            label="List Name"
+            placeholder="Potluck"
+            value={this.props.name}
+            onChangeText={value => this.props.shoppingListUpdate({ prop: 'name', value })}
+          />
+        </CardSection>
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
             Save
@@ -25,10 +32,13 @@ class ShoppingListCreate extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   const { name, phone, shift } = state.employeeForm;
-//
-//   return { name, phone, shift };
-// };
+const mapStateToProps = (state) => {
+  console.log(state);
+  const { name } = state.list;
 
-export default ShoppingListCreate;
+  return { name };
+};
+
+export default connect(mapStateToProps,
+  { shoppingListUpdate, shoppingListCreate }
+)(ShoppingListCreate);
