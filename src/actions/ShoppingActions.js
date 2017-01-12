@@ -5,7 +5,8 @@ import {
   SHOPPING_LIST_UPDATE,
   SHOPPING_LISTS_FETCH_SUCCESS,
   LIST_ITEMS_FETCH_SUCCESS,
-  LIST_ITEM_UPDATE
+  LIST_ITEM_UPDATE,
+  LIST_ITEM_CREATE
 } from './types';
 
 
@@ -58,6 +59,19 @@ export const listItemUpdate = ({ prop, value }) => {
   return {
     type: LIST_ITEM_UPDATE,
     payload: { prop, value }
+  };
+};
+
+export const listItemCreate = ({ item, quantity, uid }) => {
+  const { currentUser } = firebase.auth();
+  // console.log(listItem);
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/shoppinglists/${uid}/listitems`)
+    .push({ item, quantity })
+    .then(() => {
+      dispatch({ type: LIST_ITEM_CREATE, payload: { uid } });
+      Actions.shoppingListForm();
+    });
   };
 };
 

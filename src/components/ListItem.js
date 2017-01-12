@@ -6,14 +6,22 @@ import { CardSection } from './common';
 class ListItem extends Component {
 
   onRowPress() {
-    Actions.shoppingListEdit({ list: this.props.list });
+    console.log(this.props.list);
+    Actions.editItem();
+  }
+
+  deleteOnLong() {
+
   }
 
   render() {
     const { name } = this.props.list;
 
     return (
-      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+      <TouchableWithoutFeedback
+        onPress={this.onRowPress.bind(this)}
+        onLongPress={this.deleteOnLong.bind(this)}
+      >
         <View>
           <CardSection>
             <Text style={styles.titleStyle}>

@@ -1,19 +1,44 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-// import _ from 'lodash';
-// import { connect } from 'react-redux';
-import { ListView } from 'react-native';
-// import ListItem from './ListItem';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { CardSection } from './common';
 
-class EmployeeList extends Component {
+class ShoppingList extends Component {
+
+  onRowPress() {
+    console.log(this.props.list);
+    Actions.shoppingListForm({ list: this.props.list });
+  }
+
+  deleteOnLong() {
+
+  }
 
   render() {
+    const { name } = this.props.list;
+
     return (
-      <View>
-        <Text>Test</Text>
-      </View>
+      <TouchableWithoutFeedback
+        onPress={this.onRowPress.bind(this)}
+        onLongPress={this.deleteOnLong.bind(this)}
+      >
+        <View>
+          <CardSection>
+            <Text style={styles.titleStyle}>
+              {name}
+            </Text>
+          </CardSection>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
 
-export default EmployeeList;
+const styles = {
+  titleStyle: {
+    fontSize: 18,
+    paddingLeft: 15
+  }
+};
+
+export default ShoppingList;

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
 import { shoppingListsFetch } from '../actions';
-import ListItem from './ListItem';
+import ShoppingList from './ShoppingList';
 
 class ShoppingIndex extends Component {
 
@@ -26,7 +26,7 @@ class ShoppingIndex extends Component {
   }
 
   renderRow(list) {
-    return <ListItem list={list} />;
+    return <ShoppingList list={list} />;
   }
 
   render() {
