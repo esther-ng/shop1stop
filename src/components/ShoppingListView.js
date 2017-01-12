@@ -75,10 +75,10 @@ const mapStateToProps = (state) => {
   console.log(this.props);
   console.log(state.listItems);
   console.log(state);
-  const items = _.map(state.listItems, (val) => {
-    return { ...val };
+  const items = _.map(state.listItems, (val, uid) => {
+    return { ...val, uid };
   });
-
+  console.log({ items });
   return { items };
 };
 

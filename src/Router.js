@@ -5,6 +5,7 @@ import ShoppingListCreate from './components/ShoppingListCreate';
 import ShoppingListView from './components/ShoppingListView';
 import ShoppingIndex from './components/ShoppingIndex';
 import AddItem from './components/AddItem';
+import EditItem from './components/EditItem';
 
 const RouterComponent = () => {
   // console.log(this.state);
@@ -26,6 +27,7 @@ const RouterComponent = () => {
         <Scene key="shoppingListCreate" component={ShoppingListCreate} title="New Shopping List" />
         <Scene key="shoppingListView" component={ShoppingListView} title={this.title} />
         <Scene key="addItemForm" component={AddItem} title="Add Item" />
+        <Scene key="editItemForm" component={EditItem} title="Edit Item" />
       </Scene>
     </Router>
   );

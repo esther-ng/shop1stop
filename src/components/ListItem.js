@@ -7,7 +7,7 @@ class ListItem extends Component {
 
   onRowPress() {
     console.log(this.props);
-    Actions.editItem({ listItem: this.props.listItem });
+    Actions.editItemForm({ listItem: this.props.listItem });
   }
 
   deleteOnLong() {

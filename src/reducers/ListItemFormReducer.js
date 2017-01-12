@@ -1,7 +1,7 @@
 import {
   LIST_ITEM_CREATE,
   LIST_ITEM_UPDATE,
-  LIST_ITEMS_SAVE_SUCCESS
+  LIST_ITEM_SAVE_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -18,7 +18,7 @@ export default (state = INITIAL_STATE, action) => {
       case LIST_ITEM_CREATE:
         return INITIAL_STATE;
 
-      case LIST_ITEMS_SAVE_SUCCESS:
+      case LIST_ITEM_SAVE_SUCCESS:
         return INITIAL_STATE;
 
       default:
