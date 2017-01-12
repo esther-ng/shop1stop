@@ -6,8 +6,8 @@ import { CardSection } from './common';
 class ListItem extends Component {
 
   onRowPress() {
-    console.log(this.props.list);
-    Actions.editItem();
+    console.log(this.props);
+    Actions.editItem({ listItem: this.props.listItem });
   }
 
   deleteOnLong() {
@@ -15,7 +15,7 @@ class ListItem extends Component {
   }
 
   render() {
-    const { name } = this.props.list;
+    const { item, quantity } = this.props.listItem;
 
     return (
       <TouchableWithoutFeedback
@@ -25,7 +25,7 @@ class ListItem extends Component {
         <View>
           <CardSection>
             <Text style={styles.titleStyle}>
-              {name}
+              {quantity}{item}
             </Text>
           </CardSection>
         </View>

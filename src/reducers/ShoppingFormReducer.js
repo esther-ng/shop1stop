@@ -1,11 +1,13 @@
 import {
   SHOPPING_LIST_CREATE,
   SHOPPING_LIST_UPDATE,
+  SHOPPING_LIST_VIEW,
   SHOPPING_LIST_SAVE_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  name: ''
+  name: '',
+  uid: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -18,6 +20,9 @@ export default (state = INITIAL_STATE, action) => {
 
       case SHOPPING_LIST_SAVE_SUCCESS:
         return INITIAL_STATE;
+
+      case SHOPPING_LIST_VIEW:
+        return { name: action.payload.name, uid: action.payload.uid };
 
       default:
         return state;

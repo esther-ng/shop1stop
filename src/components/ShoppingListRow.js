@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import { CardSection } from './common';
+import { shoppingListView } from '../actions';
 
-class ShoppingList extends Component {
+class ShoppingListRow extends Component {
 
   onRowPress() {
     console.log(this.props.list);
-    Actions.shoppingListForm({ list: this.props.list });
+    const { name, uid } = this.props.list;
+    this.props.shoppingListView({ name, uid });
   }
 
   deleteOnLong() {
@@ -41,4 +44,4 @@ const styles = {
   }
 };
 
-export default ShoppingList;
+export default connect(null, { shoppingListView })(ShoppingListRow);

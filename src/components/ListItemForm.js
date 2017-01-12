@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Picker } from 'react-native';
+import { View, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { listItemUpdate } from '../actions';
 import { CardSection, Input } from './common';
 
 class ListItemForm extends Component {
-  componentWillMount() {
-    _.each(this.props.listItem, (value, prop) => {
-      this.props.listItemUpdate({ prop, value });
-    });
-  }
 
   render() {
     console.log(this.props);
-    const { quantity, item } = this.props;
+    const { quantity, item, list } = this.props;
 
     return (
+      <View>
         <CardSection>
           <Picker
             style={{ flex: 1 }}
             mode='dropdown'
             selectedValue={quantity}
-            onValueChange={value => this.props.listItemUpdate({ prop: 'quantity', value })}
+            onValueChange={value => this.props.listItemUpdate({ prop: 'quantity', value, list })}
           >
             <Picker.Item label="1" value="1" />
             <Picker.Item label="2" value="2" />
@@ -39,9 +35,10 @@ class ListItemForm extends Component {
           label="Item"
           placeholder="cookies"
           value={item}
-          onChangeText={value => this.props.listItemUpdate({ prop: 'item', value })}
+          onChangeText={value => this.props.listItemUpdate({ prop: 'item', value, list })}
           />
         </CardSection>
+      </View>
     );
   }
 }
@@ -50,8 +47,9 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  const { quantity, item } = state.listItem;
-  return { quantity, item };
+  console.log(state);
+  const { quantity, item, list } = state.listItem;
+  return { quantity, item, list };
 };
 
 export default connect(mapStateToProps, { listItemUpdate })(ListItemForm);

@@ -24,7 +24,7 @@ class ShoppingListCreate extends Component {
         </CardSection>
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
-            Save
+            Create
           </Button>
         </CardSection>
       </Card>

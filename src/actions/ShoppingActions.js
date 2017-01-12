@@ -1,12 +1,10 @@
 import firebase from 'firebase';
-import { Actions } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux';
 import {
   SHOPPING_LIST_CREATE,
   SHOPPING_LIST_UPDATE,
-  SHOPPING_LISTS_FETCH_SUCCESS,
-  LIST_ITEMS_FETCH_SUCCESS,
-  LIST_ITEM_UPDATE,
-  LIST_ITEM_CREATE
+  SHOPPING_LIST_VIEW,
+  SHOPPING_LISTS_FETCH_SUCCESS
 } from './types';
 
 
@@ -21,9 +19,9 @@ export const shoppingListCreate = ({ name }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    const listID = firebase.database().ref(`/users/${currentUser.uid}/shoppinglists`)
+    const listID = firebase.database().ref(`/users/${currentUser.uid}/shoppingLists`)
     .push().key;
-    firebase.database().ref(`/users/${currentUser.uid}/shoppinglists/${listID}`).update({ name })
+    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${listID}`).update({ name })
     .then(() => {
       dispatch({ type: SHOPPING_LIST_CREATE, payload: { listID } });
       Actions.shoppingIndex({ type: 'reset' });
@@ -35,7 +33,7 @@ export const shoppingListsFetch = () => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`users/${currentUser.uid}/shoppinglists/`)
+    firebase.database().ref(`users/${currentUser.uid}/shoppingLists/`)
       .on('value', snapshot => {
         dispatch({ type: SHOPPING_LISTS_FETCH_SUCCESS, payload: snapshot.val() });
       });
@@ -43,59 +41,9 @@ export const shoppingListsFetch = () => {
   };
 };
 
-export const listItemsFetch = ({ uid }) => {
-  const { currentUser } = firebase.auth();
-
+export const shoppingListView = ({ name, uid }) => {
   return (dispatch) => {
-    firebase.database().ref(`users/${currentUser.uid}/shoppinglists/${uid}`)
-      .on('value', snapshot => {
-        dispatch({ type: LIST_ITEMS_FETCH_SUCCESS, payload: snapshot.val() });
-      });
-      Actions.shoppingListForm({ type: 'reset' });
-  };
-};
-
-export const listItemUpdate = ({ prop, value }) => {
-  return {
-    type: LIST_ITEM_UPDATE,
-    payload: { prop, value }
-  };
-};
-
-export const listItemCreate = ({ item, quantity, uid }) => {
-  const { currentUser } = firebase.auth();
-  // console.log(listItem);
-  return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/shoppinglists/${uid}/listitems`)
-    .push({ item, quantity })
-    .then(() => {
-      dispatch({ type: LIST_ITEM_CREATE, payload: { uid } });
-      Actions.shoppingListForm();
-    });
-  };
-};
-
-export const employeeSave = ({ name, phone, shift, uid }) => {
-  const { currentUser } = firebase.auth();
-
-  return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
-      .set({ name, phone, shift })
-      .then(() => {
-        dispatch({ type: EMPLOY_SAVE_SUCCESS });
-        Actions.employeeList({ type: 'reset' });
-      });
-  };
-};
-
-export const employeeDelete = ({ uid }) => {
-  const { currentUser } = firebase.auth();
-
-  return () => {
-    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
-      .remove()
-      .then(() => {
-        Actions.employeeList({ type: 'reset' });
-      });
+    dispatch({ type: SHOPPING_LIST_VIEW, payload: { name, uid } });
+    Actions.shoppingListView({ list: { name, uid }, title: name });
   };
 };
