@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { CardSection } from './common';
-import { shoppingListView } from '../actions';
+import { shoppingListView, shoppingListEdit } from '../actions';
 
 class ShoppingListRow extends Component {
 
@@ -13,17 +13,18 @@ class ShoppingListRow extends Component {
     this.props.shoppingListView({ name, uid, listItems });
   }
 
-  deleteOnLong() {
-
+  editOnLong() {
+    const { name, uid, listItems } = this.props.list;
+    this.props.shoppingListEdit({ name, uid });
   }
 
   render() {
     const { name } = this.props.list;
 
     return (
-      <TouchableWithoutFeedback
+      <TouchableHighlight
         onPress={this.onRowPress.bind(this)}
-        onLongPress={this.deleteOnLong.bind(this)}
+        onLongPress={this.editOnLong.bind(this)}
       >
         <View>
           <CardSection>
@@ -32,7 +33,7 @@ class ShoppingListRow extends Component {
             </Text>
           </CardSection>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableHighlight>
     );
   }
 }
@@ -47,6 +48,6 @@ const styles = {
 const mapStateToProps = (state) => {
   console.log(state);
   return {};
-}
+};
 
-export default connect(mapStateToProps, { shoppingListView })(ShoppingListRow);
+export default connect(mapStateToProps, { shoppingListView, shoppingListEdit })(ShoppingListRow);

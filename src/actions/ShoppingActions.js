@@ -5,6 +5,7 @@ import {
   SHOPPING_LIST_UPDATE,
   SHOPPING_LIST_VIEW,
   SHOPPING_LIST_INDEX,
+  SHOPPING_LIST_SAVE_SUCCESS,
   SHOPPING_LISTS_FETCH_SUCCESS,
   LIST_ITEMS_CLEAR
 } from './types';
@@ -28,6 +29,29 @@ export const shoppingListCreate = ({ name }) => {
       dispatch({ type: SHOPPING_LIST_CREATE, payload: { listID } });
       Actions.shoppingIndex({ type: 'reset' });
     });
+  };
+};
+
+export const shoppingListEdit = ({ name, uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    // dispatch({ type: SHOPPING_LIST_VIEW, payload: { name, uid } });
+    // dispatch({ type: LIST_ITEMS_CLEAR });
+    Actions.shoppingListEdit({ list: { name, uid } });
+  }
+}
+
+export const shoppingListSave = ({ name, uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${uid}`)
+      .set({ name })
+      .then(() => {
+        dispatch({ type: SHOPPING_LIST_SAVE_SUCCESS });
+        Actions.shoppingIndex({ type: 'reset' });
+      });
   };
 };
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
+import { Confirm } from './common';
 import { shoppingListsFetch } from '../actions';
 import ShoppingListRow from './ShoppingListRow';
 
