@@ -33,23 +33,35 @@ export const shoppingListCreate = ({ name }) => {
 };
 
 export const shoppingListEdit = ({ name, uid }) => {
-  const { currentUser } = firebase.auth();
+  // const { currentUser } = firebase.auth();
 
-  return (dispatch) => {
+  return () => {
     // dispatch({ type: SHOPPING_LIST_VIEW, payload: { name, uid } });
     // dispatch({ type: LIST_ITEMS_CLEAR });
     Actions.shoppingListEdit({ list: { name, uid } });
-  }
-}
+  };
+};
 
 export const shoppingListSave = ({ name, uid }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${uid}`)
-      .set({ name })
+      .update({ name })
       .then(() => {
-        dispatch({ type: SHOPPING_LIST_SAVE_SUCCESS });
+        // dispatch({ type: SHOPPING_LIST_SAVE_SUCCESS });
+        Actions.shoppingIndex({ type: 'reset' });
+      });
+  };
+};
+
+export const shoppingListDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${uid}`)
+      .remove()
+      .then(() => {
         Actions.shoppingIndex({ type: 'reset' });
       });
   };
