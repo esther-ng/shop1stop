@@ -2,6 +2,7 @@ import {
   SHOPPING_LIST_CREATE,
   SHOPPING_LIST_UPDATE,
   SHOPPING_LIST_VIEW,
+  SHOPPING_LIST_INDEX,
   SHOPPING_LIST_SAVE_SUCCESS
 } from '../actions/types';
 
@@ -19,6 +20,9 @@ export default (state = INITIAL_STATE, action) => {
         return INITIAL_STATE;
 
       case SHOPPING_LIST_SAVE_SUCCESS:
+        return INITIAL_STATE;
+
+      case SHOPPING_LIST_INDEX:
         return INITIAL_STATE;
 
       case SHOPPING_LIST_VIEW:

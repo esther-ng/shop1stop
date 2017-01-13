@@ -9,8 +9,8 @@ class ShoppingListRow extends Component {
 
   onRowPress() {
     console.log(this.props.list);
-    const { name, uid } = this.props.list;
-    this.props.shoppingListView({ name, uid });
+    const { name, uid, listItems } = this.props.list;
+    this.props.shoppingListView({ name, uid, listItems });
   }
 
   deleteOnLong() {
@@ -44,4 +44,9 @@ const styles = {
   }
 };
 
-export default connect(null, { shoppingListView })(ShoppingListRow);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {};
+}
+
+export default connect(mapStateToProps, { shoppingListView })(ShoppingListRow);

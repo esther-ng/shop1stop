@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { shoppingListUpdate, shoppingListCreate } from '../actions';
+import { shoppingListUpdate, shoppingListCreate, shoppingListIndex } from '../actions';
 import { Card, CardSection, Button, Input } from './common';
 // import ShoppingListForm from './ShoppingListForm';
 
 class ShoppingListCreate extends Component {
+  componentWillMount() {
+    this.props.shoppingListIndex();
+    console.log(this);
+  }
+
   onButtonPress() {
     const { name } = this.props;
 
@@ -40,5 +45,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps,
-  { shoppingListUpdate, shoppingListCreate }
+  { shoppingListUpdate, shoppingListCreate, shoppingListIndex }
 )(ShoppingListCreate);

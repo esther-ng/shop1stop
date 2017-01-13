@@ -4,7 +4,9 @@ import {
   SHOPPING_LIST_CREATE,
   SHOPPING_LIST_UPDATE,
   SHOPPING_LIST_VIEW,
-  SHOPPING_LISTS_FETCH_SUCCESS
+  SHOPPING_LIST_INDEX,
+  SHOPPING_LISTS_FETCH_SUCCESS,
+  LIST_ITEMS_CLEAR
 } from './types';
 
 
@@ -44,6 +46,14 @@ export const shoppingListsFetch = () => {
 export const shoppingListView = ({ name, uid }) => {
   return (dispatch) => {
     dispatch({ type: SHOPPING_LIST_VIEW, payload: { name, uid } });
+    // dispatch({ type: LIST_ITEMS_CLEAR });
     Actions.shoppingListView({ list: { name, uid }, title: name });
+  };
+};
+
+export const shoppingListIndex = () => {
+  return (dispatch) => {
+    dispatch({ type: SHOPPING_LIST_INDEX });
+    // dispatch({ type: LIST_ITEMS_CLEAR });
   };
 };

@@ -7,10 +7,12 @@ export const LOGIN_ANONYMOUS = 'login_anonymous';
 
 export const SHOPPING_LIST_UPDATE = 'shopping_list_update';
 export const SHOPPING_LIST_VIEW = 'shopping_list_view';
+export const SHOPPING_LIST_INDEX = 'shopping_list_index';
 export const SHOPPING_LIST_CREATE = 'shopping_list_create';
 export const SHOPPING_LIST_SAVE_SUCCESS = 'shopping_list_save_success';
 export const SHOPPING_LISTS_FETCH_SUCCESS = 'shopping_lists_fetch_success';
 export const LIST_ITEMS_FETCH_SUCCESS = 'list_items_fetch_success';
+export const LIST_ITEMS_CLEAR = 'list_items_clear';
 export const LIST_ITEM_CREATE = 'list_item_create';
 export const LIST_ITEM_UPDATE = 'list_item_update';
 export const LIST_ITEM_SAVE_SUCCESS = 'list_item_save_success';

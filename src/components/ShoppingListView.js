@@ -9,11 +9,10 @@ import ListItem from './ListItem';
 
 class ShoppingListView extends Component {
   componentWillMount() {
-    console.log(this);
     const { list } = this.props;
     this.props.listItemsFetch({ list });
-    console.log('inside component mount' + this.props);
     this.createDataSource(this.props);
+    console.log(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,16 +26,15 @@ class ShoppingListView extends Component {
   }
 
   createDataSource({ items }) {
-    if (items) {
-      const ds = new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      });
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
 
-      this.dataSource = ds.cloneWithRows(items);
-    }
+    this.dataSource = ds.cloneWithRows(items);
   }
 
   renderRow(listItem) {
+    console.log(listItem);
     return <ListItem listItem={listItem} />;
   }
 

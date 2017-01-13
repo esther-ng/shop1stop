@@ -35,7 +35,8 @@ export const listItemCreate = ({ item, quantity, list }) => {
     .then(() => {
       dispatch({ type: LIST_ITEM_CREATE });
       console.log(this);
-      Actions.shoppingListView({ type: 'reset', list, title: list.name });
+      Actions.pop({refresh: { ...list, title: list.name } });
+      //shoppingListView({ list, title: list.name });
     });
   };
 };
