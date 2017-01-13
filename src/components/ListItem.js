@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+// import { connect } from 'react-redux';
 import { CardSection } from './common';
+// import { findMatches } from '../actions';
 
 class ListItem extends Component {
 
@@ -10,8 +12,9 @@ class ListItem extends Component {
     Actions.editItemForm({ listItem: this.props.listItem });
   }
 
-  deleteOnLong() {
-
+  onLongPress() {
+    console.log(this.props);
+    Actions.selectMatches({ listItem: this.props.listItem });
   }
 
   render() {
@@ -20,7 +23,7 @@ class ListItem extends Component {
     return (
       <TouchableWithoutFeedback
         onPress={this.onRowPress.bind(this)}
-        onLongPress={this.deleteOnLong.bind(this)}
+        onLongPress={this.onLongPress.bind(this)}
       >
         <View>
           <CardSection>

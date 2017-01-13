@@ -7,6 +7,7 @@ import ShoppingListView from './components/ShoppingListView';
 import ShoppingIndex from './components/ShoppingIndex';
 import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
+import SelectMatches from './components/SelectMatches';
 
 const RouterComponent = () => {
   // console.log(this.state);
@@ -30,6 +31,7 @@ const RouterComponent = () => {
         <Scene key="shoppingListView" component={ShoppingListView} title={this.title} />
         <Scene key="addItemForm" component={AddItem} title="Add Item" />
         <Scene key="editItemForm" component={EditItem} title="Edit Item" />
+        <Scene key="selectMatches" component={SelectMatches} title="Select Matches" />
       </Scene>
     </Router>
   );
