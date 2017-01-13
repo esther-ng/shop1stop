@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
-import { Button, ListView } from 'react-native';
+import { Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
-import { listItemsFetch, listItemCreate } from '../actions';
-import { Card, CardSection } from './common';
+import { listItemsFetch, listItemCreate, listItemAdd } from '../actions';
+import { Card, Button, CardSection } from './common';
 import ListItem from './ListItem';
 
 class ShoppingListView extends Component {
@@ -22,6 +22,7 @@ class ShoppingListView extends Component {
   onAddAnother() {
     // re-render?? or does componentWillReceiveProps do this? then just save?
     console.log(this.props);
+    this.props.listItemAdd();
     Actions.addItemForm({ list: this.props.list });
   }
 
@@ -52,22 +53,37 @@ class ShoppingListView extends Component {
 
   render() {
     console.log(this.props);
+    const { qtyStyle, itemStyle } = styles;
     return (
       <Card>
+        <CardSection>
+          <Text style={qtyStyle}>Qty</Text>
+          <Text style={itemStyle}>Item</Text>
+        </CardSection>
         {this.renderList()}
         <CardSection>
           <Button
-            onPress={this.onAddAnother.bind(this)}
-            title="Add Item"
-          />
+            onPress={this.onAddAnother.bind(this)}>
+            Add Item
+          </Button>
         </CardSection>
       </Card>
     );
   }
 }
 
-// const styles = {
-// };
+const styles = {
+  qtyStyle: {
+    fontSize: 18,
+    paddingLeft: 15,
+    flex: 1
+  },
+  itemStyle: {
+    fontSize: 18,
+    paddingLeft: 15,
+    flex: 4
+  }
+};
 
 const mapStateToProps = (state) => {
   console.log(this.props);
@@ -80,4 +96,4 @@ const mapStateToProps = (state) => {
   return { items };
 };
 
-export default connect(mapStateToProps, { listItemsFetch, listItemCreate })(ShoppingListView);
+export default connect(mapStateToProps, { listItemsFetch, listItemCreate, listItemAdd })(ShoppingListView);

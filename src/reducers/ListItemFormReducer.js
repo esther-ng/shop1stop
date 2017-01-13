@@ -1,6 +1,7 @@
 import {
   LIST_ITEM_CREATE,
   LIST_ITEM_UPDATE,
+  LIST_ITEM_ADD,
   LIST_ITEM_SAVE_SUCCESS
 } from '../actions/types';
 
@@ -16,8 +17,7 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, [action.payload.prop]: action.payload.value };
 
       case LIST_ITEM_CREATE:
-        return INITIAL_STATE;
-
+      case LIST_ITEM_ADD:
       case LIST_ITEM_SAVE_SUCCESS:
         return INITIAL_STATE;
 

@@ -14,5 +14,6 @@ export const SHOPPING_LISTS_FETCH_SUCCESS = 'shopping_lists_fetch_success';
 export const LIST_ITEMS_FETCH_SUCCESS = 'list_items_fetch_success';
 export const LIST_ITEMS_CLEAR = 'list_items_clear';
 export const LIST_ITEM_CREATE = 'list_item_create';
+export const LIST_ITEM_ADD = 'list_item_add';
 export const LIST_ITEM_UPDATE = 'list_item_update';
 export const LIST_ITEM_SAVE_SUCCESS = 'list_item_save_success';

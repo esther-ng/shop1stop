@@ -24,8 +24,11 @@ class ListItem extends Component {
       >
         <View>
           <CardSection>
-            <Text style={styles.titleStyle}>
-              {quantity}{item}
+            <Text style={styles.qtyStyle}>
+              {quantity}
+            </Text>
+            <Text style={styles.itemStyle}>
+              {item}
             </Text>
           </CardSection>
         </View>
@@ -35,9 +38,15 @@ class ListItem extends Component {
 }
 
 const styles = {
-  titleStyle: {
+  qtyStyle: {
     fontSize: 18,
-    paddingLeft: 15
+    paddingLeft: 15,
+    flex: 1
+  },
+  itemStyle: {
+    fontSize: 18,
+    paddingLeft: 15,
+    flex: 4
   }
 };
 

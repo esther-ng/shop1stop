@@ -29,7 +29,7 @@ class AddItem extends Component {
 
 const mapStateToProps = (state) => {
   console.log(this.props);
-  console.log(state.listItems);
+  console.log(state.listItem);
   console.log(state);
   const { list } = state;
   const { item, quantity } = state.listItem;

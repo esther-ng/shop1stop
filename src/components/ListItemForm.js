@@ -33,7 +33,7 @@ class ListItemForm extends Component {
           <Input
           style={{ flex: 5 }}
           label="Item"
-          placeholder="cookies"
+          placeholder="Cookies"
           value={item}
           onChangeText={value => this.props.listItemUpdate({ prop: 'item', value, list })}
           />
