@@ -6,6 +6,7 @@ import ShoppingListReducer from './ShoppingListReducer';
 import ListItemReducer from './ListItemReducer';
 import ListItemFormReducer from './ListItemFormReducer';
 import ProductReducer from './ProductReducer';
+import ProductFormReducer from './ProductFormReducer';
 
 export default combineReducers({
   auth: AuthReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   lists: ShoppingListReducer,
   listItems: ListItemReducer,
   listItem: ListItemFormReducer,
-  products: ProductReducer
+  products: ProductReducer,
+  selected: ProductFormReducer
 });

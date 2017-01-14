@@ -20,3 +20,4 @@ export const LIST_ITEM_UPDATE = 'list_item_update';
 export const LIST_ITEM_SAVE_SUCCESS = 'list_item_save_success';
 
 export const PRODUCT_MATCHES_FETCH_SUCCESS = 'product_matches_fetch_success';
+export const PRODUCT_MATCH_UPDATE = 'list_item_update';

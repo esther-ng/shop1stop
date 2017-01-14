@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { ListView, Text } from 'react-native';
+import { ListView, Text, Picker, View } from 'react-native';
 import { Confirm } from './common';
-import { productMatchesFetch } from '../actions';
+import { productMatchesFetch, productMatchesFetchQ } from '../actions';
 import ProductInfo from './ProductInfo';
 
 class SelectMatches extends Component {
@@ -11,6 +11,7 @@ class SelectMatches extends Component {
   componentWillMount() {
     const { listItem } = this.props;
     this.props.productMatchesFetch({ listItem });
+    // this.props.productMatchesFetchQ({ listItem });
 
     console.log(this.state);
     this.createDataSource(this.props);
@@ -22,14 +23,27 @@ class SelectMatches extends Component {
 
   createDataSource({ products }) {
     const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
+      rowHasChanged: (r1, r2) => r1 !== r2,
+      sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     });
 
-    this.dataSource = ds.cloneWithRows(products);
+    this.dataSource = ds.cloneWithRowsAndSections(products);
   }
 
   renderRow(product) {
     return <ProductInfo product={product} />;
+  }
+
+  renderSectionHeader(sectionData, product) {
+    if (product.store_id === 1) {
+      return (
+        <Text>QFC</Text>
+      );
+    } else {
+      return (
+        <Text>Safeway</Text>
+      );
+    }
   }
 
   render() {
@@ -39,6 +53,7 @@ class SelectMatches extends Component {
         enableEmptySections
         dataSource={this.dataSource}
         renderRow={this.renderRow}
+        rednderSectionHeader={this.renderSectionHeader}
       />
     );
   }
@@ -53,4 +68,4 @@ const mapStateToProps = state => {
   return { products };
 };
 
-export default connect(mapStateToProps, { productMatchesFetch })(SelectMatches);
+export default connect(mapStateToProps, { productMatchesFetch, productMatchesFetchQ })(SelectMatches);
