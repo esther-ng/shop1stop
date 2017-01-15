@@ -13,14 +13,14 @@ const productMatchFetchAll = ({ listItem }) => {
   }
 }
 
-const productMatchesFetch = ({ listItem }) => {
+export const productMatchesFetch = ({ listItem, storeID }) => {
   console.log(listItem);
   const { item } = listItem;
   console.log(item);
   const baseURL = 'http://indechick.com/products/search?query=';
 
   return (dispatch) => {
-    axios.get(`${baseURL}${item}&store=2`)
+    axios.get(`${baseURL}${item}&store=${storeID}`)
       .then((response) => {
         dispatch({ type: PRODUCT_MATCHES_FETCH_SUCCESS, payload: response.data });
       });
@@ -41,10 +41,10 @@ const productMatchesFetchQ = ({ listItem }) => {
   };
 };
 
-export const productMatchUpdate = ({ prop, value }) => {
+export const productMatchUpdate = (product) => {
   return {
     type: PRODUCT_MATCH_UPDATE,
-    payload: { prop, value }
+    payload: product
   };
 };
 // use a fetch succes for qfc and one for sfw

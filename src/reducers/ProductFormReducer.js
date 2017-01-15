@@ -5,16 +5,12 @@ import {
   PRODUCT_MATCH_SAVE_SUCCESS
 } from '../actions/types';
 
-const INITIAL_STATE = {
-  safeway: {},
-  qfc: {},
-  generic: {}
-};
+const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case PRODUCT_MATCH_UPDATE:
-        return { ...state, [action.payload.prop]: action.payload.value };
+        return action.payload;
 
       // case LIST_ITEM_CREATE:
       // case LIST_ITEM_ADD:

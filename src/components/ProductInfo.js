@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Text, TouchableHighlight, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import { CardSection, Card } from './common';
+import { productMatchUpdate } from '../actions';
 
 class ProductInfo extends Component {
 
   onRowPress() {
     console.log(this.props);
+    const { product } = this.props;
+    this.props.productMatchUpdate(product);
+    Actions.selectMatch();
   }
 
   render() {
@@ -56,4 +62,12 @@ const styles = {
   }
 };
 
-export default ProductInfo;
+const mapStateToProps = state => {
+  console.log(state);
+  const { selected } = state;
+
+  return { selected };
+};
+
+
+export default connect(mapStateToProps, { productMatchUpdate })(ProductInfo);

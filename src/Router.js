@@ -8,6 +8,7 @@ import ShoppingIndex from './components/ShoppingIndex';
 import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
 import SelectMatches from './components/SelectMatches';
+import SelectMatch from './components/SelectMatch';
 
 const RouterComponent = () => {
   // console.log(this.state);
@@ -32,6 +33,7 @@ const RouterComponent = () => {
         <Scene key="addItemForm" component={AddItem} title="Add Item" />
         <Scene key="editItemForm" component={EditItem} title="Edit Item" />
         <Scene key="selectMatches" component={SelectMatches} title="Select Matches" />
+        <Scene key="selectMatch" component={SelectMatch} title={this.title} />
       </Scene>
     </Router>
   );
