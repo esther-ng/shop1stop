@@ -3,15 +3,16 @@ import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import {
   PRODUCT_MATCHES_FETCH_SUCCESS,
-  PRODUCT_MATCH_UPDATE
+  PRODUCT_MATCH_UPDATE,
+  PRODUCT_MATCH_CREATE
 } from './types';
 
-const productMatchFetchAll = ({ listItem }) => {
-  return (dispatch) => {
-    dispatch(productMatchesFetchS({ listItem }));
-    dispatch(productMatchesFetchQ({ listItem }));
-  }
-}
+// const productMatchFetchAll = ({ listItem }) => {
+//   return (dispatch) => {
+//     dispatch(productMatchesFetchS({ listItem }));
+//     dispatch(productMatchesFetchQ({ listItem }));
+//   }
+// }
 
 export const productMatchesFetch = ({ listItem, storeID }) => {
   console.log(listItem);
@@ -27,19 +28,31 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
   };
 };
 
-const productMatchesFetchQ = ({ listItem }) => {
-  console.log(listItem);
-  const { item } = listItem;
-  console.log(item);
-  const baseURL = 'http://indechick.com/products/search?query=';
+export const productMatchCreate = ({ list, listItem, selected }) => {
+  const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    axios.get(`${baseURL}${item}&store=2`)
-      .then((response) => {
-        dispatch({ type: PRODUCT_MATCHES_Q_FETCH_SUCCESS, payload: response.data });
-      });
+    firebase.database().ref(`/users/${currentUser.uid}/selections/${list.uid}/${selected.store_id}/products`)
+    .push({ selected, itemID: listItem.uid })
+    .then(() => {
+      dispatch({ type: PRODUCT_MATCH_CREATE});
+      Actions.pop({ refresh: { ...listItem, selected } });
+    });
   };
 };
+// const productMatchesFetchQ = ({ listItem }) => {
+//   console.log(listItem);
+//   const { item } = listItem;
+//   console.log(item);
+//   const baseURL = 'http://indechick.com/products/search?query=';
+//
+//   return (dispatch) => {
+//     axios.get(`${baseURL}${item}&store=2`)
+//       .then((response) => {
+//         dispatch({ type: PRODUCT_MATCHES_Q_FETCH_SUCCESS, payload: response.data });
+//       });
+//   };
+// };
 
 export const productMatchUpdate = (product) => {
   return {

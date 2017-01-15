@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button } from './common';
@@ -19,8 +20,12 @@ class SelectMatches extends Component {
 
   render() {
     console.log(this.props);
+    const { item } = this.props.listItem;
     return (
       <Card>
+        <CardSection>
+          <Text>Now Matching: { item }</Text>
+        </CardSection>
         <CardSection>
           <Button onPress={this.onQpress.bind(this)}>
             Pick QFC Match

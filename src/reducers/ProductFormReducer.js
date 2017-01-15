@@ -12,10 +12,10 @@ export default (state = INITIAL_STATE, action) => {
       case PRODUCT_MATCH_UPDATE:
         return action.payload;
 
-      // case LIST_ITEM_CREATE:
-      // case LIST_ITEM_ADD:
-      // case LIST_ITEM_SAVE_SUCCESS:
-      //   return INITIAL_STATE;
+      case PRODUCT_MATCH_CREATE:
+      case PRODUCT_MATCH_ADD:
+      case PRODUCT_MATCH_SAVE_SUCCESS:
+        return INITIAL_STATE;
 
       default:
         return state;
