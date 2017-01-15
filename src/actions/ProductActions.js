@@ -32,8 +32,8 @@ export const productMatchCreate = ({ list, listItem, selected }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/selections/${list.uid}/${selected.store_id}/products`)
-    .push({ selected, itemID: listItem.uid })
+    firebase.database().ref(`/users/${currentUser.uid}/selections/${list.uid}/${listItem.uid}/${selected.store_id}`)
+    .set({ selected })
     .then(() => {
       dispatch({ type: PRODUCT_MATCH_CREATE});
       Actions.pop({ refresh: { ...listItem, [selected.store_id]: selected } });

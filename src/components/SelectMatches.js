@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button } from './common';
 import SelectMatch from './SelectMatch';
+import ProductInfo from './ProductInfo';
 
 class SelectMatches extends Component {
 
@@ -19,17 +20,27 @@ class SelectMatches extends Component {
   }
 
   renderQFC() {
-    if (this.props) {
+    if (this.props[1]) {
+      return (
+        <ProductInfo product={this.props[1]} />
+      );
+
+    } else {
       return (
         <Button onPress={this.onQpress.bind(this)}>
-          Pick QFC Match
+        Pick QFC Match
         </Button>
       );
     }
   }
 
   renderSafeway() {
-    if (this.props) {
+    if (this.props[2]) {
+      return (
+        <ProductInfo product={this.props[2]} />
+      );
+
+    } else {
       return (
         <Button onPress={this.onSpress.bind(this)}>
           Pick Safeway Match
