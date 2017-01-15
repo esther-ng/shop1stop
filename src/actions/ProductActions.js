@@ -36,7 +36,7 @@ export const productMatchCreate = ({ list, listItem, selected }) => {
     .push({ selected, itemID: listItem.uid })
     .then(() => {
       dispatch({ type: PRODUCT_MATCH_CREATE});
-      Actions.pop({ refresh: { ...listItem, selected } });
+      Actions.pop({ refresh: { ...listItem, [selected.store_id]: selected } });
     });
   };
 };

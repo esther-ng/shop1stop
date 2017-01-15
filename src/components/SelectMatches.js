@@ -18,6 +18,26 @@ class SelectMatches extends Component {
     Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem });
   }
 
+  renderQFC() {
+    if (this.props) {
+      return (
+        <Button onPress={this.onQpress.bind(this)}>
+          Pick QFC Match
+        </Button>
+      );
+    }
+  }
+
+  renderSafeway() {
+    if (this.props) {
+      return (
+        <Button onPress={this.onSpress.bind(this)}>
+          Pick Safeway Match
+        </Button>
+      );
+    }
+  }
+
   render() {
     console.log(this.props);
     const { item } = this.props.listItem;
@@ -27,14 +47,10 @@ class SelectMatches extends Component {
           <Text>Now Matching: { item }</Text>
         </CardSection>
         <CardSection>
-          <Button onPress={this.onQpress.bind(this)}>
-            Pick QFC Match
-          </Button>
+          {this.renderQFC()}
         </CardSection>
         <CardSection>
-          <Button onPress={this.onSpress.bind(this)}>
-            Pick Safeway Match
-          </Button>
+          {this.renderSafeway()}
         </CardSection>
       </Card>
     );
