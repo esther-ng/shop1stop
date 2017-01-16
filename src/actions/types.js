@@ -27,3 +27,4 @@ export const PRODUCT_MATCH_SAVE_SUCCES = 'product_match_save_success';
 export const PRODUCT_MATCH_FETCH_SUCCESS = 'product_match_fetch_success';
 
 export const COMPARE_KEYS = 'compare_keys';
+export const SHOW_STORE_LIST = 'show_store_list';

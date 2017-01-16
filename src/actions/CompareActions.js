@@ -2,7 +2,8 @@ import firebase from 'firebase';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import {
-  COMPARE_KEYS
+  COMPARE_KEYS,
+  SHOW_STORE_LIST
 } from './types';
 
 /*
@@ -17,5 +18,12 @@ export const compareProducts = (items) => {
   // console.log(listItems);
   const keys = _.map(items, 'uid');
   console.log(keys);
+  Actions.compareStores();
   return { type: COMPARE_KEYS };
+};
+
+export const seeStore = ({ storeName, listItems }) => {
+  console.log(storeName);
+  Actions.storeListView({ title: storeName });
+  return { type: SHOW_STORE_LIST, payload: { storeName, listItems } };
 };
