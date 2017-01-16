@@ -28,11 +28,10 @@ class SelectMatches extends Component {
   }
 
   renderQFC() {
-    if (this.props[1]) {
+    if (this.props.qfc) {
       return (
-        <ProductInfo product={this.props[1]} />
+        <ProductInfo product={this.props.qfc} />
       );
-
     } else {
       return (
         <Button onPress={this.onQpress.bind(this)}>
@@ -43,9 +42,9 @@ class SelectMatches extends Component {
   }
 
   renderSafeway() {
-    if (this.props[2]) {
+    if (this.props.safeway) {
       return (
-        <ProductInfo product={this.props[2]} />
+        <ProductInfo product={this.props.safeway} />
       );
 
     } else {
@@ -76,4 +75,14 @@ class SelectMatches extends Component {
   }
 }
 
-export default connect(null, { productMatchFetch })(SelectMatches);
+const mapStateToProps = (state) => {
+  console.log(state);
+  if (state.selected !== null) {
+    const qfc = (state.selected[1]) ? state.selected[1] : null;
+    const safeway = (state.selected[2]) ? state.selected[2] : null;
+    return { qfc, safeway };
+  }
+  return {};
+};
+
+export default connect(mapStateToProps, { productMatchFetch })(SelectMatches);

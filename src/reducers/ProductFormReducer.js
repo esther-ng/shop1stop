@@ -2,7 +2,8 @@ import {
   PRODUCT_MATCH_CREATE,
   PRODUCT_MATCH_UPDATE,
   PRODUCT_MATCH_ADD,
-  PRODUCT_MATCH_SAVE_SUCCESS
+  PRODUCT_MATCH_SAVE_SUCCESS,
+  PRODUCT_MATCH_FETCH_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {};
@@ -16,6 +17,9 @@ export default (state = INITIAL_STATE, action) => {
       case PRODUCT_MATCH_ADD:
       case PRODUCT_MATCH_SAVE_SUCCESS:
         return INITIAL_STATE;
+
+      case PRODUCT_MATCH_FETCH_SUCCESS:
+        return action.payload;
 
       default:
         return state;
