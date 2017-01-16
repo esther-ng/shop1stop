@@ -10,9 +10,9 @@ import ProductInfo from './ProductInfo';
 class SelectMatches extends Component {
 
   componentWillMount() {
-    const { listItem } = this.props;
+    const { listItem, list } = this.props;
     console.log(listItem);
-    this.props.productMatchFetch({ listItem });
+    this.props.productMatchFetch({ listItem, list });
     // this should fetch selections so they may render if they exist, also, add callback as param for product info instead of having it hard coded.
     // this.props.productMatchesFetchQ({ listItem });
   }
@@ -77,12 +77,13 @@ class SelectMatches extends Component {
 
 const mapStateToProps = (state) => {
   console.log(state);
+  const { list } = state;
   if (state.selected !== null) {
-    const qfc = state.selected[1];
-    const safeway = state.selected[2];
-    return { qfc, safeway };
+    const { qfc } = state.selected;
+    const { safeway } = state.selected;
+    return { qfc, safeway, list };
   }
-  return {};
+  return { list };
 };
 
 export default connect(mapStateToProps, { productMatchFetch })(SelectMatches);

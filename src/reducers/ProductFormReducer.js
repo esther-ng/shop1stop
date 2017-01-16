@@ -19,6 +19,7 @@ export default (state = INITIAL_STATE, action) => {
         return INITIAL_STATE;
 
       case PRODUCT_MATCH_FETCH_SUCCESS:
+        console.log(action.payload);
         return action.payload;
 
       default:

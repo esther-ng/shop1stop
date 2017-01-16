@@ -23,8 +23,8 @@ class SelectMatches extends Component {
   }
 
   onButtonPress() {
-    const { listItem, selected } = this.props;
-    this.props.productMatchCreate({ listItem, selected });
+    const { listItem, selected, list } = this.props;
+    this.props.productMatchCreate({ listItem, selected, list });
   }
 
   createDataSource({ products }) {

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
-import { listItemsFetch, listItemCreate, listItemAdd } from '../actions';
+import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
 import { Card, Button, CardSection } from './common';
 import ListItem from './ListItem';
 
@@ -22,8 +22,11 @@ class ShoppingListView extends Component {
   onAddAnother() {
     // re-render?? or does componentWillReceiveProps do this? then just save?
     console.log(this.props);
-    this.props.listItemAdd();
-    Actions.addItemForm({ list: this.props.list });
+    this.props.listItemAdd( this.props.list);
+  }
+
+  onCompare() {
+    this.props.compareProducts(this.props.items);
   }
 
   createDataSource({ items }) {
@@ -67,6 +70,12 @@ class ShoppingListView extends Component {
             Add Item
           </Button>
         </CardSection>
+        <CardSection>
+          <Button
+            onPress={this.onCompare.bind(this)}>
+            See Totals
+          </Button>
+        </CardSection>
       </Card>
     );
   }
@@ -86,9 +95,10 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(this.props);
-  console.log(state.listItems);
+  // console.log(this.props);
+  // console.log(state.listItems.keys);
   console.log(state);
+  // const { listItems } = state;
   const items = _.map(state.listItems, (val, uid) => {
     return { ...val, uid };
   });
@@ -96,4 +106,4 @@ const mapStateToProps = (state) => {
   return { items };
 };
 
-export default connect(mapStateToProps, { listItemsFetch, listItemCreate, listItemAdd })(ShoppingListView);
+export default connect(mapStateToProps, { listItemsFetch, listItemCreate, listItemAdd, compareProducts })(ShoppingListView);

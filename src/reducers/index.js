@@ -6,6 +6,7 @@ import ShoppingListReducer from './ShoppingListReducer';
 import ListItemReducer from './ListItemReducer';
 import ListItemFormReducer from './ListItemFormReducer';
 import ProductReducer from './ProductReducer';
+import CompareReducer from './CompareReducer';
 import ProductFormReducer from './ProductFormReducer';
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   listItems: ListItemReducer,
   listItem: ListItemFormReducer,
   products: ProductReducer,
-  selected: ProductFormReducer
+  selected: ProductFormReducer,
+  compare: CompareReducer
 });

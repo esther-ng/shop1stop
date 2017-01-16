@@ -29,12 +29,13 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
   };
 };
 
-export const productMatchCreate = ({ listItem, selected }) => {
+export const productMatchCreate = ({ listItem, selected, list }) => {
   const { currentUser } = firebase.auth();
+  const store = (selected.store_id === 1) ? 'qfc' : 'safeway';
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/selections/${listItem.uid}`)
-    .update({ [selected.store_id]: selected })
+    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems/${listItem.uid}`)
+    .update({ [store]: selected })
     .then(() => {
       dispatch({ type: PRODUCT_MATCH_CREATE });
       Actions.pop({ refresh: { ...listItem } });
@@ -42,11 +43,11 @@ export const productMatchCreate = ({ listItem, selected }) => {
   };
 };
 
-export const productMatchFetch = ({ listItem }) => {
+export const productMatchFetch = ({ listItem, list }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/selections/${listItem.uid}`)
+    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems/${listItem.uid}`)
     .on('value', snapshot => {
       dispatch({ type: PRODUCT_MATCH_FETCH_SUCCESS, payload: snapshot.val() });
     });

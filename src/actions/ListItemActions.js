@@ -27,7 +27,8 @@ export const listItemUpdate = ({ prop, value }) => {
   };
 };
 
-export const listItemAdd = () => {
+export const listItemAdd = (list) => {
+  Actions.addItemForm({ list });
   return { type: LIST_ITEM_ADD };
 };
 
