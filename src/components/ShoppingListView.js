@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
-import { Text, ListView } from 'react-native';
+import { View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
 import { Card, Button, CardSection } from './common';
 import ListItem from './ListItem';
+import ProductInfo from './ProductInfo';
 
 class ShoppingListView extends Component {
   componentWillMount() {
@@ -22,7 +23,7 @@ class ShoppingListView extends Component {
   onAddAnother() {
     // re-render?? or does componentWillReceiveProps do this? then just save?
     console.log(this.props);
-    this.props.listItemAdd( this.props.list);
+    this.props.listItemAdd(this.props.list);
   }
 
   onCompare() {
@@ -39,8 +40,24 @@ class ShoppingListView extends Component {
 
   renderRow(listItem) {
     console.log(listItem);
-    return <ListItem listItem={listItem} />;
+    return (
+      <View>
+        <ListItem listItem={listItem} />
+      </View>
+    );
   }
+
+
+  // renderSafeway(listItem) {
+  //
+  //   return <Text>Select Safeway Match</Text>;
+  // }
+  //
+  // renderQFC(listItem) {
+  //
+  //   return <Text>Select QFC Match</Text>;
+  // }
+
 
   renderList() {
     if (this.dataSource !== undefined) {

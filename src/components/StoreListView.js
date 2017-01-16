@@ -49,6 +49,9 @@ class StoreListView extends Component {
     return (
       <Card>
         {this.renderList()}
+        <CardSection>
+          <Text>Total: {this.props.total}</Text>
+        </CardSection>
       </Card>
     );
   }
@@ -62,8 +65,13 @@ const mapStateToProps = (state) => {
   console.log(storeName);
   // const items = _.map(state.listItems);
   const products = _.map(state.listItems, storeName);
-  console.log(products);
-  return { products };
+  const prices = _.map(products, 'sale_price');
+  const total = _.reduce(prices, (sum, n) => {
+    return sum + n;
+  }, 0);
+
+  console.log(products, total);
+  return { products, total };
 };
 
 export default connect(mapStateToProps, { storeListFetch })(StoreListView);

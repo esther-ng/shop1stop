@@ -9,11 +9,24 @@ class CompareStores extends Component {
     this.props.seeStore({ storeName: 'qfc', listItems: this.props.listItems });
   }
 
+  selectSafeway() {
+    this.props.seeStore({ storeName: 'safeway', listItems: this.props.listItems });
+  }
+
   render() {
     return (
-      <Button onPress={this.selectQFC.bind(this)}>
-        Shop@QFC
-      </Button>
+      <Card>
+        <CardSection>
+          <Button onPress={this.selectQFC.bind(this)}>
+            Shop@QFC
+          </Button>
+        </CardSection>
+        <CardSection>
+          <Button onPress={this.selectSafeway.bind(this)}>
+            Shop@Safeway
+          </Button>
+        </CardSection>
+      </Card>
     );
   }
 }
