@@ -14,7 +14,8 @@ class SelectMatches extends Component {
     this.props.productMatchesFetch({ listItem, storeID });
     // this.props.productMatchesFetchQ({ listItem });
 
-    console.log(this.state);
+    // console.log(this.state);
+    console.log(this.props.products);
     this.createDataSource(this.props);
   }
 
@@ -42,7 +43,7 @@ class SelectMatches extends Component {
 
   renderSelection() {
     console.log(this.props);
-    if (this.props.selected !== {} && this.props.selected !== null) {
+    if (this.props.selected.name && this.props.selected !== null) {
       return (
         <Card>
           <Text>Selected:</Text>

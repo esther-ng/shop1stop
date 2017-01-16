@@ -14,11 +14,23 @@ export const listItemsFetch = ({ list }) => {
   return (dispatch) => {
     firebase.database().ref(`users/${currentUser.uid}/shoppingLists/${list.uid}/listItems`)
       .on('value', snapshot => {
-        dispatch({ type: LIST_ITEMS_FETCH_SUCCESS, payload: snapshot.val() });
+        const qfcTotal = calculateTotals(snapshot.val(), 'qfc');
+        const safewayTotal = calculateTotals(snapshot.val(), 'safeway');
+        dispatch({ type: LIST_ITEMS_FETCH_SUCCESS, payload: { listItems: snapshot.val(), qfcTotal, safewayTotal } });
       });
       Actions.shoppingListView({ type: 'reset' });
   };
 };
+
+const calculateTotals = (listItems, store) => {
+  let total = 0;
+  for(var key in listItems) {
+    if (listItems[key][store]) {
+      total += (listItems[key][store].sale_price * listItems[key].quantity);
+    }
+  }
+  return total;
+}
 
 export const listItemUpdate = ({ prop, value }) => {
   return {
@@ -52,7 +64,7 @@ export const listItemSave = ({ item, quantity, list, uid }) => {
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems/${uid}`)
-    .set({ item, quantity })
+    .update({ item, quantity })
     .then(() => {
       dispatch({ type: LIST_ITEM_SAVE_SUCCESS });
       console.log(this);

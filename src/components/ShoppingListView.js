@@ -80,7 +80,7 @@ class ShoppingListView extends Component {
 
   render() {
     console.log(this.props);
-    const { qtyStyle, itemStyle } = styles;
+    const { qtyStyle, itemStyle, totalStyle } = styles;
     return (
       <Card>
         <CardSection>
@@ -88,6 +88,10 @@ class ShoppingListView extends Component {
           <Text style={itemStyle}>Item</Text>
         </CardSection>
         {this.renderList()}
+        <CardSection>
+          <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal/100.00}</Text>
+          <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal/100.00}</Text>
+        </CardSection>
         <CardSection>
           <Button
             onPress={this.onCompare.bind(this)}>
@@ -109,6 +113,11 @@ const styles = {
     fontSize: 18,
     paddingLeft: 15,
     flex: 4
+  },
+  totalStyle: {
+    fontSize: 18,
+    paddingLeft: 15,
+    flex: 2
   }
 };
 
@@ -117,11 +126,12 @@ const mapStateToProps = (state) => {
   // console.log(state.listItems.keys);
   console.log(state);
   // const { listItems } = state;
-  const items = _.map(state.listItems, (val, uid) => {
+  const items = _.map(state.listItems.listItems, (val, uid) => {
     return { ...val, uid };
   });
+  const { qfcTotal, safewayTotal } = state.listItems;
   console.log({ items });
-  return { items };
+  return { items, qfcTotal, safewayTotal };
 };
 
 export default connect(mapStateToProps, { listItemsFetch, listItemCreate, listItemAdd, compareProducts })(ShoppingListView);

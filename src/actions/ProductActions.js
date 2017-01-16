@@ -26,6 +26,7 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
       .then((response) => {
         dispatch({ type: PRODUCT_MATCHES_FETCH_SUCCESS, payload: response.data });
       });
+      // .then(Actions.selectMatch({ storeID, title: 'Selection', listItem }));
   };
 };
 
