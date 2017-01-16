@@ -23,7 +23,7 @@ const RouterComponent = () => {
       <Scene key="main">
         <Scene
           onRight={() => Actions.shoppingListCreate()}
-          rightTitle="Add"
+          rightTitle="New List"
           key="shoppingIndex"
           component={ShoppingIndex}
           title="Shopping Lists"
@@ -31,7 +31,11 @@ const RouterComponent = () => {
         />
         <Scene key="shoppingListCreate" component={ShoppingListCreate} title="New Shopping List" />
         <Scene key="shoppingListEdit" component={ShoppingListEdit} title="Edit Shopping List" />
-        <Scene key="shoppingListView" component={ShoppingListView} title={this.title} />
+        <Scene key="shoppingListView"
+          onRight={() => Actions.addItemForm()}
+          rightTitle="Add Item"
+          component={ShoppingListView}
+          title={this.title} />
         <Scene key="addItemForm" component={AddItem} title="Add Item" />
         <Scene key="editItemForm" component={EditItem} title="Edit Item" />
         <Scene key="selectMatches" component={SelectMatches} title="Select Matches" />

@@ -40,11 +40,18 @@ class ShoppingListView extends Component {
 
   renderRow(listItem) {
     console.log(listItem);
-    return (
-      <View>
-        <ListItem listItem={listItem} />
-      </View>
-    );
+    if (listItem.safeway && listItem.qfc) {
+      return (
+        <View>
+          <ListItem listItem={listItem} />
+          <Text>QFC</Text>
+          <ProductInfo product={listItem.qfc} />
+          <Text>Safeway</Text>
+          <ProductInfo product={listItem.safeway} />
+        </View>
+      );
+    }
+    return <ListItem listItem={listItem} />;
   }
 
 
@@ -81,12 +88,6 @@ class ShoppingListView extends Component {
           <Text style={itemStyle}>Item</Text>
         </CardSection>
         {this.renderList()}
-        <CardSection>
-          <Button
-            onPress={this.onAddAnother.bind(this)}>
-            Add Item
-          </Button>
-        </CardSection>
         <CardSection>
           <Button
             onPress={this.onCompare.bind(this)}>

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { listItemUpdate, listItemCreate } from '../actions';
+import { listItemUpdate, listItemCreate, listItemAdd } from '../actions';
 import { Card, CardSection, Button } from './common';
 import ListItemForm from './ListItemForm';
 
 class AddItem extends Component {
+
+  componentWillMount() {
+    this.props.listItemAdd();
+  }
+
   onButtonPress() {
     console.log(this.props);
     const { quantity, item, list } = this.props;
@@ -38,5 +43,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  listItemUpdate, listItemCreate
+  listItemUpdate, listItemCreate, listItemAdd
 })(AddItem);
