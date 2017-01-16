@@ -78,8 +78,8 @@ class SelectMatches extends Component {
 const mapStateToProps = (state) => {
   console.log(state);
   if (state.selected !== null) {
-    const qfc = (state.selected[1]) ? state.selected[1] : null;
-    const safeway = (state.selected[2]) ? state.selected[2] : null;
+    const qfc = state.selected[1];
+    const safeway = state.selected[2];
     return { qfc, safeway };
   }
   return {};

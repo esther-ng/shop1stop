@@ -16,6 +16,7 @@ class ProductInfo extends Component {
   }
 
   render() {
+    console.log(this.props.product);
     const { name, sale_price, conditions, description, img_url, store_id, valid_from, valid_til } = this.props.product;
 
     return (

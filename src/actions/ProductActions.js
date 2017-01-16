@@ -36,8 +36,8 @@ export const productMatchCreate = ({ listItem, selected }) => {
     firebase.database().ref(`/users/${currentUser.uid}/selections/${listItem.uid}`)
     .update({ [selected.store_id]: selected })
     .then(() => {
-      dispatch({ type: PRODUCT_MATCH_CREATE});
-      Actions.pop({ refresh: { ...listItem, [selected.store_id]: selected } });
+      dispatch({ type: PRODUCT_MATCH_CREATE });
+      Actions.pop({ refresh: { ...listItem } });
     });
   };
 };
@@ -50,6 +50,7 @@ export const productMatchFetch = ({ listItem }) => {
     .on('value', snapshot => {
       dispatch({ type: PRODUCT_MATCH_FETCH_SUCCESS, payload: snapshot.val() });
     });
+    Actions.selectMatches();
   };
 };
 // const productMatchesFetchQ = ({ listItem }) => {

@@ -22,6 +22,11 @@ class SelectMatches extends Component {
     this.createDataSource(nextProps);
   }
 
+  onButtonPress() {
+    const { listItem, selected } = this.props;
+    this.props.productMatchCreate({ listItem, selected });
+  }
+
   createDataSource({ products }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
@@ -31,18 +36,13 @@ class SelectMatches extends Component {
     this.dataSource = ds.cloneWithRows(products);
   }
 
-  onButtonPress() {
-    const { listItem, selected } = this.props;
-    this.props.productMatchCreate({ listItem, selected });
-  }
-
   renderRow(product) {
     return <ProductInfo product={product} />;
   }
 
   renderSelection() {
     console.log(this.props);
-    if (this.props.selected !== {}) {
+    if (this.props.selected !== {} && this.props.selected !== null) {
       return (
         <Card>
           <Text>Selected:</Text>
