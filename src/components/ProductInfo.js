@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { Text, TouchableHighlight, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { CardSection } from './common';
+import { CardSection, Card } from './common';
 import { productMatchUpdate } from '../actions';
 
 class ProductInfo extends Component {
@@ -23,30 +23,29 @@ class ProductInfo extends Component {
       <TouchableHighlight
         onPress={this.onRowPress.bind(this)}
       >
-        <View>
-          <CardSection>
 
-            <Image
-              style={styles.thumbnailStyle}
-              source={{ uri: img_url }}
-            />
-            <Text style={styles.itemStyle}>
+          <View>
+            <CardSection>
+              <Image
+                style={styles.thumbnailStyle}
+                source={{ uri: img_url }}
+              />
+              <View style={styles.textContainer}>
+              <Text style={styles.itemStyle}>
               {name}
-            </Text>
-            <Text style={styles.itemStyle}>
-              {sale_price}
-            </Text>
-            <Text style={styles.itemStyle}>
-              {conditions}
-            </Text>
-            <Text style={styles.itemStyle}>
+              </Text>
+              <Text style={styles.itemStyle}>
+              ${sale_price/100.00} ({conditions})
+              </Text>
+              <Text style={styles.itemStyle}>
               {description}
-            </Text>
-            <Text style={styles.itemStyle}>
-              {valid_from} - {valid_til}
-            </Text>
-          </CardSection>
-        </View>
+              </Text>
+              <Text style={styles.itemStyle}>
+              Valid {valid_from.substring(0,10)} - {valid_til.substring(0,10)}
+              </Text>
+              </View>
+            </CardSection>
+          </View>
       </TouchableHighlight>
     );
   }
@@ -56,6 +55,11 @@ const styles = {
   itemStyle: {
     fontSize: 18,
     paddingLeft: 15,
+    paddingRight: 15
+  },
+  textContainer: {
+    flexWrap: 'wrap',
+    flexDirection: 'column'
   },
   thumbnailStyle: {
     height: 50,

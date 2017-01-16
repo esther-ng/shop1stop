@@ -44,9 +44,9 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <Text>QFC</Text>
+          <Text style={{ marginLeft: 10 }}>QFC</Text>
           <ProductInfo product={listItem.qfc} />
-          <Text>Safeway</Text>
+          <Text style={{ marginLeft: 10 }}>Safeway</Text>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
