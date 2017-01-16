@@ -32,8 +32,8 @@ class SelectMatches extends Component {
   }
 
   onButtonPress() {
-    const { listItem, selected, list } = this.props;
-    this.props.productMatchCreate({ listItem, selected, list });
+    const { listItem, selected } = this.props;
+    this.props.productMatchCreate({ listItem, selected });
   }
 
   renderRow(product) {

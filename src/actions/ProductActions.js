@@ -4,7 +4,8 @@ import { Actions } from 'react-native-router-flux';
 import {
   PRODUCT_MATCHES_FETCH_SUCCESS,
   PRODUCT_MATCH_UPDATE,
-  PRODUCT_MATCH_CREATE
+  PRODUCT_MATCH_CREATE,
+  PRODUCT_MATCH_FETCH_SUCCESS
 } from './types';
 
 // const productMatchFetchAll = ({ listItem }) => {
@@ -28,15 +29,26 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
   };
 };
 
-export const productMatchCreate = ({ list, listItem, selected }) => {
+export const productMatchCreate = ({ listItem, selected }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/selections/${list.uid}/${listItem.uid}/${selected.store_id}`)
-    .set({ selected })
+    firebase.database().ref(`/users/${currentUser.uid}/selections/${listItem.uid}`)
+    .update({ [selected.store_id]: selected })
     .then(() => {
       dispatch({ type: PRODUCT_MATCH_CREATE});
       Actions.pop({ refresh: { ...listItem, [selected.store_id]: selected } });
+    });
+  };
+};
+
+export const productMatchFetch = ({ listItem }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/selections/${listItem.uid}`)
+    .on('value', snapshot => {
+      dispatch({ type: PRODUCT_MATCH_FETCH_SUCCESS, payload: snapshot.val() });
     });
   };
 };
@@ -60,6 +72,8 @@ export const productMatchUpdate = (product) => {
     payload: product
   };
 };
+
+
 // use a fetch succes for qfc and one for sfw
 // const productsMap = (products) => {
 //   products.forEach((product) => {

@@ -24,3 +24,4 @@ export const PRODUCT_MATCHES_RESET = 'product_matches_reset';
 export const PRODUCT_MATCH_UPDATE = 'product_match_update';
 export const PRODUCT_MATCH_CREATE = 'product_match_create';
 export const PRODUCT_MATCH_SAVE_SUCCES = 'product_match_save_success';
+export const PRODUCT_MATCH_FETCH_SUCCESS = 'product_match_fetch_success';

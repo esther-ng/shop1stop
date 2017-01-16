@@ -3,11 +3,19 @@ import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button } from './common';
-import SelectMatch from './SelectMatch';
+import { productMatchFetch } from '../actions';
+// import SelectMatch from './SelectMatch';
 import ProductInfo from './ProductInfo';
 
 class SelectMatches extends Component {
 
+  componentWillMount() {
+    const { listItem } = this.props;
+    console.log(listItem);
+    this.props.productMatchFetch({ listItem });
+    // this should fetch selections so they may render if they exist, also, add callback as param for product info instead of having it hard coded.
+    // this.props.productMatchesFetchQ({ listItem });
+  }
 
   onQpress() {
     const { listItem } = this.props;
@@ -68,4 +76,4 @@ class SelectMatches extends Component {
   }
 }
 
-export default SelectMatches;
+export default connect(null, { productMatchFetch })(SelectMatches);
