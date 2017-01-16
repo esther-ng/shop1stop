@@ -28,10 +28,10 @@ class ListItem extends Component {
         <View>
           <CardSection>
             <Text style={styles.qtyStyle}>
-              {quantity}
+              Qty: {quantity}
             </Text>
             <Text style={styles.itemStyle}>
-              {item}
+              Item: {item}
             </Text>
           </CardSection>
         </View>

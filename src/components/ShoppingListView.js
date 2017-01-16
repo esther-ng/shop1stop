@@ -82,23 +82,13 @@ class ShoppingListView extends Component {
     console.log(this.props);
     const { qtyStyle, itemStyle, totalStyle } = styles;
     return (
-      <Card>
-        <CardSection>
-          <Text style={qtyStyle}>Qty</Text>
-          <Text style={itemStyle}>Item</Text>
-        </CardSection>
+      <View>
         {this.renderList()}
         <CardSection>
           <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal/100.00}</Text>
           <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal/100.00}</Text>
         </CardSection>
-        <CardSection>
-          <Button
-            onPress={this.onCompare.bind(this)}>
-            See Totals
-          </Button>
-        </CardSection>
-      </Card>
+      </View>
     );
   }
 }
