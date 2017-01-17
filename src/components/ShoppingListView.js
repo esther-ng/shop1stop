@@ -50,6 +50,25 @@ class ShoppingListView extends Component {
           <ProductInfo product={listItem.safeway} />
         </View>
       );
+    } else if (listItem.safeway) {
+      return (
+        <View>
+          <ListItem listItem={listItem} />
+          <Text style={{ marginLeft: 10 }}>QFC</Text>
+          <Text>Not Selected</Text>
+          <Text style={{ marginLeft: 10 }}>Safeway</Text>
+          <ProductInfo product={listItem.safeway} />
+        </View>
+      );
+    } else if (listItem.qfc) {
+      return (
+        <View>
+          <ListItem listItem={listItem} />
+          <Text style={{ marginLeft: 10 }}>QFC</Text>
+          <ProductInfo product={listItem.qfc} />
+          <Text style={{ marginLeft: 10 }}>Safeway: Not Selected</Text>
+        </View>
+      );
     }
     return <ListItem listItem={listItem} />;
   }

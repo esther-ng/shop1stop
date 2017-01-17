@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableWithoutFeedback, View, Switch } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 // import { connect } from 'react-redux';
 import { CardSection } from './common';
 // import { findMatches } from '../actions';
 
 class ListItem extends Component {
+  state = {
+    inCart: false
+  };
 
   onRowPress() {
     console.log(this.props);
@@ -33,6 +36,10 @@ class ListItem extends Component {
             <Text style={styles.itemStyle}>
               Item: {item}
             </Text>
+            <Switch
+              onValueChange={(value) => this.setState({ inCart: value })}
+              value={this.state.inCart}
+            />
           </CardSection>
         </View>
       </TouchableWithoutFeedback>

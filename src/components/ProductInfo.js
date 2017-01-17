@@ -31,16 +31,16 @@ class ProductInfo extends Component {
                 source={{ uri: img_url }}
               />
               <View style={styles.textContainer}>
-              <Text style={styles.itemStyle}>
+              <Text style={styles.titleStyle}>
               {name}
               </Text>
-              <Text style={styles.itemStyle}>
+              <Text style={styles.titleStyle}>
               ${sale_price/100.00} ({conditions})
               </Text>
-              <Text style={styles.itemStyle}>
+              <Text style={styles.detailStyle}>
               {description}
               </Text>
-              <Text style={styles.itemStyle}>
+              <Text style={styles.detailStyle}>
               Valid {valid_from.substring(0,10)} - {valid_til.substring(0,10)}
               </Text>
               </View>
@@ -52,8 +52,13 @@ class ProductInfo extends Component {
 }
 
 const styles = {
-  itemStyle: {
+  titleStyle: {
     fontSize: 18,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  detailStyle: {
+    fontSize: 16,
     paddingLeft: 15,
     paddingRight: 15
   },

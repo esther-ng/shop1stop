@@ -32,12 +32,6 @@ class SelectMatches extends Component {
       return (
         <ProductInfo product={this.props.qfc} />
       );
-    } else {
-      return (
-        <Button onPress={this.onQpress.bind(this)}>
-        Pick QFC Match
-        </Button>
-      );
     }
   }
 
@@ -45,13 +39,6 @@ class SelectMatches extends Component {
     if (this.props.safeway) {
       return (
         <ProductInfo product={this.props.safeway} />
-      );
-
-    } else {
-      return (
-        <Button onPress={this.onSpress.bind(this)}>
-          Pick Safeway Match
-        </Button>
       );
     }
   }
@@ -65,10 +52,26 @@ class SelectMatches extends Component {
           <Text>Now Matching: { item }</Text>
         </CardSection>
         <CardSection>
+          <Text style={{ marginLeft: 10 }}>QFC</Text>
+        </CardSection>
+        <CardSection>
           {this.renderQFC()}
         </CardSection>
         <CardSection>
+          <Button onPress={this.onQpress.bind(this)}>
+          Pick QFC Match
+          </Button>
+        </CardSection>
+        <CardSection>
+          <Text style={{ marginLeft: 10 }}>Safeway</Text>
+        </CardSection>
+        <CardSection>
           {this.renderSafeway()}
+        </CardSection>
+        <CardSection>
+          <Button onPress={this.onSpress.bind(this)}>
+          Pick Safeway Match
+          </Button>
         </CardSection>
       </Card>
     );
