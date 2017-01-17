@@ -19,6 +19,8 @@ class ProductInfo extends Component {
     console.log(this.props.product);
     const { name, sale_price, conditions, description, img_url, store_id, valid_from, valid_til } = this.props.product;
 
+    const store = (store_id === 1) ? 'QFC' : 'Safeway';
+
     return (
       <TouchableHighlight
         onPress={this.onRowPress.bind(this)}
@@ -26,10 +28,13 @@ class ProductInfo extends Component {
 
           <View>
             <CardSection>
+              <View style={styles.column}>
+              <Text>{store}</Text>
               <Image
                 style={styles.thumbnailStyle}
                 source={{ uri: img_url }}
               />
+              </View>
               <View style={styles.textContainer}>
               <Text style={styles.titleStyle}>
               {name}
@@ -69,6 +74,9 @@ const styles = {
   thumbnailStyle: {
     height: 50,
     width: 50
+  },
+  column: {
+    flexDirection: 'column'
   }
 };
 

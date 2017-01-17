@@ -44,9 +44,7 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <Text style={{ marginLeft: 10 }}>QFC</Text>
           <ProductInfo product={listItem.qfc} />
-          <Text style={{ marginLeft: 10 }}>Safeway</Text>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
@@ -56,7 +54,6 @@ class ShoppingListView extends Component {
           <ListItem listItem={listItem} />
           <Text style={{ marginLeft: 10 }}>QFC</Text>
           <Text>Not Selected</Text>
-          <Text style={{ marginLeft: 10 }}>Safeway</Text>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
@@ -64,7 +61,6 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <Text style={{ marginLeft: 10 }}>QFC</Text>
           <ProductInfo product={listItem.qfc} />
           <Text style={{ marginLeft: 10 }}>Safeway: Not Selected</Text>
         </View>
@@ -99,13 +95,13 @@ class ShoppingListView extends Component {
 
   render() {
     console.log(this.props);
-    const { qtyStyle, itemStyle, totalStyle } = styles;
+    const { totalStyle } = styles;
     return (
       <View>
         {this.renderList()}
         <CardSection>
-          <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal/100.00}</Text>
-          <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal/100.00}</Text>
+          <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal / 100.00}</Text>
+          <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal / 100.00}</Text>
         </CardSection>
       </View>
     );
@@ -113,19 +109,9 @@ class ShoppingListView extends Component {
 }
 
 const styles = {
-  qtyStyle: {
-    fontSize: 18,
-    paddingLeft: 15,
-    flex: 1
-  },
-  itemStyle: {
-    fontSize: 18,
-    paddingLeft: 15,
-    flex: 4
-  },
   totalStyle: {
-    fontSize: 18,
-    paddingLeft: 15,
+    fontSize: 16,
+    paddingLeft: 10,
     flex: 2
   }
 };

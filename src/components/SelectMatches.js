@@ -52,18 +52,12 @@ class SelectMatches extends Component {
           <Text>Now Matching: { item }</Text>
         </CardSection>
         <CardSection>
-          <Text style={{ marginLeft: 10 }}>QFC</Text>
-        </CardSection>
-        <CardSection>
           {this.renderQFC()}
         </CardSection>
         <CardSection>
           <Button onPress={this.onQpress.bind(this)}>
           Pick QFC Match
           </Button>
-        </CardSection>
-        <CardSection>
-          <Text style={{ marginLeft: 10 }}>Safeway</Text>
         </CardSection>
         <CardSection>
           {this.renderSafeway()}
