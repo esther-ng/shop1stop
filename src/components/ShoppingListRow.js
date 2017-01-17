@@ -14,7 +14,7 @@ class ShoppingListRow extends Component {
   }
 
   editOnLong() {
-    const { name, uid, listItems } = this.props.list;
+    const { name, uid } = this.props.list;
     this.props.shoppingListEdit({ name, uid });
   }
 
