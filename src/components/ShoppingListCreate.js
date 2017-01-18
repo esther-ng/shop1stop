@@ -7,7 +7,7 @@ import { Card, CardSection, Button, Input } from './common';
 class ShoppingListCreate extends Component {
   componentWillMount() {
     this.props.shoppingListIndex();
-    console.log(this);
+    // console.log(this);
   }
 
   onButtonPress() {
@@ -38,7 +38,7 @@ class ShoppingListCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const { name } = state.list;
 
   return { name };

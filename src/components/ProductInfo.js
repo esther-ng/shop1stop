@@ -9,14 +9,14 @@ import { productMatchUpdate } from '../actions';
 class ProductInfo extends Component {
 
   onRowPress() {
-    console.log(this.props);
+    // console.log(this.props);
     const { product } = this.props;
     this.props.productMatchUpdate(product);
     // Actions.selectMatch();
   }
 
   render() {
-    console.log(this.props.product);
+    // console.log(this.props.product);
     const { name, sale_price, conditions, description, img_url, store_id, valid_from, valid_til } = this.props.product;
 
     const store = (store_id === 1) ? 'QFC' : 'Safeway';
@@ -83,7 +83,7 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   const { selected } = state;
 
   return { selected };

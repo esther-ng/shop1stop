@@ -13,7 +13,7 @@ class ShoppingListView extends Component {
     const { list } = this.props;
     this.props.listItemsFetch({ list });
     this.createDataSource(this.props);
-    console.log(this);
+    // console.log(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,7 +22,7 @@ class ShoppingListView extends Component {
 
   onAddAnother() {
     // re-render?? or does componentWillReceiveProps do this? then just save?
-    console.log(this.props);
+    // console.log(this.props);
     this.props.listItemAdd(this.props.list);
   }
 
@@ -39,7 +39,7 @@ class ShoppingListView extends Component {
   }
 
   renderRow(listItem) {
-    console.log(listItem);
+    // console.log(listItem);
     if (listItem.safeway && listItem.qfc) {
       return (
         <View>
@@ -93,7 +93,7 @@ class ShoppingListView extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { totalStyle } = styles;
     return (
       <View>
@@ -118,13 +118,13 @@ const styles = {
 const mapStateToProps = (state) => {
   // console.log(this.props);
   // console.log(state.listItems.keys);
-  console.log(state);
+  // console.log(state);
   // const { listItems } = state;
   const items = _.map(state.listItems.listItems, (val, uid) => {
     return { ...val, uid };
   });
   const { qfcTotal, safewayTotal } = state.listItems;
-  console.log({ items });
+  // console.log({ items });
   return { items, qfcTotal, safewayTotal };
 };
 

@@ -16,7 +16,7 @@ class ShoppingListEdit extends Component {
   }
 
   onButtonPress() {
-    console.log(this.props);
+    // console.log(this.props);
     const { name } = this.props;
     this.props.shoppingListSave({ name, uid: this.props.list.uid });
   }
@@ -71,7 +71,7 @@ class ShoppingListEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const { name, phone, shift } = state.list;
 
   return { name, phone, shift };

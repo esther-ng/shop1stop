@@ -53,7 +53,7 @@ class SelectMatch extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.products.length > 0) {
       return (
         <View>
@@ -77,7 +77,7 @@ class SelectMatch extends Component {
 }
 //
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   const products = _.map(state.products, (val) => {
     return { ...val };
   });

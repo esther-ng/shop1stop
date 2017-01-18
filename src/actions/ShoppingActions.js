@@ -6,9 +6,9 @@ import {
   SHOPPING_LIST_VIEW,
   SHOPPING_LIST_INDEX,
   SHOPPING_LIST_FAIL,
-  SHOPPING_LIST_SAVE_SUCCESS,
+  // SHOPPING_LIST_SAVE_SUCCESS,
   SHOPPING_LISTS_FETCH_SUCCESS,
-  LIST_ITEMS_CLEAR
+  // LIST_ITEMS_CLEAR
 } from './types';
 
 
@@ -40,11 +40,7 @@ export const shoppingListCreate = ({ name }) => {
 };
 
 export const shoppingListEdit = ({ name, uid }) => {
-  // const { currentUser } = firebase.auth();
-
   return () => {
-    // dispatch({ type: SHOPPING_LIST_VIEW, payload: { name, uid } });
-    // dispatch({ type: LIST_ITEMS_CLEAR });
     Actions.shoppingListEdit({ list: { name, uid } });
   };
 };
@@ -52,7 +48,7 @@ export const shoppingListEdit = ({ name, uid }) => {
 export const shoppingListSave = ({ name, uid }) => {
   const { currentUser } = firebase.auth();
 
-  return (dispatch) => {
+  return () => {
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${uid}`)
       .update({ name })
       .then(() => {
@@ -89,7 +85,6 @@ export const shoppingListsFetch = () => {
 export const shoppingListView = ({ name, uid }) => {
   return (dispatch) => {
     dispatch({ type: SHOPPING_LIST_VIEW, payload: { name, uid } });
-    // dispatch({ type: LIST_ITEMS_CLEAR });
     Actions.shoppingListView({ list: { name, uid }, title: name });
   };
 };
@@ -97,6 +92,5 @@ export const shoppingListView = ({ name, uid }) => {
 export const shoppingListIndex = () => {
   return (dispatch) => {
     dispatch({ type: SHOPPING_LIST_INDEX });
-    // dispatch({ type: LIST_ITEMS_CLEAR });
   };
 };

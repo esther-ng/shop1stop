@@ -13,7 +13,7 @@ class ProductMatchForm extends Component {
   }
 
   renderOption(option, selected, onSelect, index) {
-    const style = selected ? { fontWeight: 'bold' } : {};
+    // const style = selected ? { fontWeight: 'bold' } : {};
 
     return (
       <TouchableWithoutFeedback onPress={onSelect} key={index}>
@@ -45,7 +45,7 @@ class ProductMatchForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const { safeway, qfc, generic } = state.selected;
   return { safeway, qfc, generic };
 };

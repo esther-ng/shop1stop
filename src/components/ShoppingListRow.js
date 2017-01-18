@@ -8,7 +8,7 @@ import { shoppingListView, shoppingListEdit } from '../actions';
 class ShoppingListRow extends Component {
 
   onRowPress() {
-    console.log(this.props.list);
+    // console.log(this.props.list);
     const { name, uid, listItems } = this.props.list;
     this.props.shoppingListView({ name, uid, listItems });
   }
@@ -46,7 +46,7 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {};
 };
 

@@ -15,7 +15,7 @@ class EditItem extends Component {
   }
 
   onButtonPress() {
-    console.log(this.props);
+    // console.log(this.props);
     const { quantity, item, list } = this.props;
     const { uid } = this.props.listItem;
     // pass list id
@@ -61,9 +61,9 @@ class EditItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(this.props);
-  console.log(state.listItems);
-  console.log(state);
+  // console.log(this.props);
+  // console.log(state.listItems);
+  // console.log(state);
   const { list } = state;
   const { item, quantity } = state.listItem;
 

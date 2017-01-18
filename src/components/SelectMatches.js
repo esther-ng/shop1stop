@@ -11,7 +11,7 @@ class SelectMatches extends Component {
 
   componentWillMount() {
     const { listItem, list } = this.props;
-    console.log(listItem);
+    // console.log(listItem);
     this.props.productMatchFetch({ listItem, list });
     // this should fetch selections so they may render if they exist, also, add callback as param for product info instead of having it hard coded.
     // this.props.productMatchesFetchQ({ listItem });
@@ -44,7 +44,7 @@ class SelectMatches extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { item } = this.props.listItem;
     return (
       <Card>
@@ -73,7 +73,7 @@ class SelectMatches extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const { list } = state;
   if (state.selected !== null) {
     const { qfc } = state.selected;
