@@ -18,7 +18,7 @@ export const listItemsFetch = ({ list }) => {
         const safewayTotal = calculateTotals(snapshot.val(), 'safeway');
         dispatch({ type: LIST_ITEMS_FETCH_SUCCESS, payload: { listItems: snapshot.val(), qfcTotal, safewayTotal } });
       });
-      Actions.shoppingListView({ type: 'reset' });
+      // Actions.shoppingListView({ type: 'reset' });
   };
 };
 

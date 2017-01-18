@@ -5,6 +5,7 @@ import {
   SHOPPING_LIST_UPDATE,
   SHOPPING_LIST_VIEW,
   SHOPPING_LIST_INDEX,
+  SHOPPING_LIST_FAIL,
   SHOPPING_LIST_SAVE_SUCCESS,
   SHOPPING_LISTS_FETCH_SUCCESS,
   LIST_ITEMS_CLEAR
@@ -19,17 +20,23 @@ export const shoppingListUpdate = ({ prop, value }) => {
 };
 
 export const shoppingListCreate = ({ name }) => {
-  const { currentUser } = firebase.auth();
+  if (name !== '') {
+    const { currentUser } = firebase.auth();
 
-  return (dispatch) => {
-    const listID = firebase.database().ref(`/users/${currentUser.uid}/shoppingLists`)
-    .push().key;
-    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${listID}`).update({ name })
-    .then(() => {
-      dispatch({ type: SHOPPING_LIST_CREATE, payload: { listID } });
-      Actions.shoppingIndex({ type: 'reset' });
-    });
-  };
+    return (dispatch) => {
+      const listID = firebase.database().ref(`/users/${currentUser.uid}/shoppingLists`)
+      .push().key;
+      firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${listID}`).update({ name })
+      .then(() => {
+        dispatch({ type: SHOPPING_LIST_CREATE, payload: { listID } });
+        Actions.shoppingIndex({ type: 'reset' });
+      });
+    };
+  } else {
+    return {
+      type: SHOPPING_LIST_FAIL
+    };
+  }
 };
 
 export const shoppingListEdit = ({ name, uid }) => {

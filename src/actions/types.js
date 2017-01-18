@@ -9,6 +9,7 @@ export const SHOPPING_LIST_UPDATE = 'shopping_list_update';
 export const SHOPPING_LIST_VIEW = 'shopping_list_view';
 export const SHOPPING_LIST_INDEX = 'shopping_list_index';
 export const SHOPPING_LIST_CREATE = 'shopping_list_create';
+export const SHOPPING_LIST_FAIL = 'shopping_list_fail';
 export const SHOPPING_LIST_SAVE_SUCCESS = 'shopping_list_save_success';
 export const SHOPPING_LISTS_FETCH_SUCCESS = 'shopping_lists_fetch_success';
 
