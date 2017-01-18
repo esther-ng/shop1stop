@@ -29,7 +29,7 @@ class ProductInfo extends Component {
           <View>
             <CardSection>
               <View style={styles.column}>
-              <Text>{store}</Text>
+              <Text style={{ marginLeft: 10 }}>{store}</Text>
               <Image
                 style={styles.thumbnailStyle}
                 source={{ uri: img_url }}
@@ -40,7 +40,7 @@ class ProductInfo extends Component {
               {name}
               </Text>
               <Text style={styles.titleStyle}>
-              ${sale_price/100.00} ({conditions})
+              ${(sale_price/100).toFixed(2)} ({conditions})
               </Text>
               <Text style={styles.detailStyle}>
               {description}
@@ -74,7 +74,8 @@ const styles = {
   },
   thumbnailStyle: {
     height: 50,
-    width: 50
+    width: 50,
+    marginLeft: 10
   },
   column: {
     flexDirection: 'column'

@@ -6,16 +6,13 @@ import { Confirm, Button, Card, CardSection } from './common';
 import { productMatchesFetch, productMatchCreate } from '../actions';
 import ProductInfo from './ProductInfo';
 
-class SelectMatches extends Component {
+class SelectMatch extends Component {
 
   componentWillMount() {
     const { listItem, storeID } = this.props;
-    console.log(listItem);
+    // console.log(listItem);
     this.props.productMatchesFetch({ listItem, storeID });
-    // this.props.productMatchesFetchQ({ listItem });
-
-    // console.log(this.state);
-    console.log(this.props.products);
+    // console.log(this.props.products);
     this.createDataSource(this.props);
   }
 
@@ -57,22 +54,25 @@ class SelectMatches extends Component {
 
   render() {
     console.log(this.props);
-    return (
-      <View>
+    if (this.props.products.length > 0) {
+      return (
+        <View>
         <ListView
-          enableEmptySections
-          dataSource={this.dataSource}
-          renderRow={this.renderRow}
-          // renderSectionHeader={this.renderSectionHeader}
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+        // renderSectionHeader={this.renderSectionHeader}
         />
         {this.renderSelection()}
         <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Save Selection
-          </Button>
+        <Button onPress={this.onButtonPress.bind(this)}>
+        Save Selection
+        </Button>
         </CardSection>
-      </View>
-    );
+        </View>
+      );
+    }
+    return <Text style={{ marginLeft: 15 }}>No Matches Found</Text>;
   }
 }
 //
@@ -86,4 +86,4 @@ const mapStateToProps = state => {
   return { products, selected, list };
 };
 
-export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate })(SelectMatches);
+export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate })(SelectMatch);

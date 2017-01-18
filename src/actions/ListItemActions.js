@@ -30,7 +30,7 @@ const calculateTotals = (listItems, store) => {
       total += (listItems[key][store].sale_price * listItems[key].quantity);
     }
   }
-  return total;
+  return (total / 100).toFixed(2);
 }
 
 export const listItemUpdate = ({ prop, value }) => {

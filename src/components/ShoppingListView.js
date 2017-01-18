@@ -99,8 +99,8 @@ class ShoppingListView extends Component {
       <View>
         {this.renderList()}
         <CardSection>
-          <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal / 100.00}</Text>
-          <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal / 100.00}</Text>
+          <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal}</Text>
+          <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal}</Text>
         </CardSection>
       </View>
     );
