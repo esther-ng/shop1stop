@@ -31,7 +31,7 @@ const calculateTotals = (listItems, store) => {
     }
   }
   return (total / 100).toFixed(2);
-}
+};
 
 export const listItemUpdate = ({ prop, value }) => {
   return {
@@ -55,7 +55,7 @@ export const listItemCreate = ({ item, quantity, list }) => {
       .then(() => {
         dispatch({ type: LIST_ITEM_CREATE });
         console.log(this);
-        Actions.pop({refresh: { ...list, title: list.name } });
+        Actions.pop({ refresh: { ...list, title: list.name } });
         //shoppingListView({ list, title: list.name });
       });
     };
@@ -87,7 +87,7 @@ export const listItemDelete = ({ list, listItem }) => {
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems/${listItem.uid}`)
       .remove()
       .then(() => {
-        Actions.pop({refresh: { ...list, title: list.name } });
+        Actions.pop({ refresh: { ...list, title: list.name } });
       });
   };
 };

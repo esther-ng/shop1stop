@@ -39,7 +39,7 @@ class SelectMatch extends Component {
   }
 
   renderSelection() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.selected.name && this.props.selected !== null) {
       return (
         <Card>
@@ -48,7 +48,7 @@ class SelectMatch extends Component {
         </Card>
       );
     } else {
-      return (<Text>No Selection Made</Text>);
+      return (<Text style={{ marginLeft: 15 }}>No Selection Made</Text>);
     }
   }
 

@@ -52,7 +52,7 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <Text style={{ marginLeft: 5 }}>QFC:  Not Selected</Text>
+          <Text style={{ marginLeft: 10 }}>QFC:  Not Selected</Text>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
@@ -61,24 +61,12 @@ class ShoppingListView extends Component {
         <View>
           <ListItem listItem={listItem} />
           <ProductInfo product={listItem.qfc} />
-          <Text style={{ marginLeft: 5 }}>Safeway:  Not Selected</Text>
+          <Text style={{ marginLeft: 10 }}>Safeway:  Not Selected</Text>
         </View>
       );
     }
     return <ListItem listItem={listItem} />;
   }
-
-
-  // renderSafeway(listItem) {
-  //
-  //   return <Text>Select Safeway Match</Text>;
-  // }
-  //
-  // renderQFC(listItem) {
-  //
-  //   return <Text>Select QFC Match</Text>;
-  // }
-
 
   renderList() {
     if (this.dataSource !== undefined) {

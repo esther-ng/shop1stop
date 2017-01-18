@@ -9,12 +9,12 @@ class ListItem extends Component {
   };
 
   onRowPress() {
-    console.log(this.props);
+    // console.log(this.props);
     Actions.editItemForm({ listItem: this.props.listItem });
   }
 
   onLongPress() {
-    console.log(this.props);
+    // console.log(this.props);
     Actions.selectMatches({ listItem: this.props.listItem });
   }
 

@@ -8,17 +8,10 @@ import {
   PRODUCT_MATCH_FETCH_SUCCESS
 } from './types';
 
-// const productMatchFetchAll = ({ listItem }) => {
-//   return (dispatch) => {
-//     dispatch(productMatchesFetchS({ listItem }));
-//     dispatch(productMatchesFetchQ({ listItem }));
-//   }
-// }
-
 export const productMatchesFetch = ({ listItem, storeID }) => {
-  console.log(listItem);
+  // console.log(listItem);
   const { item } = listItem;
-  console.log(item);
+  // console.log(item);
   const baseURL = 'http://indechick.com/products/search?query=';
 
   return (dispatch) => {
@@ -55,19 +48,6 @@ export const productMatchFetch = ({ listItem, list }) => {
     Actions.selectMatches();
   };
 };
-// const productMatchesFetchQ = ({ listItem }) => {
-//   console.log(listItem);
-//   const { item } = listItem;
-//   console.log(item);
-//   const baseURL = 'http://indechick.com/products/search?query=';
-//
-//   return (dispatch) => {
-//     axios.get(`${baseURL}${item}&store=2`)
-//       .then((response) => {
-//         dispatch({ type: PRODUCT_MATCHES_Q_FETCH_SUCCESS, payload: response.data });
-//       });
-//   };
-// };
 
 export const productMatchUpdate = (product) => {
   return {
@@ -75,13 +55,3 @@ export const productMatchUpdate = (product) => {
     payload: product
   };
 };
-
-
-// use a fetch succes for qfc and one for sfw
-// const productsMap = (products) => {
-//   products.forEach((product) => {
-//     if (!productsMap[product.store_id]) {
-//       productsMap[foodItem.store_id] = [];
-//     }
-//   });
-// };
