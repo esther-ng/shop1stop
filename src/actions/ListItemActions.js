@@ -23,7 +23,7 @@ export const listItemsFetch = ({ list }) => {
   };
 };
 
-const calculateTotals = (listItems, store) => {
+export const calculateTotals = (listItems, store) => {
   let total = 0;
   for(var key in listItems) {
     if (listItems[key][store]) {
