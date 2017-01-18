@@ -60,16 +60,17 @@ const styles = {
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 20
   },
   detailStyle: {
     fontSize: 16,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 20
   },
   textContainer: {
     flexWrap: 'wrap',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    paddingRight: 20
   },
   thumbnailStyle: {
     height: 50,
