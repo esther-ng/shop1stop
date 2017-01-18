@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Actions } from 'react-native-router-flux';
+// import { Actions } from 'react-native-router-flux';
 import { View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
-import { Card, Button, CardSection } from './common';
+import { CardSection } from './common';
 import ListItem from './ListItem';
 import ProductInfo from './ProductInfo';
 
@@ -52,8 +52,7 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <Text style={{ marginLeft: 10 }}>QFC</Text>
-          <Text>Not Selected</Text>
+          <Text style={{ marginLeft: 5 }}>QFC:  Not Selected</Text>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
@@ -62,7 +61,7 @@ class ShoppingListView extends Component {
         <View>
           <ListItem listItem={listItem} />
           <ProductInfo product={listItem.qfc} />
-          <Text style={{ marginLeft: 10 }}>Safeway: Not Selected</Text>
+          <Text style={{ marginLeft: 5 }}>Safeway:  Not Selected</Text>
         </View>
       );
     }
@@ -129,4 +128,6 @@ const mapStateToProps = (state) => {
   return { items, qfcTotal, safewayTotal };
 };
 
-export default connect(mapStateToProps, { listItemsFetch, listItemCreate, listItemAdd, compareProducts })(ShoppingListView);
+export default connect(mapStateToProps,
+  { listItemsFetch, listItemCreate, listItemAdd, compareProducts }
+)(ShoppingListView);

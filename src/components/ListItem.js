@@ -50,12 +50,12 @@ class ListItem extends Component {
 const styles = {
   qtyStyle: {
     fontSize: 18,
-    paddingLeft: 15,
+    paddingLeft: 10,
     flex: 1
   },
   itemStyle: {
     fontSize: 18,
-    paddingLeft: 15,
+    paddingLeft: 20,
     flex: 4
   }
 };
