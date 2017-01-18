@@ -5,6 +5,7 @@ import {
   LIST_ITEM_SAVE_SUCCESS,
   LIST_ITEM_UPDATE,
   LIST_ITEM_CREATE,
+  LIST_ITEM_FAIL,
   LIST_ITEM_ADD
 } from './types';
 
@@ -45,18 +46,24 @@ export const listItemAdd = () => {
 };
 
 export const listItemCreate = ({ item, quantity, list }) => {
+  if (item !== '') {
   const { currentUser } = firebase.auth();
   // console.log(listItem);
-  return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems`)
-    .push({ item, quantity })
-    .then(() => {
-      dispatch({ type: LIST_ITEM_CREATE });
-      console.log(this);
-      Actions.pop({refresh: { ...list, title: list.name } });
-      //shoppingListView({ list, title: list.name });
-    });
-  };
+    return (dispatch) => {
+      firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems`)
+      .push({ item, quantity })
+      .then(() => {
+        dispatch({ type: LIST_ITEM_CREATE });
+        console.log(this);
+        Actions.pop({refresh: { ...list, title: list.name } });
+        //shoppingListView({ list, title: list.name });
+      });
+    };
+  } else {
+    return {
+      type: LIST_ITEM_FAIL
+    };
+  }
 };
 
 export const listItemSave = ({ item, quantity, list, uid }) => {

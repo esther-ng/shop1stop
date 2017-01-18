@@ -2,6 +2,7 @@ import {
   LIST_ITEM_CREATE,
   LIST_ITEM_UPDATE,
   LIST_ITEM_ADD,
+  LIST_ITEM_FAIL,
   LIST_ITEM_SAVE_SUCCESS
 } from '../actions/types';
 
@@ -18,6 +19,7 @@ export default (state = INITIAL_STATE, action) => {
 
       case LIST_ITEM_CREATE:
       case LIST_ITEM_ADD:
+      case LIST_ITEM_FAIL:
       case LIST_ITEM_SAVE_SUCCESS:
         return INITIAL_STATE;
 
