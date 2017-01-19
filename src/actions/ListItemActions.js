@@ -75,7 +75,7 @@ export const listItemSave = ({ item, quantity, list, uid }) => {
     .then(() => {
       dispatch({ type: LIST_ITEM_SAVE_SUCCESS });
       console.log(this);
-      Actions.shoppingListView({ type: 'reset', list, title: list.name });
+      Actions.pop({ refresh: { ...list, title: list.name } });
     });
   };
 };

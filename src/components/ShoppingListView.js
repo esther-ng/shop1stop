@@ -122,7 +122,9 @@ const styles = {
   totalStyle: {
     fontSize: 16,
     paddingLeft: 10,
-    flex: 2
+    flex: 2,
+    color: 'black',
+    fontWeight: 'bold'
   }
 };
 

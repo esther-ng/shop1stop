@@ -49,12 +49,14 @@ const styles = {
   qtyStyle: {
     fontSize: 18,
     paddingLeft: 10,
-    flex: 1
+    flex: 1,
+    color: 'black'
   },
   itemStyle: {
     fontSize: 18,
     paddingLeft: 10,
-    flex: 4
+    flex: 4,
+    color: 'black'
   }
 };
 

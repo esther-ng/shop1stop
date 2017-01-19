@@ -34,7 +34,7 @@ export const productMatchCreate = ({ listItem, selected, list }) => {
     .update({ [store]: selected })
     .then(() => {
       dispatch({ type: PRODUCT_MATCH_CREATE });
-      Actions.pop({ popNum: 1, refresh: { ...list } });
+      Actions.pop({ refresh: { ...list } });
     });
   };
 };

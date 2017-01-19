@@ -65,7 +65,8 @@ const styles = {
   detailStyle: {
     fontSize: 16,
     paddingLeft: 15,
-    paddingRight: 20
+    paddingRight: 20,
+    fontStyle: 'italic'
   },
   textContainer: {
     flexWrap: 'wrap',
