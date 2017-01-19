@@ -17,7 +17,9 @@ export const listItemsFetch = ({ list }) => {
       .on('value', snapshot => {
         const qfcTotal = calculateTotals(snapshot.val(), 'qfc');
         const safewayTotal = calculateTotals(snapshot.val(), 'safeway');
-        dispatch({ type: LIST_ITEMS_FETCH_SUCCESS, payload: { listItems: snapshot.val(), qfcTotal, safewayTotal } });
+        dispatch({
+          type: LIST_ITEMS_FETCH_SUCCESS,
+          payload: { listItems: snapshot.val(), qfcTotal, safewayTotal } });
       });
       Actions.shoppingListView({ type: 'reset' });
   };
@@ -25,7 +27,7 @@ export const listItemsFetch = ({ list }) => {
 
 export const calculateTotals = (listItems, store) => {
   let total = 0;
-  for(var key in listItems) {
+  for (var key in listItems) {
     if (listItems[key][store]) {
       total += (listItems[key][store].sale_price * listItems[key].quantity);
     }

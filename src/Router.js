@@ -13,9 +13,14 @@ import SelectMatch from './components/SelectMatch';
 const RouterComponent = () => {
   // console.log(this.state);
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router
+      sceneStyle={{ paddingTop: 54 }}
+      navigationBarStyle={{
+        backgroundColor: '#FDFCF2' }}
+      titleStyle={{ color: '#21897E', fontWeight: 'bold', fontSize: 20 }}
+    >
       <Scene key="auth">
-        <Scene key="login" component={LoginForm} title="Please Login" />
+        <Scene key="login" component={LoginForm} title="Shop One" />
       </Scene>
 
       <Scene key="main">

@@ -21,6 +21,7 @@ class ShoppingListCreate extends Component {
       <Card>
         <CardSection>
           <Input
+            autoCapitalize="words"
             label="List Name"
             placeholder="Potluck"
             value={this.props.name}

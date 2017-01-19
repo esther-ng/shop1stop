@@ -31,6 +31,7 @@ class ListItemForm extends Component {
             <Picker.Item label="8" value="8" />
           </Picker>
           <Input
+          autoCapitalize="words"
           style={{ flex: 5 }}
           label="Item"
           placeholder="Cookies"

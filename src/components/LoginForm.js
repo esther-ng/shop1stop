@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser, loginAnonymous } from '../actions';
@@ -29,7 +29,11 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
+      <Button
+        onPress={this.onButtonPress.bind(this)}
+        textColor='#FDFCF2'
+        borderColor='#FDFCF2'
+      >
         Login
       </Button>
     );
@@ -37,9 +41,11 @@ class LoginForm extends Component {
 
   render() {
     return (
+      <Image source={require('../images/login.png')} style={{ flex: 1, width: null, height: null }}>
       <Card>
-        <CardSection>
+        <CardSection style={{ flex: 1 }}>
           <Input
+            textColor="#FDFCF2"
             label="Email"
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange.bind(this)}
@@ -50,6 +56,7 @@ class LoginForm extends Component {
         <CardSection>
           <Input
           secureTextEntry
+          textColor="#FDFCF2"
           label="Password"
           placeholder="password"
           onChangeText={this.onPasswordChange.bind(this)}
@@ -66,11 +73,16 @@ class LoginForm extends Component {
         </CardSection>
 
         <CardSection>
-          <Button onPress={this.onGuestPress.bind(this)}>
+          <Button
+            onPress={this.onGuestPress.bind(this)}
+            textColor='#FDFCF2'
+            borderColor='#FDFCF2'
+          >
             Guest Access
           </Button>
         </CardSection>
       </Card>
+      </Image>
     );
   }
 }
