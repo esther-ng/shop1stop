@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 // import { Actions } from 'react-native-router-flux';
 import { View, Text, ListView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
-import { CardSection } from './common';
+import { Button, CardSection } from './common';
 import ListItem from './ListItem';
 import ProductInfo from './ProductInfo';
 
@@ -30,6 +31,20 @@ class ShoppingListView extends Component {
     this.props.compareProducts(this.props.items);
   }
 
+  pickQFC() {
+    console.log(this);
+    const listItem = this;
+    console.log(listItem);
+    Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem });
+  }
+
+  pickSafeway() {
+    console.log(this);
+    const listItem = this;
+    console.log(listItem);
+    Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem });
+  }
+
   createDataSource({ items }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
@@ -38,7 +53,7 @@ class ShoppingListView extends Component {
     this.dataSource = ds.cloneWithRows(items);
   }
 
-  renderRow(listItem) {
+  renderRow = (listItem) => {
     // console.log(listItem);
     if (listItem.safeway && listItem.qfc) {
       return (
@@ -52,7 +67,7 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <Text style={{ marginLeft: 10 }}>QFC:  Not Selected</Text>
+           <Button onPress={this.pickQFC.bind(listItem)}>Pick QFC Match</Button>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
@@ -61,11 +76,19 @@ class ShoppingListView extends Component {
         <View>
           <ListItem listItem={listItem} />
           <ProductInfo product={listItem.qfc} />
-          <Text style={{ marginLeft: 10 }}>Safeway:  Not Selected</Text>
+           <Button onPress={this.pickSafeway.bind(listItem)}>Pick Safeway Match</Button>
         </View>
       );
     }
-    return <ListItem listItem={listItem} />;
+    return (
+      <View>
+         <ListItem listItem={listItem} />
+         <CardSection>
+           <Button onPress={this.pickQFC.bind(listItem)}>Pick QFC Match</Button>
+           <Button onPress={this.pickSafeway.bind(listItem)}>Pick Safeway Match</Button>
+         </CardSection>
+      </View>
+    );
   }
 
   renderList() {
