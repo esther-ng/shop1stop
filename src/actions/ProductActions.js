@@ -5,7 +5,8 @@ import {
   PRODUCT_MATCHES_FETCH_SUCCESS,
   PRODUCT_MATCH_UPDATE,
   PRODUCT_MATCH_CREATE,
-  PRODUCT_MATCH_FETCH_SUCCESS
+  PRODUCT_MATCH_FETCH_SUCCESS,
+  PRODUCT_MATCHES_FETCH_FAIL
 } from './types';
 
 export const productMatchesFetch = ({ listItem, storeID }) => {
@@ -18,7 +19,8 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
     axios.get(`${baseURL}${item}&store=${storeID}`)
       .then((response) => {
         dispatch({ type: PRODUCT_MATCHES_FETCH_SUCCESS, payload: response.data });
-      });
+      })
+      .catch(() => dispatch({ type: PRODUCT_MATCHES_FETCH_FAIL }));
       // .then(Actions.selectMatch({ storeID, title: 'Selection', listItem }));
   };
 };

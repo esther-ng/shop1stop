@@ -48,42 +48,55 @@ class SelectMatch extends Component {
         </Card>
       );
     } else {
-      return (<Text style={{ marginLeft: 15 }}>No Selection Made</Text>);
+      return (<Text style={styles.textStyle}>No Selection Made</Text>);
     }
   }
 
   render() {
-    // console.log(this.props);
-    if (this.props.products.length > 0) {
+    console.log(this.props);
+    if (this.props.error) {
       return (
-        <View>
-        <ListView
-        enableEmptySections
-        dataSource={this.dataSource}
-        renderRow={this.renderRow}
-        // renderSectionHeader={this.renderSectionHeader}
-        />
-        {this.renderSelection()}
-        <CardSection>
-        <Button onPress={this.onButtonPress.bind(this)}>
-        Save Selection
-        </Button>
-        </CardSection>
-        </View>
+        <Text style={styles.textStyle}>{this.props.error}</Text>
       );
+    } else {
+      if (this.props.products.length > 0) {
+        return (
+          <View>
+          <ListView
+          enableEmptySections
+          dataSource={this.dataSource}
+          renderRow={this.renderRow}
+          // renderSectionHeader={this.renderSectionHeader}
+          />
+          {this.renderSelection()}
+          <CardSection>
+          <Button onPress={this.onButtonPress.bind(this)}>
+          Save Selection
+          </Button>
+          </CardSection>
+          </View>
+        );
+      }
     }
-    return <Text style={{ marginLeft: 15 }}>No Matches Found</Text>;
+    return <Text style={styles.textStyle}>No Matches Found</Text>;
   }
 }
-//
+
+const styles = {
+  textStyle: {
+    marginLeft: 15
+  }
+};
+
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   const products = _.map(state.products, (val) => {
     return { ...val };
   });
   const { selected, list } = state;
+  const { error } = state.products;
 
-  return { products, selected, list };
+  return { products, selected, list, error };
 };
 
 export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate })(SelectMatch);
