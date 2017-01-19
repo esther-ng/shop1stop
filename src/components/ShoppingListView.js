@@ -98,21 +98,35 @@ class ShoppingListView extends Component {
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}
+          renderSeparator={this.renderSeparator}
+          renderFooter={this.renderFooter}
         />
       );
     }
   }
 
+  renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {
+    return (
+      <View
+        key={`${sectionID}-${rowID}`}
+        style={{
+          height: adjacentRowHighlighted ? 4 : 1,
+          backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+        }}
+      />
+    );
+  }
+
   render() {
     // console.log(this.props);
-    const { totalStyle } = styles;
+    const { totalStyle, totalContainer } = styles;
     return (
       <View>
         {this.renderList()}
-        <CardSection>
+        <View style={totalContainer}>
           <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal}</Text>
           <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal}</Text>
-        </CardSection>
+        </View>
       </View>
     );
   }
@@ -121,10 +135,19 @@ class ShoppingListView extends Component {
 const styles = {
   totalStyle: {
     fontSize: 16,
-    paddingLeft: 10,
+    padding: 10,
     flex: 2,
-    color: 'black',
-    fontWeight: 'bold'
+    color: 'white',
+    fontWeight: 'bold',
+    backgroundColor: '#3BA99C'
+  },
+  totalContainer: {
+    flexDirection: 'row',
+    // borderColor: '#ddd',
+    position: 'relative',
+    // bottom: 0,
+    backgroundColor: '#3BA99C',
+    margin: 0
   }
 };
 

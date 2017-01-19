@@ -13,10 +13,10 @@ class ListItem extends Component {
     Actions.editItemForm({ listItem: this.props.listItem });
   }
 
-  onLongPress() {
-    // console.log(this.props);
-    Actions.selectMatches({ listItem: this.props.listItem });
-  }
+  // onLongPress() {
+  //   // console.log(this.props);
+  //   Actions.selectMatches({ listItem: this.props.listItem });
+  // }
 
   render() {
     const { item, quantity } = this.props.listItem;
@@ -24,9 +24,8 @@ class ListItem extends Component {
     return (
       <TouchableWithoutFeedback
         onPress={this.onRowPress.bind(this)}
-        onLongPress={this.onLongPress.bind(this)}
       >
-        <View>
+        <View style={styles.containerStyle}>
           <CardSection>
             <Text style={styles.qtyStyle}>
               Qty: {quantity}
@@ -57,6 +56,9 @@ const styles = {
     paddingLeft: 10,
     flex: 4,
     color: 'black'
+  },
+  containerStyle: {
+    backgroundColor: '#3BA99C'
   }
 };
 

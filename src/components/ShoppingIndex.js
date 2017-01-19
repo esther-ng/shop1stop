@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { ListView } from 'react-native';
-import { Confirm } from './common';
+import { ListView, View, Text } from 'react-native';
+// import { Confirm } from './common';
 import { shoppingListsFetch } from '../actions';
 import ShoppingListRow from './ShoppingListRow';
 
@@ -26,17 +26,40 @@ class ShoppingIndex extends Component {
     this.dataSource = ds.cloneWithRows(lists);
   }
 
+  ifEmpty() {
+    if (this.props.lists === []) {
+      return <Text>Use the plus button on the right side of the navbar to create a new list</Text>;
+    }
+  }
+
   renderRow(list) {
     return <ShoppingListRow list={list} />;
   }
 
-  render() {
+  renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {
     return (
+      <View
+        key={`${sectionID}-${rowID}`}
+        style={{
+          height: adjacentRowHighlighted ? 4 : 1,
+          backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+        }}
+      />
+    );
+  }
+
+  render() {
+    console.log(this.props.lists);
+    return (
+      <View>
+      {this.ifEmpty()}
       <ListView
         enableEmptySections
         dataSource={this.dataSource}
         renderRow={this.renderRow}
+        renderSeparator={this.renderSeparator}
       />
+      </View>
     );
   }
 }

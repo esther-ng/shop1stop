@@ -21,6 +21,7 @@ class ShoppingListCreate extends Component {
       <Card>
         <CardSection>
           <Input
+            textColor="#21897E"
             autoCapitalize="words"
             label="List Name"
             placeholder="Potluck"

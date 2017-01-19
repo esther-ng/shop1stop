@@ -31,8 +31,8 @@ class LoginForm extends Component {
     return (
       <Button
         onPress={this.onButtonPress.bind(this)}
-        textColor='#FDFCF2'
-        borderColor='#FDFCF2'
+        textColor="#FDFCF2"
+        borderColor="#FDFCF2"
       >
         Login
       </Button>

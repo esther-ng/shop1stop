@@ -52,6 +52,18 @@ class SelectMatch extends Component {
     }
   }
 
+  renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {
+    return (
+      <View
+        key={`${sectionID}-${rowID}`}
+        style={{
+          height: adjacentRowHighlighted ? 4 : 1,
+          backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+        }}
+      />
+    );
+  }
+
   render() {
     console.log(this.props);
     if (this.props.error) {
@@ -66,6 +78,7 @@ class SelectMatch extends Component {
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}
+          renderSeparator={this.renderSeparator}
           // renderSectionHeader={this.renderSectionHeader}
           />
           {this.renderSelection()}

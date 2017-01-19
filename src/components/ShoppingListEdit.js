@@ -42,6 +42,7 @@ class ShoppingListEdit extends Component {
       <Card>
         <CardSection>
           <Input
+            textColor="#21897E"
             label="List Name"
             placeholder="Potluck"
             value={this.props.name}

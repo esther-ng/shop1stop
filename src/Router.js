@@ -7,14 +7,14 @@ import ShoppingListView from './components/ShoppingListView';
 import ShoppingIndex from './components/ShoppingIndex';
 import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
-import SelectMatches from './components/SelectMatches';
+// import SelectMatches from './components/SelectMatches';
 import SelectMatch from './components/SelectMatch';
 
 const RouterComponent = () => {
   // console.log(this.state);
   return (
     <Router
-      sceneStyle={{ paddingTop: 54 }}
+      sceneStyle={{ paddingTop: 54, backgroundColor: '#FDFCF2' }}
       navigationBarStyle={{
         backgroundColor: '#FDFCF2' }}
       titleStyle={{ color: '#21897E', fontWeight: 'bold', fontSize: 20 }}
@@ -26,7 +26,9 @@ const RouterComponent = () => {
       <Scene key="main">
         <Scene
           onRight={() => Actions.shoppingListCreate()}
-          rightTitle="New List"
+          rightTitle="+"
+          rightButtonTextStyle={{ color: '#21897E', fontWeight: 'bold', fontSize: 25 }}
+          rightButtonStyle={{ paddingRight: 20, paddingTop: 0 }}
           key="shoppingIndex"
           component={ShoppingIndex}
           title="Shopping Lists"
@@ -36,12 +38,13 @@ const RouterComponent = () => {
         <Scene key="shoppingListEdit" component={ShoppingListEdit} title="Edit Shopping List" />
         <Scene key="shoppingListView"
           onRight={() => Actions.addItemForm()}
-          rightTitle="Add Item"
+          rightTitle="+"
+          rightButtonTextStyle={{ color: '#21897E', fontWeight: 'bold', fontSize: 25 }}
+          rightButtonStyle={{ paddingRight: 20, paddingTop: 0 }}
           component={ShoppingListView}
           title={this.title} />
         <Scene key="addItemForm" component={AddItem} title="Add Item" />
         <Scene key="editItemForm" component={EditItem} title="Edit Item" />
-        <Scene key="selectMatches" component={SelectMatches} title="Select Matches" />
         <Scene key="selectMatch" component={SelectMatch} title={this.title} />
       </Scene>
     </Router>
