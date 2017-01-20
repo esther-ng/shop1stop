@@ -77,14 +77,14 @@ class ShoppingListView extends Component {
             Pick QFC Match
           </Button>
           </CardSection>
-          <ProductInfo product={listItem.safeway} />
+          <ProductInfo product={listItem.safeway} item={listItem} />
         </View>
       );
     } else if (listItem.qfc) {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <ProductInfo product={listItem.qfc} />
+          <ProductInfo product={listItem.qfc} item={listItem} />
           <CardSection>
           <Button
             onPress={this.pickSafeway.bind(listItem)}

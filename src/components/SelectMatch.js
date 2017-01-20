@@ -57,9 +57,9 @@ class SelectMatch extends Component {
           <ProductInfo product={this.props.listItem[store]} />
         </View>
       );
-    } else {
-      return (<Text style={styles.textStyle}>No Selection Made</Text>);
     }
+
+    return (<Text style={styles.textStyle}>No Selection Made</Text>);
   }
 
   renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {
