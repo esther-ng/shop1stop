@@ -81333,12 +81333,12 @@ var Input=function Input(_ref){var label=_ref.label,value=_ref.value,onChangeTex
 inputStyle=styles.inputStyle,labelStyle=styles.labelStyle,containerStyle=styles.containerStyle;
 
 
-inputStyle.color=textColor;
-labelStyle.color=textColor;
+
+
 
 return(
 _react2.default.createElement(_reactNative.View,{style:containerStyle},
-_react2.default.createElement(_reactNative.Text,{style:labelStyle},label),
+_react2.default.createElement(_reactNative.Text,{style:[labelStyle,{color:textColor}]},label),
 _react2.default.createElement(_reactNative.TextInput,{
 autoCapitalize:autoCapitalize,
 secureTextEntry:secureTextEntry,
@@ -81348,7 +81348,7 @@ underlineColorAndroid:textColor,
 autoCorrect:false,
 value:value,
 onChangeText:onChangeText,
-style:inputStyle})));
+style:[inputStyle,{color:textColor}]})));
 
 
 
@@ -100738,7 +100738,7 @@ _react2.default.createElement(_reactNative.Text,{style:totalStyle},'Safeway Tota
 var styles={
 totalStyle:{
 fontSize:16,
-padding:10,
+padding:8,
 flex:2,
 color:'white',
 fontWeight:'bold',
@@ -100932,7 +100932,7 @@ fontStyle:'italic'},
 textContainer:{
 flexWrap:'wrap',
 flexDirection:'column',
-paddingRight:20},
+paddingRight:30},
 
 thumbnailStyle:{
 height:50,
@@ -100944,7 +100944,7 @@ flexDirection:'column'},
 
 storeStyle:{
 
-marginLeft:8,
+
 marginBottom:5,
 padding:3,
 alignSelf:'stretch',
@@ -101298,7 +101298,7 @@ SelectMatch=function(_Component){babelHelpers.inherits(SelectMatch,_Component);f
 
 {var _props=
 this.props,listItem=_props.listItem,storeID=_props.storeID;
-
+console.log(listItem);
 this.props.productMatchesFetch({listItem:listItem,storeID:storeID});
 
 this.createDataSource(this.props);
@@ -101327,13 +101327,22 @@ return _react2.default.createElement(_ProductInfo2.default,{product:product});
 }},{key:'renderSelection',value:function renderSelection()
 
 {
+console.log(this.props);var _props3=
+this.props,listItem=_props3.listItem,storeID=_props3.storeID;
+var store=storeID===1?'qfc':'safeway';
 
 if(this.props.selected.name&&this.props.selected!==null){
 return(
-_react2.default.createElement(_common.Card,null,
-_react2.default.createElement(_common.Separator,null),
+_react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'Selected:'),
 _react2.default.createElement(_ProductInfo2.default,{product:this.props.selected})));
+
+
+}else if(listItem[store]){
+return(
+_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'Selected:'),
+_react2.default.createElement(_ProductInfo2.default,{product:this.props.listItem[store]})));
 
 
 }else{
@@ -101386,7 +101395,9 @@ return _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},
 
 var styles={
 textStyle:{
-marginLeft:15}};
+paddingLeft:15,
+backgroundColor:'#3BA99C',
+color:'#FDFCF2'}};
 
 
 
@@ -101407,4 +101418,4 @@ __d(/* shop1stop/src/images/back_chevron.png */function(global, require, module,
 }, 700, null, "shop1stop/src/images/back_chevron.png");
 ;require(191);
 ;require(0);
-//# sourceMappingURL=/index.android.map?platform-android
+//# sourceMappingURL=/index.android.map?platform=android

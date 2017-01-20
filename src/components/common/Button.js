@@ -7,18 +7,18 @@ const Button = ({ onPress, children, backColor, textColor, borderColor }) => {
   textStyle.color = textColor;
   buttonStyle.borderColor = borderColor;
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Text style={textStyle}>
+    <TouchableOpacity onPress={onPress} style={[buttonStyle, { borderColor }]}>
+      <Text style={[textStyle, { color: textColor }]}>
         {children}
       </Text>
     </TouchableOpacity>
   );
 };
 
-const styles = {
+let styles = {
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    // color: '#007aff',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
@@ -30,7 +30,7 @@ const styles = {
     backgroundColor: '#fff',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#007aff',
+    // borderColor: '#007aff',
     margin: 5
   }
 };
