@@ -18,7 +18,7 @@ class ProductInfo extends Component {
   onLongPress() {
     console.log(this.props.item);
     const { item, product } = this.props;
-    //   console.log(listItem);
+    // console.log(listItem);
     if (product.store_id === 1) {
       Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem: item });
     } else {
@@ -105,7 +105,7 @@ const styles = {
   },
   storeStyle: {
     // flex: 1,
-    marginLeft: 8,
+    // marginLeft: 2,
     marginBottom: 5,
     padding: 3,
     alignSelf: 'stretch',

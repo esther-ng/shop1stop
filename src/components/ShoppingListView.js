@@ -171,7 +171,7 @@ class ShoppingListView extends Component {
 const styles = {
   totalStyle: {
     fontSize: 16,
-    padding: 10,
+    padding: 8,
     flex: 2,
     color: 'white',
     fontWeight: 'bold',

@@ -75451,27 +75451,35 @@ return state;}
 __d(/* shop1stop/src/Router.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _this=this;var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _LoginForm=require(646 /* ./components/LoginForm */);var _LoginForm2=babelHelpers.interopRequireDefault(_LoginForm);
-var _ShoppingListCreate=require(685 /* ./components/ShoppingListCreate */);var _ShoppingListCreate2=babelHelpers.interopRequireDefault(_ShoppingListCreate);
-var _ShoppingListEdit=require(686 /* ./components/ShoppingListEdit */);var _ShoppingListEdit2=babelHelpers.interopRequireDefault(_ShoppingListEdit);
-var _ShoppingListView=require(689 /* ./components/ShoppingListView */);var _ShoppingListView2=babelHelpers.interopRequireDefault(_ShoppingListView);
-var _ShoppingIndex=require(692 /* ./components/ShoppingIndex */);var _ShoppingIndex2=babelHelpers.interopRequireDefault(_ShoppingIndex);
-var _AddItem=require(694 /* ./components/AddItem */);var _AddItem2=babelHelpers.interopRequireDefault(_AddItem);
-var _EditItem=require(696 /* ./components/EditItem */);var _EditItem2=babelHelpers.interopRequireDefault(_EditItem);
-var _SelectMatches=require(697 /* ./components/SelectMatches */);var _SelectMatches2=babelHelpers.interopRequireDefault(_SelectMatches);
-var _SelectMatch=require(698 /* ./components/SelectMatch */);var _SelectMatch2=babelHelpers.interopRequireDefault(_SelectMatch);
+var _ShoppingListCreate=require(687 /* ./components/ShoppingListCreate */);var _ShoppingListCreate2=babelHelpers.interopRequireDefault(_ShoppingListCreate);
+var _ShoppingListEdit=require(688 /* ./components/ShoppingListEdit */);var _ShoppingListEdit2=babelHelpers.interopRequireDefault(_ShoppingListEdit);
+var _ShoppingListView=require(691 /* ./components/ShoppingListView */);var _ShoppingListView2=babelHelpers.interopRequireDefault(_ShoppingListView);
+var _ShoppingIndex=require(694 /* ./components/ShoppingIndex */);var _ShoppingIndex2=babelHelpers.interopRequireDefault(_ShoppingIndex);
+var _AddItem=require(696 /* ./components/AddItem */);var _AddItem2=babelHelpers.interopRequireDefault(_AddItem);
+var _EditItem=require(698 /* ./components/EditItem */);var _EditItem2=babelHelpers.interopRequireDefault(_EditItem);
+
+var _SelectMatch=require(699 /* ./components/SelectMatch */);var _SelectMatch2=babelHelpers.interopRequireDefault(_SelectMatch);
 
 var RouterComponent=function RouterComponent(){
 
 return(
-_react2.default.createElement(_reactNativeRouterFlux.Router,{sceneStyle:{paddingTop:65}},
+_react2.default.createElement(_reactNativeRouterFlux.Router,{
+sceneStyle:{paddingTop:54,backgroundColor:'#FDFCF2'},
+navigationBarStyle:{
+backgroundColor:'#FDFCF2'},
+titleStyle:{color:'#21897E',fontWeight:'bold',fontSize:20},
+backButtonImage:require(700 /* ./images/back_chevron.png */)},
+
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'auth'},
-_react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'login',component:_LoginForm2.default,title:'Please Login'})),
+_react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'login',component:_LoginForm2.default,title:'Shop One'})),
 
 
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'main'},
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{
 onRight:function onRight(){return _reactNativeRouterFlux.Actions.shoppingListCreate();},
-rightTitle:'New List',
+rightTitle:'+',
+rightButtonTextStyle:{color:'#21897E',fontWeight:'bold',fontSize:25},
+rightButtonStyle:{paddingRight:20,paddingTop:0},
 key:'shoppingIndex',
 component:_ShoppingIndex2.default,
 title:'Shopping Lists',
@@ -75481,12 +75489,13 @@ _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'shoppingListCre
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'shoppingListEdit',component:_ShoppingListEdit2.default,title:'Edit Shopping List'}),
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'shoppingListView',
 onRight:function onRight(){return _reactNativeRouterFlux.Actions.addItemForm();},
-rightTitle:'Add Item',
+rightTitle:'+',
+rightButtonTextStyle:{color:'#21897E',fontWeight:'bold',fontSize:25},
+rightButtonStyle:{paddingRight:20,paddingTop:0},
 component:_ShoppingListView2.default,
 title:_this.title}),
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'addItemForm',component:_AddItem2.default,title:'Add Item'}),
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'editItemForm',component:_EditItem2.default,title:'Edit Item'}),
-_react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'selectMatches',component:_SelectMatches2.default,title:'Select Matches'}),
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'selectMatch',component:_SelectMatch2.default,title:_this.title}))));
 
 
@@ -81078,7 +81087,7 @@ __d(/* shop1stop/src/components/LoginForm.js */function(global, require, module,
 var _reactNative=require(12 /* react-native */);
 var _reactRedux=require(554 /* react-redux */);
 var _common=require(647 /* ./common */);
-var _actions=require(655 /* ../actions */);var
+var _actions=require(656 /* ../actions */);var
 
 LoginForm=function(_Component){babelHelpers.inherits(LoginForm,_Component);function LoginForm(){babelHelpers.classCallCheck(this,LoginForm);return babelHelpers.possibleConstructorReturn(this,(LoginForm.__proto__||Object.getPrototypeOf(LoginForm)).apply(this,arguments));}babelHelpers.createClass(LoginForm,[{key:'onEmailChange',value:function onEmailChange(
 text){
@@ -81105,7 +81114,11 @@ return _react2.default.createElement(_common.Spinner,{size:'large'});
 }
 
 return(
-_react2.default.createElement(_common.Button,{onPress:this.onButtonPress.bind(this)},'Login'));
+_react2.default.createElement(_common.Button,{
+onPress:this.onButtonPress.bind(this),
+textColor:'#FDFCF2',
+borderColor:'#FDFCF2'},'Login'));
+
 
 
 
@@ -81113,9 +81126,11 @@ _react2.default.createElement(_common.Button,{onPress:this.onButtonPress.bind(th
 
 {
 return(
+_react2.default.createElement(_reactNative.Image,{source:require(686 /* ../images/login.png */),style:{flex:1,width:null,height:null}},
 _react2.default.createElement(_common.Card,null,
-_react2.default.createElement(_common.CardSection,null,
+_react2.default.createElement(_common.CardSection,{style:{flex:1}},
 _react2.default.createElement(_common.Input,{
+textColor:'#FDFCF2',
 label:'Email',
 placeholder:'email@gmail.com',
 onChangeText:this.onEmailChange.bind(this),
@@ -81126,6 +81141,7 @@ value:this.props.email})),
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_common.Input,{
 secureTextEntry:true,
+textColor:'#FDFCF2',
 label:'Password',
 placeholder:'password',
 onChangeText:this.onPasswordChange.bind(this),
@@ -81142,7 +81158,12 @@ this.renderButton()),
 
 
 _react2.default.createElement(_common.CardSection,null,
-_react2.default.createElement(_common.Button,{onPress:this.onGuestPress.bind(this)},'Guest Access'))));
+_react2.default.createElement(_common.Button,{
+onPress:this.onGuestPress.bind(this),
+textColor:'#FDFCF2',
+borderColor:'#FDFCF2'},'Guest Access')))));
+
+
 
 
 
@@ -81175,14 +81196,17 @@ Object.keys(_CardSection).forEach(function(key){if(key==="default"||key==="__esM
 Object.keys(_Header).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _Header[key];}});});var _Input=require(652 /* ./Input */);
 Object.keys(_Input).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _Input[key];}});});var _Spinner=require(653 /* ./Spinner */);
 Object.keys(_Spinner).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _Spinner[key];}});});var _Confirm=require(654 /* ./Confirm */);
-Object.keys(_Confirm).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _Confirm[key];}});});
+Object.keys(_Confirm).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _Confirm[key];}});});var _Separator=require(655 /* ./Separator */);
+Object.keys(_Separator).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _Separator[key];}});});
 }, 647, null, "shop1stop/src/components/common/index.js");
 __d(/* shop1stop/src/components/common/Button.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.Button=undefined;var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNative=require(12 /* react-native */);
 
-var Button=function Button(_ref){var onPress=_ref.onPress,children=_ref.children;var
+var Button=function Button(_ref){var onPress=_ref.onPress,children=_ref.children,backColor=_ref.backColor,textColor=_ref.textColor,borderColor=_ref.borderColor;var
 buttonStyle=styles.buttonStyle,textStyle=styles.textStyle;
-
+buttonStyle.backgroundColor=backColor;
+textStyle.color=textColor;
+buttonStyle.borderColor=borderColor;
 return(
 _react2.default.createElement(_reactNative.TouchableOpacity,{onPress:onPress,style:buttonStyle},
 _react2.default.createElement(_reactNative.Text,{style:textStyle},
@@ -81208,8 +81232,7 @@ backgroundColor:'#fff',
 borderRadius:5,
 borderWidth:1,
 borderColor:'#007aff',
-marginLeft:5,
-marginRight:5}};exports.
+margin:5}};exports.
 
 
 
@@ -81228,9 +81251,9 @@ props.children));
 
 var styles={
 containerStyle:{
-borderWidth:1,
-borderRadius:2,
-borderColor:'#ddd',
+
+
+
 borderBottomWidth:0,
 shadowColor:'#000',
 shadowOffset:{width:0,ehight:2},
@@ -81257,12 +81280,12 @@ props.children));
 
 var style={
 containerStyle:{
-borderBottomWidth:1,
+
 padding:5,
-backgroundColor:'#fff',
+
 justifyContent:'flex-start',
 flexDirection:'row',
-borderColor:'#ddd',
+
 position:'relative'}};exports.
 
 
@@ -81306,15 +81329,22 @@ Header=Header;
 __d(/* shop1stop/src/components/common/Input.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.Input=undefined;var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNative=require(12 /* react-native */);
 
-var Input=function Input(_ref){var label=_ref.label,value=_ref.value,onChangeText=_ref.onChangeText,placeholder=_ref.placeholder,secureTextEntry=_ref.secureTextEntry;var
+var Input=function Input(_ref){var label=_ref.label,value=_ref.value,onChangeText=_ref.onChangeText,placeholder=_ref.placeholder,secureTextEntry=_ref.secureTextEntry,textColor=_ref.textColor,autoCapitalize=_ref.autoCapitalize;var
 inputStyle=styles.inputStyle,labelStyle=styles.labelStyle,containerStyle=styles.containerStyle;
+
+
+inputStyle.color=textColor;
+labelStyle.color=textColor;
 
 return(
 _react2.default.createElement(_reactNative.View,{style:containerStyle},
 _react2.default.createElement(_reactNative.Text,{style:labelStyle},label),
 _react2.default.createElement(_reactNative.TextInput,{
+autoCapitalize:autoCapitalize,
 secureTextEntry:secureTextEntry,
 placeholder:placeholder,
+placeholderTextColor:textColor,
+underlineColorAndroid:textColor,
 autoCorrect:false,
 value:value,
 onChangeText:onChangeText,
@@ -81326,7 +81356,7 @@ style:inputStyle})));
 
 var styles={
 inputStyle:{
-color:'#000',
+
 paddingRight:5,
 paddingLeft:5,
 fontSize:18,
@@ -81334,7 +81364,7 @@ lineHeight:23,
 flex:2},
 
 labelStyle:{
-color:'#000',
+
 fontSize:18,
 paddingLeft:20,
 flex:1},
@@ -81408,7 +81438,7 @@ textAlign:'center',
 lineHeight:40},
 
 containerStyle:{
-backgroundColor:'rgba(0, 0, 0, 0.75)',
+backgroundColor:'#BFFDFCF2',
 position:'relative',
 flex:1,
 justifyContent:'center'}};exports.
@@ -81417,11 +81447,35 @@ justifyContent:'center'}};exports.
 
 Confirm=Confirm;
 }, 654, null, "shop1stop/src/components/common/Confirm.js");
-__d(/* shop1stop/src/actions/index.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _AuthActions=require(656 /* ./AuthActions */);Object.keys(_AuthActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _AuthActions[key];}});});var _ShoppingActions=require(657 /* ./ShoppingActions */);
-Object.keys(_ShoppingActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _ShoppingActions[key];}});});var _ListItemActions=require(658 /* ./ListItemActions */);
-Object.keys(_ListItemActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _ListItemActions[key];}});});var _ProductActions=require(659 /* ./ProductActions */);
+__d(/* shop1stop/src/components/common/Separator.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.Separator=undefined;var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
+var _reactNative=require(12 /* react-native */);
+
+var Separator=function Separator(props){
+return(
+_react2.default.createElement(_reactNative.View,{style:style.containerStyle}));
+
+
+};
+
+var style={
+containerStyle:{
+borderBottomWidth:1,
+
+
+justifyContent:'flex-start',
+flexDirection:'row',
+borderColor:'grey',
+position:'relative'}};exports.
+
+
+
+Separator=Separator;
+}, 655, null, "shop1stop/src/components/common/Separator.js");
+__d(/* shop1stop/src/actions/index.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _AuthActions=require(657 /* ./AuthActions */);Object.keys(_AuthActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _AuthActions[key];}});});var _ShoppingActions=require(658 /* ./ShoppingActions */);
+Object.keys(_ShoppingActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _ShoppingActions[key];}});});var _ListItemActions=require(659 /* ./ListItemActions */);
+Object.keys(_ListItemActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _ListItemActions[key];}});});var _ProductActions=require(660 /* ./ProductActions */);
 Object.keys(_ProductActions).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _ProductActions[key];}});});
-}, 655, null, "shop1stop/src/actions/index.js");
+}, 656, null, "shop1stop/src/actions/index.js");
 __d(/* shop1stop/src/actions/AuthActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.loginAnonymous=exports.loginUser=exports.passwordChanged=exports.emailChanged=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _types=require(591 /* ./types */);
@@ -81483,7 +81537,7 @@ payload:user});
 
 _reactNativeRouterFlux.Actions.main();
 };
-}, 656, null, "shop1stop/src/actions/AuthActions.js");
+}, 657, null, "shop1stop/src/actions/AuthActions.js");
 __d(/* shop1stop/src/actions/ShoppingActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.shoppingListIndex=exports.shoppingListView=exports.shoppingListsFetch=exports.shoppingListDelete=exports.shoppingListSave=exports.shoppingListEdit=exports.shoppingListCreate=exports.shoppingListUpdate=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _types=require(591 /* ./types */);
@@ -81580,7 +81634,7 @@ return function(dispatch){
 dispatch({type:_types.SHOPPING_LIST_INDEX});
 };
 };
-}, 657, null, "shop1stop/src/actions/ShoppingActions.js");
+}, 658, null, "shop1stop/src/actions/ShoppingActions.js");
 __d(/* shop1stop/src/actions/ListItemActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.listItemDelete=exports.listItemSave=exports.listItemCreate=exports.listItemAdd=exports.listItemUpdate=exports.calculateTotals=exports.listItemsFetch=undefined;var _this=this;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _types=require(591 /* ./types */);
@@ -81600,7 +81654,9 @@ _firebase2.default.database().ref('users/'+currentUser.uid+'/shoppingLists/'+lis
 on('value',function(snapshot){
 var qfcTotal=calculateTotals(snapshot.val(),'qfc');
 var safewayTotal=calculateTotals(snapshot.val(),'safeway');
-dispatch({type:_types.LIST_ITEMS_FETCH_SUCCESS,payload:{listItems:snapshot.val(),qfcTotal:qfcTotal,safewayTotal:safewayTotal}});
+dispatch({
+type:_types.LIST_ITEMS_FETCH_SUCCESS,
+payload:{listItems:snapshot.val(),qfcTotal:qfcTotal,safewayTotal:safewayTotal}});
 });
 _reactNativeRouterFlux.Actions.shoppingListView({type:'reset'});
 };
@@ -81674,9 +81730,9 @@ _reactNativeRouterFlux.Actions.pop({refresh:babelHelpers.extends({},list,{title:
 });
 };
 };
-}, 658, null, "shop1stop/src/actions/ListItemActions.js");
+}, 659, null, "shop1stop/src/actions/ListItemActions.js");
 __d(/* shop1stop/src/actions/ProductActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.productMatchUpdate=exports.productMatchFetch=exports.productMatchCreate=exports.productMatchesFetch=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
-var _axios=require(660 /* axios */);var _axios2=babelHelpers.interopRequireDefault(_axios);
+var _axios=require(661 /* axios */);var _axios2=babelHelpers.interopRequireDefault(_axios);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _types=require(591 /* ./types */);
 
@@ -81734,15 +81790,15 @@ type:_types.PRODUCT_MATCH_UPDATE,
 payload:product};
 
 };
-}, 659, null, "shop1stop/src/actions/ProductActions.js");
-__d(/* axios/index.js */function(global, require, module, exports) {module.exports=require(661 /* ./lib/axios */);
-}, 660, null, "axios/index.js");
+}, 660, null, "shop1stop/src/actions/ProductActions.js");
+__d(/* axios/index.js */function(global, require, module, exports) {module.exports=require(662 /* ./lib/axios */);
+}, 661, null, "axios/index.js");
 __d(/* axios/lib/axios.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./utils */);
-var bind=require(663 /* ./helpers/bind */);
-var Axios=require(664 /* ./core/Axios */);
-var defaults=require(665 /* ./defaults */);
+var utils=require(663 /* ./utils */);
+var bind=require(664 /* ./helpers/bind */);
+var Axios=require(665 /* ./core/Axios */);
+var defaults=require(666 /* ./defaults */);
 
 
 
@@ -81775,24 +81831,24 @@ return createInstance(utils.merge(defaults,instanceConfig));
 };
 
 
-axios.Cancel=require(682 /* ./cancel/Cancel */);
-axios.CancelToken=require(683 /* ./cancel/CancelToken */);
-axios.isCancel=require(679 /* ./cancel/isCancel */);
+axios.Cancel=require(683 /* ./cancel/Cancel */);
+axios.CancelToken=require(684 /* ./cancel/CancelToken */);
+axios.isCancel=require(680 /* ./cancel/isCancel */);
 
 
 axios.all=function all(promises){
 return Promise.all(promises);
 };
-axios.spread=require(684 /* ./helpers/spread */);
+axios.spread=require(685 /* ./helpers/spread */);
 
 module.exports=axios;
 
 
 module.exports.default=axios;
-}, 661, null, "axios/lib/axios.js");
+}, 662, null, "axios/lib/axios.js");
 __d(/* axios/lib/utils.js */function(global, require, module, exports) {'use strict';
 
-var bind=require(663 /* ./helpers/bind */);
+var bind=require(664 /* ./helpers/bind */);
 
 
 
@@ -82088,7 +82144,7 @@ forEach:forEach,
 merge:merge,
 extend:extend,
 trim:trim};
-}, 662, null, "axios/lib/utils.js");
+}, 663, null, "axios/lib/utils.js");
 __d(/* axios/lib/helpers/bind.js */function(global, require, module, exports) {'use strict';
 
 module.exports=function bind(fn,thisArg){
@@ -82100,15 +82156,15 @@ args[i]=arguments[i];
 return fn.apply(thisArg,args);
 };
 };
-}, 663, null, "axios/lib/helpers/bind.js");
+}, 664, null, "axios/lib/helpers/bind.js");
 __d(/* axios/lib/core/Axios.js */function(global, require, module, exports) {'use strict';
 
-var defaults=require(665 /* ./../defaults */);
-var utils=require(662 /* ./../utils */);
-var InterceptorManager=require(676 /* ./InterceptorManager */);
-var dispatchRequest=require(677 /* ./dispatchRequest */);
-var isAbsoluteURL=require(680 /* ./../helpers/isAbsoluteURL */);
-var combineURLs=require(681 /* ./../helpers/combineURLs */);
+var defaults=require(666 /* ./../defaults */);
+var utils=require(663 /* ./../utils */);
+var InterceptorManager=require(677 /* ./InterceptorManager */);
+var dispatchRequest=require(678 /* ./dispatchRequest */);
+var isAbsoluteURL=require(681 /* ./../helpers/isAbsoluteURL */);
+var combineURLs=require(682 /* ./../helpers/combineURLs */);
 
 
 
@@ -82186,11 +82242,11 @@ data:data}));
 });
 
 module.exports=Axios;
-}, 664, null, "axios/lib/core/Axios.js");
+}, 665, null, "axios/lib/core/Axios.js");
 __d(/* axios/lib/defaults.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./utils */);
-var normalizeHeaderName=require(666 /* ./helpers/normalizeHeaderName */);
+var utils=require(663 /* ./utils */);
+var normalizeHeaderName=require(667 /* ./helpers/normalizeHeaderName */);
 
 var PROTECTION_PREFIX=/^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE={
@@ -82207,10 +82263,10 @@ function getDefaultAdapter(){
 var adapter;
 if(typeof XMLHttpRequest!=='undefined'){
 
-adapter=require(667 /* ./adapters/xhr */);
+adapter=require(668 /* ./adapters/xhr */);
 }else if(typeof process!=='undefined'){
 
-adapter=require(667 /* ./adapters/http */);
+adapter=require(668 /* ./adapters/http */);
 }
 return adapter;
 }
@@ -82280,10 +82336,10 @@ defaults.headers[method]=utils.merge(DEFAULT_CONTENT_TYPE);
 });
 
 module.exports=defaults;
-}, 665, null, "axios/lib/defaults.js");
+}, 666, null, "axios/lib/defaults.js");
 __d(/* axios/lib/helpers/normalizeHeaderName.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ../utils */);
+var utils=require(663 /* ../utils */);
 
 module.exports=function normalizeHeaderName(headers,normalizedName){
 utils.forEach(headers,function processHeader(value,name){
@@ -82293,16 +82349,16 @@ delete headers[name];
 }
 });
 };
-}, 666, null, "axios/lib/helpers/normalizeHeaderName.js");
+}, 667, null, "axios/lib/helpers/normalizeHeaderName.js");
 __d(/* axios/lib/adapters/xhr.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
-var settle=require(668 /* ./../core/settle */);
-var buildURL=require(671 /* ./../helpers/buildURL */);
-var parseHeaders=require(672 /* ./../helpers/parseHeaders */);
-var isURLSameOrigin=require(673 /* ./../helpers/isURLSameOrigin */);
-var createError=require(669 /* ../core/createError */);
-var btoa=typeof window!=='undefined'&&window.btoa&&window.btoa.bind(window)||require(674 /* ./../helpers/btoa */);
+var utils=require(663 /* ./../utils */);
+var settle=require(669 /* ./../core/settle */);
+var buildURL=require(672 /* ./../helpers/buildURL */);
+var parseHeaders=require(673 /* ./../helpers/parseHeaders */);
+var isURLSameOrigin=require(674 /* ./../helpers/isURLSameOrigin */);
+var createError=require(670 /* ../core/createError */);
+var btoa=typeof window!=='undefined'&&window.btoa&&window.btoa.bind(window)||require(675 /* ./../helpers/btoa */);
 
 module.exports=function xhrAdapter(config){
 return new Promise(function dispatchXhrRequest(resolve,reject){
@@ -82398,7 +82454,7 @@ request=null;
 
 
 if(utils.isStandardBrowserEnv()){
-var cookies=require(675 /* ./../helpers/cookies */);
+var cookies=require(676 /* ./../helpers/cookies */);
 
 
 var xsrfValue=(config.withCredentials||isURLSameOrigin(config.url))&&config.xsrfCookieName?
@@ -82471,10 +82527,10 @@ requestData=null;
 request.send(requestData);
 });
 };
-}, 667, null, "axios/lib/adapters/xhr.js");
+}, 668, null, "axios/lib/adapters/xhr.js");
 __d(/* axios/lib/core/settle.js */function(global, require, module, exports) {'use strict';
 
-var createError=require(669 /* ./createError */);
+var createError=require(670 /* ./createError */);
 
 
 
@@ -82497,10 +82553,10 @@ response));
 
 }
 };
-}, 668, null, "axios/lib/core/settle.js");
+}, 669, null, "axios/lib/core/settle.js");
 __d(/* axios/lib/core/createError.js */function(global, require, module, exports) {'use strict';
 
-var enhanceError=require(670 /* ./enhanceError */);
+var enhanceError=require(671 /* ./enhanceError */);
 
 
 
@@ -82515,7 +82571,7 @@ module.exports=function createError(message,config,code,response){
 var error=new Error(message);
 return enhanceError(error,config,code,response);
 };
-}, 669, null, "axios/lib/core/createError.js");
+}, 670, null, "axios/lib/core/createError.js");
 __d(/* axios/lib/core/enhanceError.js */function(global, require, module, exports) {'use strict';
 
 
@@ -82535,10 +82591,10 @@ error.code=code;
 error.response=response;
 return error;
 };
-}, 670, null, "axios/lib/core/enhanceError.js");
+}, 671, null, "axios/lib/core/enhanceError.js");
 __d(/* axios/lib/helpers/buildURL.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
+var utils=require(663 /* ./../utils */);
 
 function encode(val){
 return encodeURIComponent(val).
@@ -82604,10 +82660,10 @@ url+=(url.indexOf('?')===-1?'?':'&')+serializedParams;
 
 return url;
 };
-}, 671, null, "axios/lib/helpers/buildURL.js");
+}, 672, null, "axios/lib/helpers/buildURL.js");
 __d(/* axios/lib/helpers/parseHeaders.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
+var utils=require(663 /* ./../utils */);
 
 
 
@@ -82642,10 +82698,10 @@ parsed[key]=parsed[key]?parsed[key]+', '+val:val;
 
 return parsed;
 };
-}, 672, null, "axios/lib/helpers/parseHeaders.js");
+}, 673, null, "axios/lib/helpers/parseHeaders.js");
 __d(/* axios/lib/helpers/isURLSameOrigin.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
+var utils=require(663 /* ./../utils */);
 
 module.exports=
 utils.isStandardBrowserEnv()?
@@ -82710,7 +82766,7 @@ return function isURLSameOrigin(){
 return true;
 };
 }();
-}, 673, null, "axios/lib/helpers/isURLSameOrigin.js");
+}, 674, null, "axios/lib/helpers/isURLSameOrigin.js");
 __d(/* axios/lib/helpers/btoa.js */function(global, require, module, exports) {'use strict';
 
 
@@ -82747,10 +82803,10 @@ return output;
 }
 
 module.exports=btoa;
-}, 674, null, "axios/lib/helpers/btoa.js");
+}, 675, null, "axios/lib/helpers/btoa.js");
 __d(/* axios/lib/helpers/cookies.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
+var utils=require(663 /* ./../utils */);
 
 module.exports=
 utils.isStandardBrowserEnv()?
@@ -82800,10 +82856,10 @@ read:function read(){return null;},
 remove:function remove(){}};
 
 }();
-}, 675, null, "axios/lib/helpers/cookies.js");
+}, 676, null, "axios/lib/helpers/cookies.js");
 __d(/* axios/lib/core/InterceptorManager.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
+var utils=require(663 /* ./../utils */);
 
 function InterceptorManager(){
 this.handlers=[];
@@ -82853,13 +82909,13 @@ fn(h);
 };
 
 module.exports=InterceptorManager;
-}, 676, null, "axios/lib/core/InterceptorManager.js");
+}, 677, null, "axios/lib/core/InterceptorManager.js");
 __d(/* axios/lib/core/dispatchRequest.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
-var transformData=require(678 /* ./transformData */);
-var isCancel=require(679 /* ../cancel/isCancel */);
-var defaults=require(665 /* ../defaults */);
+var utils=require(663 /* ./../utils */);
+var transformData=require(679 /* ./transformData */);
+var isCancel=require(680 /* ../cancel/isCancel */);
+var defaults=require(666 /* ../defaults */);
 
 
 
@@ -82933,10 +82989,10 @@ config.transformResponse);
 return Promise.reject(reason);
 });
 };
-}, 677, null, "axios/lib/core/dispatchRequest.js");
+}, 678, null, "axios/lib/core/dispatchRequest.js");
 __d(/* axios/lib/core/transformData.js */function(global, require, module, exports) {'use strict';
 
-var utils=require(662 /* ./../utils */);
+var utils=require(663 /* ./../utils */);
 
 
 
@@ -82954,13 +83010,13 @@ data=fn(data,headers);
 
 return data;
 };
-}, 678, null, "axios/lib/core/transformData.js");
+}, 679, null, "axios/lib/core/transformData.js");
 __d(/* axios/lib/cancel/isCancel.js */function(global, require, module, exports) {'use strict';
 
 module.exports=function isCancel(value){
 return!!(value&&value.__CANCEL__);
 };
-}, 679, null, "axios/lib/cancel/isCancel.js");
+}, 680, null, "axios/lib/cancel/isCancel.js");
 __d(/* axios/lib/helpers/isAbsoluteURL.js */function(global, require, module, exports) {'use strict';
 
 
@@ -82975,7 +83031,7 @@ module.exports=function isAbsoluteURL(url){
 
 return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
 };
-}, 680, null, "axios/lib/helpers/isAbsoluteURL.js");
+}, 681, null, "axios/lib/helpers/isAbsoluteURL.js");
 __d(/* axios/lib/helpers/combineURLs.js */function(global, require, module, exports) {'use strict';
 
 
@@ -82988,7 +83044,7 @@ __d(/* axios/lib/helpers/combineURLs.js */function(global, require, module, expo
 module.exports=function combineURLs(baseURL,relativeURL){
 return baseURL.replace(/\/+$/,'')+'/'+relativeURL.replace(/^\/+/,'');
 };
-}, 681, null, "axios/lib/helpers/combineURLs.js");
+}, 682, null, "axios/lib/helpers/combineURLs.js");
 __d(/* axios/lib/cancel/Cancel.js */function(global, require, module, exports) {'use strict';
 
 
@@ -83008,10 +83064,10 @@ return'Cancel'+(this.message?': '+this.message:'');
 Cancel.prototype.__CANCEL__=true;
 
 module.exports=Cancel;
-}, 682, null, "axios/lib/cancel/Cancel.js");
+}, 683, null, "axios/lib/cancel/Cancel.js");
 __d(/* axios/lib/cancel/CancelToken.js */function(global, require, module, exports) {'use strict';
 
-var Cancel=require(682 /* ./Cancel */);
+var Cancel=require(683 /* ./Cancel */);
 
 
 
@@ -83066,7 +83122,7 @@ cancel:cancel};
 };
 
 module.exports=CancelToken;
-}, 683, null, "axios/lib/cancel/CancelToken.js");
+}, 684, null, "axios/lib/cancel/CancelToken.js");
 __d(/* axios/lib/helpers/spread.js */function(global, require, module, exports) {'use strict';
 
 
@@ -83094,10 +83150,12 @@ return function wrap(arr){
 return callback.apply(null,arr);
 };
 };
-}, 684, null, "axios/lib/helpers/spread.js");
+}, 685, null, "axios/lib/helpers/spread.js");
+__d(/* shop1stop/src/images/login.png */function(global, require, module, exports) {module.exports = require(171 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/src/images","width":791,"height":797,"scales":[1],"hash":"ea7a4681ef9b80e5e87a007dad59c42f","name":"login","type":"png"});
+}, 686, null, "shop1stop/src/images/login.png");
 __d(/* shop1stop/src/components/ShoppingListCreate.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactRedux=require(554 /* react-redux */);
-var _actions=require(655 /* ../actions */);
+var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);var
 
 
@@ -83118,6 +83176,8 @@ return(
 _react2.default.createElement(_common.Card,null,
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_common.Input,{
+textColor:'#21897E',
+autoCapitalize:'words',
 label:'List Name',
 placeholder:'Potluck',
 value:this.props.name,
@@ -83144,13 +83204,13 @@ return{name:name};
 (0,_reactRedux.connect)(mapStateToProps,
 {shoppingListUpdate:_actions.shoppingListUpdate,shoppingListCreate:_actions.shoppingListCreate,shoppingListIndex:_actions.shoppingListIndex})(
 ShoppingListCreate);
-}, 685, null, "shop1stop/src/components/ShoppingListCreate.js");
+}, 687, null, "shop1stop/src/components/ShoppingListCreate.js");
 __d(/* shop1stop/src/components/ShoppingListEdit.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
-var _reactNativeCommunications=require(688 /* react-native-communications */);var _reactNativeCommunications2=babelHelpers.interopRequireDefault(_reactNativeCommunications);
+var _reactNativeCommunications=require(690 /* react-native-communications */);var _reactNativeCommunications2=babelHelpers.interopRequireDefault(_reactNativeCommunications);
 
-var _actions=require(655 /* ../actions */);
+var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);var
 
 ShoppingListEdit=function(_Component){babelHelpers.inherits(ShoppingListEdit,_Component);function ShoppingListEdit(){var _ref;var _temp,_this,_ret;babelHelpers.classCallCheck(this,ShoppingListEdit);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=babelHelpers.possibleConstructorReturn(this,(_ref=ShoppingListEdit.__proto__||Object.getPrototypeOf(ShoppingListEdit)).call.apply(_ref,[this].concat(args))),_this),_this.
@@ -83189,6 +83249,7 @@ return(
 _react2.default.createElement(_common.Card,null,
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_common.Input,{
+textColor:'#21897E',
 label:'List Name',
 placeholder:'Potluck',
 value:this.props.name,
@@ -83227,7 +83288,7 @@ return{name:name,phone:phone,shift:shift};
 (0,_reactRedux.connect)(mapStateToProps,
 {shoppingListUpdate:_actions.shoppingListUpdate,shoppingListSave:_actions.shoppingListSave,shoppingListDelete:_actions.shoppingListDelete})(
 ShoppingListEdit);
-}, 686, null, "shop1stop/src/components/ShoppingListEdit.js");
+}, 688, null, "shop1stop/src/components/ShoppingListEdit.js");
 __d(/* lodash/lodash.js */function(global, require, module, exports) {/**
  * @license
  * Lodash <https://lodash.com/>
@@ -100312,7 +100373,7 @@ freeExports._=_;
 root._=_;
 }
 }).call(this);
-}, 687, null, "lodash/lodash.js");
+}, 689, null, "lodash/lodash.js");
 __d(/* react-native-communications/AKCommunications.js */function(global, require, module, exports) {'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.web=exports.text=exports.email=exports.phonecall=undefined;
 
 var _reactNative=require(12 /* react-native */);
@@ -100503,17 +100564,17 @@ return Object.prototype.toString.call(actual).slice(8,-1)===expected;
 };exports.default=
 
 {phonecall:phonecall,text:text,email:email,web:web};
-}, 688, null, "react-native-communications/AKCommunications.js");
+}, 690, null, "react-native-communications/AKCommunications.js");
 __d(/* shop1stop/src/components/ShoppingListView.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 
 var _reactNative=require(12 /* react-native */);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _reactRedux=require(554 /* react-redux */);
-var _actions=require(655 /* ../actions */);
+var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);
-var _ListItem=require(690 /* ./ListItem */);var _ListItem2=babelHelpers.interopRequireDefault(_ListItem);
-var _ProductInfo=require(691 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
+var _ListItem=require(692 /* ./ListItem */);var _ListItem2=babelHelpers.interopRequireDefault(_ListItem);
+var _ProductInfo=require(693 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
 
 ShoppingListView=function(_Component){babelHelpers.inherits(ShoppingListView,_Component);function ShoppingListView(){var _ref;var _temp,_this,_ret;babelHelpers.classCallCheck(this,ShoppingListView);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=babelHelpers.possibleConstructorReturn(this,(_ref=ShoppingListView.__proto__||Object.getPrototypeOf(ShoppingListView)).call.apply(_ref,[this].concat(args))),_this),_this.
 
@@ -100565,15 +100626,24 @@ if(listItem.safeway&&listItem.qfc){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc}),
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway})));
+_react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc,item:listItem}),
+_react2.default.createElement(_common.Separator,null),
+_react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway,item:listItem})));
 
 
 }else if(listItem.safeway){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
-_react2.default.createElement(_common.Button,{onPress:_this.pickQFC.bind(listItem)},'Pick QFC Match'),
+_react2.default.createElement(_common.CardSection,null,
+_react2.default.createElement(_common.Button,{
+onPress:_this.pickQFC.bind(listItem),
+textColor:'#2F6690',
+borderColor:'#2F6690'},'Pick QFC Match')),
+
+
+
+
 _react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway})));
 
 
@@ -100582,7 +100652,15 @@ return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
 _react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc}),
-_react2.default.createElement(_common.Button,{onPress:_this.pickSafeway.bind(listItem)},'Pick Safeway Match')));
+_react2.default.createElement(_common.CardSection,null,
+_react2.default.createElement(_common.Button,{
+onPress:_this.pickSafeway.bind(listItem),
+textColor:'#DF2935',
+borderColor:'#DF2935'},'Pick Safeway Match'))));
+
+
+
+
 
 
 }
@@ -100590,8 +100668,20 @@ return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
 _react2.default.createElement(_common.CardSection,null,
-_react2.default.createElement(_common.Button,{onPress:_this.pickQFC.bind(listItem)},'Pick QFC Match'),
-_react2.default.createElement(_common.Button,{onPress:_this.pickSafeway.bind(listItem)},'Pick Safeway Match'))));
+_react2.default.createElement(_common.Button,{
+onPress:_this.pickQFC.bind(listItem),
+textColor:'#2F6690',
+borderColor:'#2F6690'},'Pick QFC Match'),
+
+
+
+_react2.default.createElement(_common.Button,{
+onPress:_this.pickSafeway.bind(listItem),
+textColor:'#DF2935',
+borderColor:'#DF2935'},'Pick Safeway Match'))));
+
+
+
 
 
 
@@ -100603,19 +100693,40 @@ return(
 _react2.default.createElement(_reactNative.ListView,{
 enableEmptySections:true,
 dataSource:this.dataSource,
-renderRow:this.renderRow}));
+renderRow:this.renderRow,
+renderSeparator:this.renderSeparator,
+renderFooter:this.renderFooter}));
 
 
+}
+}},{key:'renderSeparator',value:function renderSeparator(
+
+sectionID,rowID,adjacentRowHighlighted){
+return(
+_react2.default.createElement(_reactNative.View,{
+key:sectionID+'-'+rowID,
+style:{
+height:adjacentRowHighlighted?4:1,
+backgroundColor:adjacentRowHighlighted?'#3B5998':'#CCCCCC'}}));
+
+
+
+}},{key:'renderNote',value:function renderNote()
+
+{
+if(this.props.items.length===0){
+return _react2.default.createElement(_reactNative.Text,{style:{fontSize:20,padding:30,textAlign:'center'}},'Add items by clicking the + on the right side of the navbar.');
 }
 }},{key:'render',value:function render()
 
 {var
 
-totalStyle=styles.totalStyle;
+totalStyle=styles.totalStyle,totalContainer=styles.totalContainer;
 return(
 _react2.default.createElement(_reactNative.View,null,
 this.renderList(),
-_react2.default.createElement(_common.CardSection,null,
+this.renderNote(),
+_react2.default.createElement(_reactNative.View,{style:totalContainer},
 _react2.default.createElement(_reactNative.Text,{style:totalStyle},'QFC Total: $',this.props.qfcTotal),
 _react2.default.createElement(_reactNative.Text,{style:totalStyle},'Safeway Total: $',this.props.safewayTotal))));
 
@@ -100627,10 +100738,19 @@ _react2.default.createElement(_reactNative.Text,{style:totalStyle},'Safeway Tota
 var styles={
 totalStyle:{
 fontSize:16,
-paddingLeft:10,
+padding:10,
 flex:2,
-color:'black',
-fontWeight:'bold'}};
+color:'white',
+fontWeight:'bold',
+backgroundColor:'#3BA99C'},
+
+totalContainer:{
+flexDirection:'row',
+
+position:'relative',
+
+backgroundColor:'#3BA99C',
+margin:0}};
 
 
 
@@ -100650,7 +100770,7 @@ return{items:items,qfcTotal:qfcTotal,safewayTotal:safewayTotal};
 (0,_reactRedux.connect)(mapStateToProps,
 {listItemsFetch:_actions.listItemsFetch,listItemCreate:_actions.listItemCreate,listItemAdd:_actions.listItemAdd,compareProducts:_actions.compareProducts})(
 ShoppingListView);
-}, 689, null, "shop1stop/src/components/ShoppingListView.js");
+}, 691, null, "shop1stop/src/components/ShoppingListView.js");
 __d(/* shop1stop/src/components/ListItem.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNative=require(12 /* react-native */);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
@@ -100664,22 +100784,21 @@ inCart:false},_temp),babelHelpers.possibleConstructorReturn(_this,_ret);}babelHe
 {
 
 _reactNativeRouterFlux.Actions.editItemForm({listItem:this.props.listItem});
-}},{key:'onLongPress',value:function onLongPress()
-
-{
-
-_reactNativeRouterFlux.Actions.selectMatches({listItem:this.props.listItem});
 }},{key:'render',value:function render()
+
+
+
+
+
 
 {var _this2=this;var _props$listItem=
 this.props.listItem,item=_props$listItem.item,quantity=_props$listItem.quantity;
 
 return(
 _react2.default.createElement(_reactNative.TouchableWithoutFeedback,{
-onPress:this.onRowPress.bind(this),
-onLongPress:this.onLongPress.bind(this)},
+onPress:this.onRowPress.bind(this)},
 
-_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_reactNative.View,{style:styles.containerStyle},
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_reactNative.Text,{style:styles.qtyStyle},'Qty: ',
 quantity),
@@ -100703,32 +100822,53 @@ qtyStyle:{
 fontSize:18,
 paddingLeft:10,
 flex:1,
-color:'black'},
+color:'#FDFCF2'},
 
 itemStyle:{
 fontSize:18,
 paddingLeft:10,
 flex:4,
-color:'black'}};exports.default=
+color:'#FDFCF2'},
+
+containerStyle:{
+backgroundColor:'#3BA99C'}};exports.default=
 
 
 
 ListItem;
-}, 690, null, "shop1stop/src/components/ListItem.js");
+}, 692, null, "shop1stop/src/components/ListItem.js");
 __d(/* shop1stop/src/components/ProductInfo.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactNative=require(12 /* react-native */);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _reactRedux=require(554 /* react-redux */);
 var _common=require(647 /* ./common */);
-var _actions=require(655 /* ../actions */);var
+var _actions=require(656 /* ../actions */);var
 
 ProductInfo=function(_Component){babelHelpers.inherits(ProductInfo,_Component);function ProductInfo(){babelHelpers.classCallCheck(this,ProductInfo);return babelHelpers.possibleConstructorReturn(this,(ProductInfo.__proto__||Object.getPrototypeOf(ProductInfo)).apply(this,arguments));}babelHelpers.createClass(ProductInfo,[{key:'onRowPress',value:function onRowPress()
 
-{var
-
+{
+console.log(this.props);var
 product=this.props.product;
 this.props.productMatchUpdate(product);
+
+}},{key:'onLongPress',value:function onLongPress()
+
+{
+console.log(this.props.item);var _props=
+this.props,item=_props.item,product=_props.product;
+
+if(product.store_id===1){
+_reactNativeRouterFlux.Actions.selectMatch({storeID:1,title:'QFC Selection',listItem:item});
+}else{
+_reactNativeRouterFlux.Actions.selectMatch({storeID:2,title:'Safeway Selection',listItem:item});
+}
+
+
+
+
+
+
 
 }},{key:'render',value:function render()
 
@@ -100738,15 +100878,19 @@ this.props.product,name=_props$product.name,sale_price=_props$product.sale_price
 
 var store=store_id===1?'QFC':'Safeway';
 
+styles.storeStyle.borderColor=store_id===1?'#2F6690':'#DF2935';
+
 return(
 _react2.default.createElement(_reactNative.TouchableHighlight,{
-onPress:this.onRowPress.bind(this)},
+onPress:this.onRowPress.bind(this),
+onLongPress:this.onLongPress.bind(this),
+underlayColor:'#3BA99C'},
 
 
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_reactNative.View,{style:styles.column},
-_react2.default.createElement(_reactNative.Text,{style:{marginLeft:10}},store),
+_react2.default.createElement(_reactNative.Text,{style:styles.storeStyle},store),
 _react2.default.createElement(_reactNative.Image,{
 style:styles.thumbnailStyle,
 source:{uri:img_url}})),
@@ -100796,12 +100940,23 @@ width:50,
 marginLeft:10},
 
 column:{
-flexDirection:'column'}};
+flexDirection:'column'},
+
+storeStyle:{
+
+marginLeft:8,
+marginBottom:5,
+padding:3,
+alignSelf:'stretch',
+textAlign:'center',
+borderRadius:5,
+borderWidth:1,
+borderColor:'grey'}};
 
 
 
-var mapStateToProps=function mapStateToProps(state){var
-
+var mapStateToProps=function mapStateToProps(state){
+console.log(state);var
 selected=state.selected;
 
 return{selected:selected};
@@ -100809,14 +100964,14 @@ return{selected:selected};
 
 
 (0,_reactRedux.connect)(mapStateToProps,{productMatchUpdate:_actions.productMatchUpdate})(ProductInfo);
-}, 691, null, "shop1stop/src/components/ProductInfo.js");
+}, 693, null, "shop1stop/src/components/ProductInfo.js");
 __d(/* shop1stop/src/components/ShoppingIndex.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
 var _reactNative=require(12 /* react-native */);
-var _common=require(647 /* ./common */);
-var _actions=require(655 /* ../actions */);
-var _ShoppingListRow=require(693 /* ./ShoppingListRow */);var _ShoppingListRow2=babelHelpers.interopRequireDefault(_ShoppingListRow);var
+
+var _actions=require(656 /* ../actions */);
+var _ShoppingListRow=require(695 /* ./ShoppingListRow */);var _ShoppingListRow2=babelHelpers.interopRequireDefault(_ShoppingListRow);var
 
 ShoppingIndex=function(_Component){babelHelpers.inherits(ShoppingIndex,_Component);function ShoppingIndex(){babelHelpers.classCallCheck(this,ShoppingIndex);return babelHelpers.possibleConstructorReturn(this,(ShoppingIndex.__proto__||Object.getPrototypeOf(ShoppingIndex)).apply(this,arguments));}babelHelpers.createClass(ShoppingIndex,[{key:'componentWillMount',value:function componentWillMount()
 
@@ -100836,18 +100991,50 @@ rowHasChanged:function rowHasChanged(r1,r2){return r1!==r2;}});
 
 
 this.dataSource=ds.cloneWithRows(lists);
+}},{key:'ifEmpty',value:function ifEmpty()
+
+{
+if(this.props.lists.length===0){
+return(
+_react2.default.createElement(_reactNative.Text,{
+style:{
+fontSize:20,
+padding:30,
+textAlign:'center'}},'Create a new list by clicking the + on the right side of the navbar.'));
+
+
+
+
+}
 }},{key:'renderRow',value:function renderRow(
 
 list){
 return _react2.default.createElement(_ShoppingListRow2.default,{list:list});
+}},{key:'renderSeparator',value:function renderSeparator(
+
+sectionID,rowID,adjacentRowHighlighted){
+return(
+_react2.default.createElement(_reactNative.View,{
+key:sectionID+'-'+rowID,
+style:{
+height:adjacentRowHighlighted?4:1,
+backgroundColor:adjacentRowHighlighted?'#3B5998':'#CCCCCC'}}));
+
+
+
 }},{key:'render',value:function render()
 
 {
+console.log(this.props.lists);
 return(
+_react2.default.createElement(_reactNative.View,null,
+this.ifEmpty(),
 _react2.default.createElement(_reactNative.ListView,{
 enableEmptySections:true,
 dataSource:this.dataSource,
-renderRow:this.renderRow}));
+renderRow:this.renderRow,
+renderSeparator:this.renderSeparator})));
+
 
 
 }}]);return ShoppingIndex;}(_react.Component);
@@ -100862,13 +101049,13 @@ return{lists:lists};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{shoppingListsFetch:_actions.shoppingListsFetch})(ShoppingIndex);
-}, 692, null, "shop1stop/src/components/ShoppingIndex.js");
+}, 694, null, "shop1stop/src/components/ShoppingIndex.js");
 __d(/* shop1stop/src/components/ShoppingListRow.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNative=require(12 /* react-native */);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _reactRedux=require(554 /* react-redux */);
 var _common=require(647 /* ./common */);
-var _actions=require(655 /* ../actions */);var
+var _actions=require(656 /* ../actions */);var
 
 ShoppingListRow=function(_Component){babelHelpers.inherits(ShoppingListRow,_Component);function ShoppingListRow(){babelHelpers.classCallCheck(this,ShoppingListRow);return babelHelpers.possibleConstructorReturn(this,(ShoppingListRow.__proto__||Object.getPrototypeOf(ShoppingListRow)).apply(this,arguments));}babelHelpers.createClass(ShoppingListRow,[{key:'onRowPress',value:function onRowPress()
 
@@ -100889,6 +101076,7 @@ name=this.props.list.name;
 return(
 _react2.default.createElement(_reactNative.TouchableHighlight,{
 onPress:this.onRowPress.bind(this),
+underlayColor:'#3BA99C',
 onLongPress:this.editOnLong.bind(this)},
 
 _react2.default.createElement(_reactNative.View,null,
@@ -100916,12 +101104,12 @@ return{};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{shoppingListView:_actions.shoppingListView,shoppingListEdit:_actions.shoppingListEdit})(ShoppingListRow);
-}, 693, null, "shop1stop/src/components/ShoppingListRow.js");
+}, 695, null, "shop1stop/src/components/ShoppingListRow.js");
 __d(/* shop1stop/src/components/AddItem.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactRedux=require(554 /* react-redux */);
-var _actions=require(655 /* ../actions */);
+var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);
-var _ListItemForm=require(695 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
+var _ListItemForm=require(697 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
 
 AddItem=function(_Component){babelHelpers.inherits(AddItem,_Component);function AddItem(){babelHelpers.classCallCheck(this,AddItem);return babelHelpers.possibleConstructorReturn(this,(AddItem.__proto__||Object.getPrototypeOf(AddItem)).apply(this,arguments));}babelHelpers.createClass(AddItem,[{key:'componentWillMount',value:function componentWillMount()
 
@@ -100964,12 +101152,12 @@ return{item:item,quantity:quantity,list:list};
 (0,_reactRedux.connect)(mapStateToProps,{
 listItemUpdate:_actions.listItemUpdate,listItemCreate:_actions.listItemCreate,listItemAdd:_actions.listItemAdd})(
 AddItem);
-}, 694, null, "shop1stop/src/components/AddItem.js");
+}, 696, null, "shop1stop/src/components/AddItem.js");
 __d(/* shop1stop/src/components/ListItemForm.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactNative=require(12 /* react-native */);
 var _reactRedux=require(554 /* react-redux */);
-var _actions=require(655 /* ../actions */);
+var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);var
 
 ListItemForm=function(_Component){babelHelpers.inherits(ListItemForm,_Component);function ListItemForm(){babelHelpers.classCallCheck(this,ListItemForm);return babelHelpers.possibleConstructorReturn(this,(ListItemForm.__proto__||Object.getPrototypeOf(ListItemForm)).apply(this,arguments));}babelHelpers.createClass(ListItemForm,[{key:'render',value:function render()
@@ -100998,6 +101186,7 @@ _react2.default.createElement(_reactNative.Picker.Item,{label:'7',value:'7'}),
 _react2.default.createElement(_reactNative.Picker.Item,{label:'8',value:'8'})),
 
 _react2.default.createElement(_common.Input,{
+autoCapitalize:'words',
 style:{flex:5},
 label:'Item',
 placeholder:'Cookies',
@@ -101020,13 +101209,13 @@ return{quantity:quantity,item:item,list:list};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{listItemUpdate:_actions.listItemUpdate})(ListItemForm);
-}, 695, null, "shop1stop/src/components/ListItemForm.js");
+}, 697, null, "shop1stop/src/components/ListItemForm.js");
 __d(/* shop1stop/src/components/EditItem.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
-var _actions=require(655 /* ../actions */);
+var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);
-var _ListItemForm=require(695 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
+var _ListItemForm=require(697 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
 
 EditItem=function(_Component){babelHelpers.inherits(EditItem,_Component);function EditItem(){var _ref;var _temp,_this,_ret;babelHelpers.classCallCheck(this,EditItem);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=babelHelpers.possibleConstructorReturn(this,(_ref=EditItem.__proto__||Object.getPrototypeOf(EditItem)).call.apply(_ref,[this].concat(args))),_this),_this.
 state={showModal:false},_temp),babelHelpers.possibleConstructorReturn(_this,_ret);}babelHelpers.createClass(EditItem,[{key:'componentWillMount',value:function componentWillMount()
@@ -101096,101 +101285,14 @@ return{item:item,quantity:quantity,list:list};
 (0,_reactRedux.connect)(mapStateToProps,{
 listItemUpdate:_actions.listItemUpdate,listItemSave:_actions.listItemSave,listItemDelete:_actions.listItemDelete})(
 EditItem);
-}, 696, null, "shop1stop/src/components/EditItem.js");
-__d(/* shop1stop/src/components/SelectMatches.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _reactNative=require(12 /* react-native */);
-var _reactRedux=require(554 /* react-redux */);
-var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
-var _common=require(647 /* ./common */);
-var _actions=require(655 /* ../actions */);
-
-var _ProductInfo=require(691 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
-
-SelectMatches=function(_Component){babelHelpers.inherits(SelectMatches,_Component);function SelectMatches(){babelHelpers.classCallCheck(this,SelectMatches);return babelHelpers.possibleConstructorReturn(this,(SelectMatches.__proto__||Object.getPrototypeOf(SelectMatches)).apply(this,arguments));}babelHelpers.createClass(SelectMatches,[{key:'componentWillMount',value:function componentWillMount()
-
-{var _props=
-this.props,listItem=_props.listItem,list=_props.list;
-
-this.props.productMatchFetch({listItem:listItem,list:list});
-
-
-}},{key:'onQpress',value:function onQpress()
-
-{var
-listItem=this.props.listItem;
-_reactNativeRouterFlux.Actions.selectMatch({storeID:1,title:'QFC Selection',listItem:listItem});
-}},{key:'onSpress',value:function onSpress()
-
-{var
-listItem=this.props.listItem;
-_reactNativeRouterFlux.Actions.selectMatch({storeID:2,title:'Safeway Selection',listItem:listItem});
-}},{key:'renderQFC',value:function renderQFC()
-
-{
-if(this.props.qfc){
-return(
-_react2.default.createElement(_ProductInfo2.default,{product:this.props.qfc}));
-
-}
-}},{key:'renderSafeway',value:function renderSafeway()
-
-{
-if(this.props.safeway){
-return(
-_react2.default.createElement(_ProductInfo2.default,{product:this.props.safeway}));
-
-}
-}},{key:'render',value:function render()
-
-{var
-
-item=this.props.listItem.item;
-return(
-_react2.default.createElement(_common.Card,null,
-_react2.default.createElement(_common.CardSection,null,
-_react2.default.createElement(_reactNative.Text,null,'Now Matching: ',item)),
-
-_react2.default.createElement(_common.CardSection,null,
-this.renderQFC()),
-
-_react2.default.createElement(_common.CardSection,null,
-_react2.default.createElement(_common.Button,{onPress:this.onQpress.bind(this)},'Pick QFC Match')),
-
-
-
-_react2.default.createElement(_common.CardSection,null,
-this.renderSafeway()),
-
-_react2.default.createElement(_common.CardSection,null,
-_react2.default.createElement(_common.Button,{onPress:this.onSpress.bind(this)},'Pick Safeway Match'))));
-
-
-
-
-
-}}]);return SelectMatches;}(_react.Component);
-
-
-var mapStateToProps=function mapStateToProps(state){var
-
-list=state.list;
-if(state.selected!==null){var
-qfc=state.selected.qfc;var
-safeway=state.selected.safeway;
-return{qfc:qfc,safeway:safeway,list:list};
-}
-return{list:list};
-};exports.default=
-
-(0,_reactRedux.connect)(mapStateToProps,{productMatchFetch:_actions.productMatchFetch})(SelectMatches);
-}, 697, null, "shop1stop/src/components/SelectMatches.js");
+}, 698, null, "shop1stop/src/components/EditItem.js");
 __d(/* shop1stop/src/components/SelectMatch.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-var _lodash=require(687 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
 var _reactNative=require(12 /* react-native */);
 var _common=require(647 /* ./common */);
-var _actions=require(655 /* ../actions */);
-var _ProductInfo=require(691 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
+var _actions=require(656 /* ../actions */);
+var _ProductInfo=require(693 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
 
 SelectMatch=function(_Component){babelHelpers.inherits(SelectMatch,_Component);function SelectMatch(){babelHelpers.classCallCheck(this,SelectMatch);return babelHelpers.possibleConstructorReturn(this,(SelectMatch.__proto__||Object.getPrototypeOf(SelectMatch)).apply(this,arguments));}babelHelpers.createClass(SelectMatch,[{key:'componentWillMount',value:function componentWillMount()
 
@@ -101229,13 +101331,26 @@ return _react2.default.createElement(_ProductInfo2.default,{product:product});
 if(this.props.selected.name&&this.props.selected!==null){
 return(
 _react2.default.createElement(_common.Card,null,
-_react2.default.createElement(_reactNative.Text,null,'Selected:'),
+_react2.default.createElement(_common.Separator,null),
+_react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'Selected:'),
 _react2.default.createElement(_ProductInfo2.default,{product:this.props.selected})));
 
 
 }else{
 return _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'No Selection Made');
 }
+}},{key:'renderSeparator',value:function renderSeparator(
+
+sectionID,rowID,adjacentRowHighlighted){
+return(
+_react2.default.createElement(_reactNative.View,{
+key:sectionID+'-'+rowID,
+style:{
+height:adjacentRowHighlighted?4:1,
+backgroundColor:adjacentRowHighlighted?'#3B5998':'#CCCCCC'}}));
+
+
+
 }},{key:'render',value:function render()
 
 {
@@ -101251,7 +101366,8 @@ _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_reactNative.ListView,{
 enableEmptySections:true,
 dataSource:this.dataSource,
-renderRow:this.renderRow}),
+renderRow:this.renderRow,
+renderSeparator:this.renderSeparator}),
 
 
 this.renderSelection(),
@@ -101286,7 +101402,9 @@ return{products:products,selected:selected,list:list,error:error};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{productMatchesFetch:_actions.productMatchesFetch,productMatchCreate:_actions.productMatchCreate})(SelectMatch);
-}, 698, null, "shop1stop/src/components/SelectMatch.js");
+}, 699, null, "shop1stop/src/components/SelectMatch.js");
+__d(/* shop1stop/src/images/back_chevron.png */function(global, require, module, exports) {module.exports = require(171 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/src/images","width":26,"height":42,"scales":[1],"hash":"2d93af1715db33576701c96a0dbf5eff","name":"back_chevron","type":"png"});
+}, 700, null, "shop1stop/src/images/back_chevron.png");
 ;require(191);
 ;require(0);
-//# sourceMappingURL=/index.android.map?platform=android
+//# sourceMappingURL=/index.android.map?platform-android

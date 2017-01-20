@@ -10,7 +10,7 @@ class SelectMatch extends Component {
 
   componentWillMount() {
     const { listItem, storeID } = this.props;
-    // console.log(listItem);
+    console.log(listItem);
     this.props.productMatchesFetch({ listItem, storeID });
     // console.log(this.props.products);
     this.createDataSource(this.props);
@@ -39,14 +39,23 @@ class SelectMatch extends Component {
   }
 
   renderSelection() {
-    // console.log(this.props);
+    console.log(this.props);
+    const { listItem, storeID } = this.props;
+    const store = (storeID === 1) ? 'qfc' : 'safeway';
+
     if (this.props.selected.name && this.props.selected !== null) {
       return (
-        <Card>
-          <Separator />
+        <View>
           <Text style={styles.textStyle}>Selected:</Text>
           <ProductInfo product={this.props.selected} />
-        </Card>
+        </View>
+      );
+    } else if (listItem[store]) {
+      return (
+        <View>
+          <Text style={styles.textStyle}>Selected:</Text>
+          <ProductInfo product={this.props.listItem[store]} />
+        </View>
       );
     } else {
       return (<Text style={styles.textStyle}>No Selection Made</Text>);
@@ -98,7 +107,9 @@ class SelectMatch extends Component {
 
 const styles = {
   textStyle: {
-    marginLeft: 15
+    paddingLeft: 15,
+    backgroundColor: '#3BA99C',
+    color: '#FDFCF2'
   }
 };
 
