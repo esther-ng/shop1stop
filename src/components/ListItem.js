@@ -49,13 +49,13 @@ const styles = {
     fontSize: 18,
     paddingLeft: 10,
     flex: 1,
-    color: 'black'
+    color: '#FDFCF2'
   },
   itemStyle: {
     fontSize: 18,
     paddingLeft: 10,
     flex: 4,
-    color: 'black'
+    color: '#FDFCF2'
   },
   containerStyle: {
     backgroundColor: '#3BA99C'

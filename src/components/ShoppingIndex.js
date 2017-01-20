@@ -27,8 +27,17 @@ class ShoppingIndex extends Component {
   }
 
   ifEmpty() {
-    if (this.props.lists === []) {
-      return <Text>Use the plus button on the right side of the navbar to create a new list</Text>;
+    if (this.props.lists.length === 0) {
+      return (
+        <Text
+          style={{
+            fontSize: 20,
+            padding: 30,
+            textAlign: 'center' }}
+        >
+          Create a new list by clicking the + on the right side of the navbar.
+        </Text>
+      );
     }
   }
 

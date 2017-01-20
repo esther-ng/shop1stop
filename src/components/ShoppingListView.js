@@ -5,7 +5,7 @@ import { View, Text, ListView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
-import { Button, CardSection } from './common';
+import { Button, CardSection, Separator } from './common';
 import ListItem from './ListItem';
 import ProductInfo from './ProductInfo';
 
@@ -59,15 +59,24 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <ProductInfo product={listItem.qfc} />
-          <ProductInfo product={listItem.safeway} />
+          <ProductInfo product={listItem.qfc} item={listItem} />
+          <Separator />
+          <ProductInfo product={listItem.safeway} item={listItem} />
         </View>
       );
     } else if (listItem.safeway) {
       return (
         <View>
           <ListItem listItem={listItem} />
-           <Button onPress={this.pickQFC.bind(listItem)}>Pick QFC Match</Button>
+          <CardSection>
+          <Button
+            onPress={this.pickQFC.bind(listItem)}
+            textColor="#2F6690"
+            borderColor="#2F6690"
+          >
+            Pick QFC Match
+          </Button>
+          </CardSection>
           <ProductInfo product={listItem.safeway} />
         </View>
       );
@@ -76,7 +85,15 @@ class ShoppingListView extends Component {
         <View>
           <ListItem listItem={listItem} />
           <ProductInfo product={listItem.qfc} />
-           <Button onPress={this.pickSafeway.bind(listItem)}>Pick Safeway Match</Button>
+          <CardSection>
+          <Button
+            onPress={this.pickSafeway.bind(listItem)}
+            textColor="#DF2935"
+            borderColor="#DF2935"
+          >
+            Pick Safeway Match
+          </Button>
+          </CardSection>
         </View>
       );
     }
@@ -84,8 +101,20 @@ class ShoppingListView extends Component {
       <View>
          <ListItem listItem={listItem} />
          <CardSection>
-           <Button onPress={this.pickQFC.bind(listItem)}>Pick QFC Match</Button>
-           <Button onPress={this.pickSafeway.bind(listItem)}>Pick Safeway Match</Button>
+            <Button
+              onPress={this.pickQFC.bind(listItem)}
+              textColor="#2F6690"
+              borderColor="#2F6690"
+            >
+              Pick QFC Match
+            </Button>
+            <Button
+              onPress={this.pickSafeway.bind(listItem)}
+              textColor="#DF2935"
+              borderColor="#DF2935"
+            >
+              Pick Safeway Match
+            </Button>
          </CardSection>
       </View>
     );
@@ -117,12 +146,19 @@ class ShoppingListView extends Component {
     );
   }
 
+  renderNote() {
+    if (this.props.items.length === 0) {
+      return <Text style={{ fontSize: 20, padding: 30, textAlign: 'center' }}>Add items by clicking the + on the right side of the navbar.</Text>;
+    }
+  }
+
   render() {
     // console.log(this.props);
     const { totalStyle, totalContainer } = styles;
     return (
       <View>
         {this.renderList()}
+        {this.renderNote()}
         <View style={totalContainer}>
           <Text style={totalStyle}>QFC Total: ${this.props.qfcTotal}</Text>
           <Text style={totalStyle}>Safeway Total: ${this.props.safewayTotal}</Text>

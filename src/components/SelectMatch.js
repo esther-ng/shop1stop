@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView, Text, Picker, View } from 'react-native';
-import { Confirm, Button, Card, CardSection } from './common';
+import { Confirm, Button, Card, CardSection, Separator } from './common';
 import { productMatchesFetch, productMatchCreate } from '../actions';
 import ProductInfo from './ProductInfo';
 
@@ -43,7 +43,8 @@ class SelectMatch extends Component {
     if (this.props.selected.name && this.props.selected !== null) {
       return (
         <Card>
-          <Text>Selected:</Text>
+          <Separator />
+          <Text style={styles.textStyle}>Selected:</Text>
           <ProductInfo product={this.props.selected} />
         </Card>
       );

@@ -18,6 +18,7 @@ const RouterComponent = () => {
       navigationBarStyle={{
         backgroundColor: '#FDFCF2' }}
       titleStyle={{ color: '#21897E', fontWeight: 'bold', fontSize: 20 }}
+      backButtonImage={require('./images/back_chevron.png')}
     >
       <Scene key="auth">
         <Scene key="login" component={LoginForm} title="Shop One" />

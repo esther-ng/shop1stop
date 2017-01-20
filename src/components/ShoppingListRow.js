@@ -24,7 +24,8 @@ class ShoppingListRow extends Component {
     return (
       <TouchableHighlight
         onPress={this.onRowPress.bind(this)}
-        // onLongPress={this.editOnLong.bind(this)}
+        underlayColor="#3BA99C"
+        onLongPress={this.editOnLong.bind(this)}
       >
         <View>
           <CardSection>

@@ -9,10 +9,28 @@ import { productMatchUpdate } from '../actions';
 class ProductInfo extends Component {
 
   onRowPress() {
-    // console.log(this.props);
+    console.log(this.props);
     const { product } = this.props;
     this.props.productMatchUpdate(product);
     // Actions.selectMatch();
+  }
+
+  onLongPress() {
+    console.log(this.props.item);
+    const { item, product } = this.props;
+    //   console.log(listItem);
+    if (product.store_id === 1) {
+      Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem: item });
+    } else {
+      Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem: item });
+    }
+    // }
+    //
+    // pickSafeway() {
+    //   console.log(this);
+    //   const listItem = this;
+    //   console.log(listItem);
+    // }
   }
 
   render() {
@@ -21,15 +39,19 @@ class ProductInfo extends Component {
 
     const store = (store_id === 1) ? 'QFC' : 'Safeway';
 
+    styles.storeStyle.borderColor = (store_id === 1) ? '#2F6690' : '#DF2935';
+
     return (
       <TouchableHighlight
         onPress={this.onRowPress.bind(this)}
+        onLongPress={this.onLongPress.bind(this)}
+        underlayColor="#3BA99C"
       >
 
           <View>
             <CardSection>
               <View style={styles.column}>
-              <Text style={{ marginLeft: 10 }}>{store}</Text>
+              <Text style={styles.storeStyle}>{store}</Text>
               <Image
                 style={styles.thumbnailStyle}
                 source={{ uri: img_url }}
@@ -80,11 +102,22 @@ const styles = {
   },
   column: {
     flexDirection: 'column'
+  },
+  storeStyle: {
+    // flex: 1,
+    marginLeft: 8,
+    marginBottom: 5,
+    padding: 3,
+    alignSelf: 'stretch',
+    textAlign: 'center',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'grey'
   }
 };
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   const { selected } = state;
 
   return { selected };
