@@ -93,7 +93,7 @@ const styles = {
   textContainer: {
     flexWrap: 'wrap',
     flexDirection: 'column',
-    paddingRight: 20
+    paddingRight: 30
   },
   thumbnailStyle: {
     height: 50,
