@@ -81208,8 +81208,8 @@ buttonStyle.backgroundColor=backColor;
 textStyle.color=textColor;
 buttonStyle.borderColor=borderColor;
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:onPress,style:buttonStyle},
-_react2.default.createElement(_reactNative.Text,{style:textStyle},
+_react2.default.createElement(_reactNative.TouchableOpacity,{onPress:onPress,style:[buttonStyle,{borderColor:borderColor}]},
+_react2.default.createElement(_reactNative.Text,{style:[textStyle,{color:textColor}]},
 children)));
 
 
@@ -81219,7 +81219,7 @@ children)));
 var styles={
 textStyle:{
 alignSelf:'center',
-color:'#007aff',
+
 fontSize:16,
 fontWeight:'600',
 paddingTop:10,
@@ -81231,7 +81231,7 @@ alignSelf:'stretch',
 backgroundColor:'#fff',
 borderRadius:5,
 borderWidth:1,
-borderColor:'#007aff',
+
 margin:5}};exports.
 
 
@@ -100644,14 +100644,14 @@ borderColor:'#2F6690'},'Pick QFC Match')),
 
 
 
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway})));
+_react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway,item:listItem})));
 
 
 }else if(listItem.qfc){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc}),
+_react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc,item:listItem}),
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_common.Button,{
 onPress:_this.pickSafeway.bind(listItem),
@@ -101345,9 +101345,9 @@ _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'Select
 _react2.default.createElement(_ProductInfo2.default,{product:this.props.listItem[store]})));
 
 
-}else{
-return _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'No Selection Made');
 }
+
+return _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'No Selection Made');
 }},{key:'renderSeparator',value:function renderSeparator(
 
 sectionID,rowID,adjacentRowHighlighted){
