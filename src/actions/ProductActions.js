@@ -61,6 +61,6 @@ export const productMatchUpdate = (product) => {
 
 export const productMatchAdd = () => {
   return {
-    type: PRODUCT_MATCH_UPDATE
+    type: PRODUCT_MATCH_ADD
   };
 };

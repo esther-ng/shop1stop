@@ -9,6 +9,7 @@ import Router from './Router';
 class App extends Component {
 
   componentWillMount() {
+    console.disableYellowBox = true;
     const config = {
       apiKey: 'AIzaSyBubrZfeGEvTisf-fdJMdEXcHYdhwF9Adk',
       authDomain: 'shop1stop-bee2e.firebaseapp.com',
@@ -27,6 +28,7 @@ class App extends Component {
       </Provider>
     );
   }
+
 }
 
 export default App;

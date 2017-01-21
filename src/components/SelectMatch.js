@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView, Text, Picker, View } from 'react-native';
 import { Confirm, Button, Card, CardSection, Separator } from './common';
-import { productMatchesFetch, productMatchCreate } from '../actions';
+import { productMatchesFetch, productMatchCreate, productMatchAdd } from '../actions';
 import ProductInfoSelect from './ProductInfoSelect';
 
 class SelectMatch extends Component {
@@ -12,6 +12,7 @@ class SelectMatch extends Component {
     const { listItem, storeID } = this.props;
     console.log(listItem);
     this.props.productMatchesFetch({ listItem, storeID });
+    this.props.productMatchAdd();
     // console.log(this.props.products);
     this.createDataSource(this.props);
   }
@@ -126,4 +127,4 @@ const mapStateToProps = state => {
   return { products, selected, list, error };
 };
 
-export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate })(SelectMatch);
+export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchAdd })(SelectMatch);

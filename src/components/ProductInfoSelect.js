@@ -10,7 +10,7 @@ import ProductInfo from './ProductInfo';
 class ProductInfoSelect extends Component {
 
   onRowPress() {
-    console.log(this.props);
+    // console.log(this.props);
     const { product } = this.props;
     this.props.productMatchUpdate(product);
     // Actions.selectMatch();
@@ -35,7 +35,7 @@ class ProductInfoSelect extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   const { selected } = state;
 
   return { selected };

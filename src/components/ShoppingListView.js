@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { View, Text, ListView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
+import { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchAdd } from '../actions';
 import { Button, CardSection, Separator } from './common';
 import ListItem from './ListItem';
 import ProductInfoEdit from './ProductInfoEdit';
@@ -21,27 +21,17 @@ class ShoppingListView extends Component {
     this.createDataSource(nextProps);
   }
 
-  onAddAnother() {
-    // re-render?? or does componentWillReceiveProps do this? then just save?
-    // console.log(this.props);
-    this.props.listItemAdd(this.props.list);
-  }
-
-  onCompare() {
-    this.props.compareProducts(this.props.items);
-  }
-
   pickQFC() {
-    console.log(this);
+    // console.log(this);
     const listItem = this;
-    console.log(listItem);
+    // console.log(listItem);
     Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem });
   }
 
   pickSafeway() {
-    console.log(this);
+    // console.log(this);
     const listItem = this;
-    console.log(listItem);
+    // console.log(listItem);
     Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem });
   }
 
@@ -153,6 +143,7 @@ class ShoppingListView extends Component {
   }
 
   render() {
+    // this.props.productMatchAdd();
     // console.log(this.props);
     const { totalStyle, totalContainer } = styles;
     return (
@@ -201,5 +192,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps,
-  { listItemsFetch, listItemCreate, listItemAdd, compareProducts }
+  { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchAdd }
 )(ShoppingListView);

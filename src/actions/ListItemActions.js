@@ -6,7 +6,7 @@ import {
   LIST_ITEM_UPDATE,
   LIST_ITEM_CREATE,
   LIST_ITEM_FAIL,
-  LIST_ITEM_ADD
+  LIST_ITEM_ADD,
 } from './types';
 
 export const listItemsFetch = ({ list }) => {

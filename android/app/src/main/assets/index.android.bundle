@@ -75289,6 +75289,7 @@ var PRODUCT_MATCHES_FETCH_FAIL=exports.PRODUCT_MATCHES_FETCH_FAIL='product_match
 var PRODUCT_MATCHES_RESET=exports.PRODUCT_MATCHES_RESET='product_matches_reset';
 var PRODUCT_MATCH_UPDATE=exports.PRODUCT_MATCH_UPDATE='product_match_update';
 var PRODUCT_MATCH_CREATE=exports.PRODUCT_MATCH_CREATE='product_match_create';
+var PRODUCT_MATCH_ADD=exports.PRODUCT_MATCH_ADD='product_match_add';
 var PRODUCT_MATCH_SAVE_SUCCES=exports.PRODUCT_MATCH_SAVE_SUCCES='product_match_save_success';
 var PRODUCT_MATCH_FETCH_SUCCESS=exports.PRODUCT_MATCH_FETCH_SUCCESS='product_match_fetch_success';
 
@@ -75454,11 +75455,11 @@ var _LoginForm=require(646 /* ./components/LoginForm */);var _LoginForm2=babelHe
 var _ShoppingListCreate=require(687 /* ./components/ShoppingListCreate */);var _ShoppingListCreate2=babelHelpers.interopRequireDefault(_ShoppingListCreate);
 var _ShoppingListEdit=require(688 /* ./components/ShoppingListEdit */);var _ShoppingListEdit2=babelHelpers.interopRequireDefault(_ShoppingListEdit);
 var _ShoppingListView=require(691 /* ./components/ShoppingListView */);var _ShoppingListView2=babelHelpers.interopRequireDefault(_ShoppingListView);
-var _ShoppingIndex=require(694 /* ./components/ShoppingIndex */);var _ShoppingIndex2=babelHelpers.interopRequireDefault(_ShoppingIndex);
-var _AddItem=require(696 /* ./components/AddItem */);var _AddItem2=babelHelpers.interopRequireDefault(_AddItem);
-var _EditItem=require(698 /* ./components/EditItem */);var _EditItem2=babelHelpers.interopRequireDefault(_EditItem);
+var _ShoppingIndex=require(695 /* ./components/ShoppingIndex */);var _ShoppingIndex2=babelHelpers.interopRequireDefault(_ShoppingIndex);
+var _AddItem=require(697 /* ./components/AddItem */);var _AddItem2=babelHelpers.interopRequireDefault(_AddItem);
+var _EditItem=require(699 /* ./components/EditItem */);var _EditItem2=babelHelpers.interopRequireDefault(_EditItem);
 
-var _SelectMatch=require(699 /* ./components/SelectMatch */);var _SelectMatch2=babelHelpers.interopRequireDefault(_SelectMatch);
+var _SelectMatch=require(700 /* ./components/SelectMatch */);var _SelectMatch2=babelHelpers.interopRequireDefault(_SelectMatch);
 
 var RouterComponent=function RouterComponent(){
 
@@ -75468,7 +75469,7 @@ sceneStyle:{paddingTop:54,backgroundColor:'#FDFCF2'},
 navigationBarStyle:{
 backgroundColor:'#FDFCF2'},
 titleStyle:{color:'#21897E',fontWeight:'bold',fontSize:20},
-backButtonImage:require(700 /* ./images/back_chevron.png */)},
+backButtonImage:require(702 /* ./images/back_chevron.png */)},
 
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'auth'},
 _react2.default.createElement(_reactNativeRouterFlux.Scene,{key:'login',component:_LoginForm2.default,title:'Shop One'})),
@@ -81731,10 +81732,11 @@ _reactNativeRouterFlux.Actions.pop({refresh:babelHelpers.extends({},list,{title:
 };
 };
 }, 659, null, "shop1stop/src/actions/ListItemActions.js");
-__d(/* shop1stop/src/actions/ProductActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.productMatchUpdate=exports.productMatchFetch=exports.productMatchCreate=exports.productMatchesFetch=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
+__d(/* shop1stop/src/actions/ProductActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.productMatchAdd=exports.productMatchUpdate=exports.productMatchFetch=exports.productMatchCreate=exports.productMatchesFetch=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
 var _axios=require(661 /* axios */);var _axios2=babelHelpers.interopRequireDefault(_axios);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _types=require(591 /* ./types */);
+
 
 
 
@@ -81788,6 +81790,12 @@ var productMatchUpdate=exports.productMatchUpdate=function productMatchUpdate(pr
 return{
 type:_types.PRODUCT_MATCH_UPDATE,
 payload:product};
+
+};
+
+var productMatchAdd=exports.productMatchAdd=function productMatchAdd(){
+return{
+type:_types.PRODUCT_MATCH_UPDATE};
 
 };
 }, 660, null, "shop1stop/src/actions/ProductActions.js");
@@ -100574,7 +100582,7 @@ var _reactRedux=require(554 /* react-redux */);
 var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);
 var _ListItem=require(692 /* ./ListItem */);var _ListItem2=babelHelpers.interopRequireDefault(_ListItem);
-var _ProductInfo=require(693 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
+var _ProductInfoEdit=require(693 /* ./ProductInfoEdit */);var _ProductInfoEdit2=babelHelpers.interopRequireDefault(_ProductInfoEdit);var
 
 ShoppingListView=function(_Component){babelHelpers.inherits(ShoppingListView,_Component);function ShoppingListView(){var _ref;var _temp,_this,_ret;babelHelpers.classCallCheck(this,ShoppingListView);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=babelHelpers.possibleConstructorReturn(this,(_ref=ShoppingListView.__proto__||Object.getPrototypeOf(ShoppingListView)).call.apply(_ref,[this].concat(args))),_this),_this.
 
@@ -100626,9 +100634,9 @@ if(listItem.safeway&&listItem.qfc){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc,item:listItem}),
+_react2.default.createElement(_ProductInfoEdit2.default,{product:listItem.qfc,item:listItem}),
 _react2.default.createElement(_common.Separator,null),
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway,item:listItem})));
+_react2.default.createElement(_ProductInfoEdit2.default,{product:listItem.safeway,item:listItem})));
 
 
 }else if(listItem.safeway){
@@ -100644,14 +100652,14 @@ borderColor:'#2F6690'},'Pick QFC Match')),
 
 
 
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.safeway,item:listItem})));
+_react2.default.createElement(_ProductInfoEdit2.default,{product:listItem.safeway,item:listItem})));
 
 
 }else if(listItem.qfc){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_ListItem2.default,{listItem:listItem}),
-_react2.default.createElement(_ProductInfo2.default,{product:listItem.qfc,item:listItem}),
+_react2.default.createElement(_ProductInfoEdit2.default,{product:listItem.qfc,item:listItem}),
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_common.Button,{
 onPress:_this.pickSafeway.bind(listItem),
@@ -100837,22 +100845,16 @@ backgroundColor:'#3BA99C'}};exports.default=
 
 ListItem;
 }, 692, null, "shop1stop/src/components/ListItem.js");
-__d(/* shop1stop/src/components/ProductInfo.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
+__d(/* shop1stop/src/components/ProductInfoEdit.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactNative=require(12 /* react-native */);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _reactRedux=require(554 /* react-redux */);
 var _common=require(647 /* ./common */);
+var _ProductInfo=require(694 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);
 var _actions=require(656 /* ../actions */);var
 
-ProductInfo=function(_Component){babelHelpers.inherits(ProductInfo,_Component);function ProductInfo(){babelHelpers.classCallCheck(this,ProductInfo);return babelHelpers.possibleConstructorReturn(this,(ProductInfo.__proto__||Object.getPrototypeOf(ProductInfo)).apply(this,arguments));}babelHelpers.createClass(ProductInfo,[{key:'onRowPress',value:function onRowPress()
-
-{
-console.log(this.props);var
-product=this.props.product;
-this.props.productMatchUpdate(product);
-
-}},{key:'onLongPress',value:function onLongPress()
+ProductInfoEdit=function(_Component){babelHelpers.inherits(ProductInfoEdit,_Component);function ProductInfoEdit(){babelHelpers.classCallCheck(this,ProductInfoEdit);return babelHelpers.possibleConstructorReturn(this,(ProductInfoEdit.__proto__||Object.getPrototypeOf(ProductInfoEdit)).apply(this,arguments));}babelHelpers.createClass(ProductInfoEdit,[{key:'onRowPress',value:function onRowPress()
 
 {
 console.log(this.props.item);var _props=
@@ -100863,31 +100865,43 @@ _reactNativeRouterFlux.Actions.selectMatch({storeID:1,title:'QFC Selection',list
 }else{
 _reactNativeRouterFlux.Actions.selectMatch({storeID:2,title:'Safeway Selection',listItem:item});
 }
-
-
-
-
-
-
-
 }},{key:'render',value:function render()
 
-{var _props$product=
+{
+console.log(this.props.product);var
+product=this.props.product;
 
-this.props.product,name=_props$product.name,sale_price=_props$product.sale_price,conditions=_props$product.conditions,description=_props$product.description,img_url=_props$product.img_url,store_id=_props$product.store_id,valid_from=_props$product.valid_from,valid_til=_props$product.valid_til;
+return(
+_react2.default.createElement(_reactNative.TouchableHighlight,{
+onPress:this.onRowPress.bind(this),
+underlayColor:'#3BA99C'},
+
+_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_ProductInfo2.default,{product:product}))));
+
+
+
+}}]);return ProductInfoEdit;}(_react.Component);exports.default=
+
+
+ProductInfoEdit;
+}, 693, null, "shop1stop/src/components/ProductInfoEdit.js");
+__d(/* shop1stop/src/components/ProductInfo.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _reactNative=require(12 /* react-native */);
+var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
+var _reactRedux=require(554 /* react-redux */);
+var _common=require(647 /* ./common */);
+var _actions=require(656 /* ../actions */);
+
+var ProductInfo=function ProductInfo(_ref){var product=_ref.product;var
+name=product.name,sale_price=product.sale_price,conditions=product.conditions,description=product.description,img_url=product.img_url,store_id=product.store_id,valid_from=product.valid_from,valid_til=product.valid_til;
 
 var store=store_id===1?'QFC':'Safeway';
 
 styles.storeStyle.borderColor=store_id===1?'#2F6690':'#DF2935';
 
 return(
-_react2.default.createElement(_reactNative.TouchableHighlight,{
-onPress:this.onRowPress.bind(this),
-onLongPress:this.onLongPress.bind(this),
-underlayColor:'#3BA99C'},
-
-
-_react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_common.CardSection,null,
 _react2.default.createElement(_reactNative.View,{style:styles.column},
 _react2.default.createElement(_reactNative.Text,{style:styles.storeStyle},store),
@@ -100907,15 +100921,12 @@ _react2.default.createElement(_reactNative.Text,{style:styles.detailStyle},
 description),
 
 _react2.default.createElement(_reactNative.Text,{style:styles.detailStyle},'Valid ',
-valid_from.substring(0,10),' - ',valid_til.substring(0,10)))))));
+valid_from.substring(0,10),' - ',valid_til.substring(0,10)))));
 
 
 
 
-
-
-}}]);return ProductInfo;}(_react.Component);
-
+};
 
 var styles={
 titleStyle:{
@@ -100951,27 +100962,19 @@ alignSelf:'stretch',
 textAlign:'center',
 borderRadius:5,
 borderWidth:1,
-borderColor:'grey'}};
+borderColor:'grey'}};exports.default=
 
 
 
-var mapStateToProps=function mapStateToProps(state){
-console.log(state);var
-selected=state.selected;
-
-return{selected:selected};
-};exports.default=
-
-
-(0,_reactRedux.connect)(mapStateToProps,{productMatchUpdate:_actions.productMatchUpdate})(ProductInfo);
-}, 693, null, "shop1stop/src/components/ProductInfo.js");
+ProductInfo;
+}, 694, null, "shop1stop/src/components/ProductInfo.js");
 __d(/* shop1stop/src/components/ShoppingIndex.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
 var _reactNative=require(12 /* react-native */);
 
 var _actions=require(656 /* ../actions */);
-var _ShoppingListRow=require(695 /* ./ShoppingListRow */);var _ShoppingListRow2=babelHelpers.interopRequireDefault(_ShoppingListRow);var
+var _ShoppingListRow=require(696 /* ./ShoppingListRow */);var _ShoppingListRow2=babelHelpers.interopRequireDefault(_ShoppingListRow);var
 
 ShoppingIndex=function(_Component){babelHelpers.inherits(ShoppingIndex,_Component);function ShoppingIndex(){babelHelpers.classCallCheck(this,ShoppingIndex);return babelHelpers.possibleConstructorReturn(this,(ShoppingIndex.__proto__||Object.getPrototypeOf(ShoppingIndex)).apply(this,arguments));}babelHelpers.createClass(ShoppingIndex,[{key:'componentWillMount',value:function componentWillMount()
 
@@ -101049,7 +101052,7 @@ return{lists:lists};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{shoppingListsFetch:_actions.shoppingListsFetch})(ShoppingIndex);
-}, 694, null, "shop1stop/src/components/ShoppingIndex.js");
+}, 695, null, "shop1stop/src/components/ShoppingIndex.js");
 __d(/* shop1stop/src/components/ShoppingListRow.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNative=require(12 /* react-native */);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
@@ -101104,12 +101107,12 @@ return{};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{shoppingListView:_actions.shoppingListView,shoppingListEdit:_actions.shoppingListEdit})(ShoppingListRow);
-}, 695, null, "shop1stop/src/components/ShoppingListRow.js");
+}, 696, null, "shop1stop/src/components/ShoppingListRow.js");
 __d(/* shop1stop/src/components/AddItem.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactRedux=require(554 /* react-redux */);
 var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);
-var _ListItemForm=require(697 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
+var _ListItemForm=require(698 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
 
 AddItem=function(_Component){babelHelpers.inherits(AddItem,_Component);function AddItem(){babelHelpers.classCallCheck(this,AddItem);return babelHelpers.possibleConstructorReturn(this,(AddItem.__proto__||Object.getPrototypeOf(AddItem)).apply(this,arguments));}babelHelpers.createClass(AddItem,[{key:'componentWillMount',value:function componentWillMount()
 
@@ -101152,7 +101155,7 @@ return{item:item,quantity:quantity,list:list};
 (0,_reactRedux.connect)(mapStateToProps,{
 listItemUpdate:_actions.listItemUpdate,listItemCreate:_actions.listItemCreate,listItemAdd:_actions.listItemAdd})(
 AddItem);
-}, 696, null, "shop1stop/src/components/AddItem.js");
+}, 697, null, "shop1stop/src/components/AddItem.js");
 __d(/* shop1stop/src/components/ListItemForm.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactNative=require(12 /* react-native */);
@@ -101209,13 +101212,13 @@ return{quantity:quantity,item:item,list:list};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{listItemUpdate:_actions.listItemUpdate})(ListItemForm);
-}, 697, null, "shop1stop/src/components/ListItemForm.js");
+}, 698, null, "shop1stop/src/components/ListItemForm.js");
 __d(/* shop1stop/src/components/EditItem.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
 var _actions=require(656 /* ../actions */);
 var _common=require(647 /* ./common */);
-var _ListItemForm=require(697 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
+var _ListItemForm=require(698 /* ./ListItemForm */);var _ListItemForm2=babelHelpers.interopRequireDefault(_ListItemForm);var
 
 EditItem=function(_Component){babelHelpers.inherits(EditItem,_Component);function EditItem(){var _ref;var _temp,_this,_ret;babelHelpers.classCallCheck(this,EditItem);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=babelHelpers.possibleConstructorReturn(this,(_ref=EditItem.__proto__||Object.getPrototypeOf(EditItem)).call.apply(_ref,[this].concat(args))),_this),_this.
 state={showModal:false},_temp),babelHelpers.possibleConstructorReturn(_this,_ret);}babelHelpers.createClass(EditItem,[{key:'componentWillMount',value:function componentWillMount()
@@ -101285,14 +101288,14 @@ return{item:item,quantity:quantity,list:list};
 (0,_reactRedux.connect)(mapStateToProps,{
 listItemUpdate:_actions.listItemUpdate,listItemSave:_actions.listItemSave,listItemDelete:_actions.listItemDelete})(
 EditItem);
-}, 698, null, "shop1stop/src/components/EditItem.js");
+}, 699, null, "shop1stop/src/components/EditItem.js");
 __d(/* shop1stop/src/components/SelectMatch.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
 var _reactRedux=require(554 /* react-redux */);
 var _reactNative=require(12 /* react-native */);
 var _common=require(647 /* ./common */);
 var _actions=require(656 /* ../actions */);
-var _ProductInfo=require(693 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
+var _ProductInfoSelect=require(701 /* ./ProductInfoSelect */);var _ProductInfoSelect2=babelHelpers.interopRequireDefault(_ProductInfoSelect);var
 
 SelectMatch=function(_Component){babelHelpers.inherits(SelectMatch,_Component);function SelectMatch(){babelHelpers.classCallCheck(this,SelectMatch);return babelHelpers.possibleConstructorReturn(this,(SelectMatch.__proto__||Object.getPrototypeOf(SelectMatch)).apply(this,arguments));}babelHelpers.createClass(SelectMatch,[{key:'componentWillMount',value:function componentWillMount()
 
@@ -101323,7 +101326,7 @@ this.dataSource=ds.cloneWithRows(products);
 }},{key:'renderRow',value:function renderRow(
 
 product){
-return _react2.default.createElement(_ProductInfo2.default,{product:product});
+return _react2.default.createElement(_ProductInfoSelect2.default,{product:product});
 }},{key:'renderSelection',value:function renderSelection()
 
 {
@@ -101335,19 +101338,19 @@ if(this.props.selected.name&&this.props.selected!==null){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'Selected:'),
-_react2.default.createElement(_ProductInfo2.default,{product:this.props.selected})));
+_react2.default.createElement(_ProductInfoSelect2.default,{product:this.props.selected})));
 
 
 }else if(listItem[store]){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'Selected:'),
-_react2.default.createElement(_ProductInfo2.default,{product:this.props.listItem[store]})));
+_react2.default.createElement(_ProductInfoSelect2.default,{product:this.props.listItem[store]})));
 
 
-}
-
+}else{
 return _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},'No Selection Made');
+}
 }},{key:'renderSeparator',value:function renderSeparator(
 
 sectionID,rowID,adjacentRowHighlighted){
@@ -101395,7 +101398,9 @@ return _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},
 
 var styles={
 textStyle:{
+fontSize:16,
 paddingLeft:15,
+paddingBottom:2,
 backgroundColor:'#3BA99C',
 color:'#FDFCF2'}};
 
@@ -101413,9 +101418,55 @@ return{products:products,selected:selected,list:list,error:error};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,{productMatchesFetch:_actions.productMatchesFetch,productMatchCreate:_actions.productMatchCreate})(SelectMatch);
-}, 699, null, "shop1stop/src/components/SelectMatch.js");
+}, 700, null, "shop1stop/src/components/SelectMatch.js");
+__d(/* shop1stop/src/components/ProductInfoSelect.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
+var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
+var _reactNative=require(12 /* react-native */);
+var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
+var _reactRedux=require(554 /* react-redux */);
+var _common=require(647 /* ./common */);
+var _actions=require(656 /* ../actions */);
+var _ProductInfo=require(694 /* ./ProductInfo */);var _ProductInfo2=babelHelpers.interopRequireDefault(_ProductInfo);var
+
+ProductInfoSelect=function(_Component){babelHelpers.inherits(ProductInfoSelect,_Component);function ProductInfoSelect(){babelHelpers.classCallCheck(this,ProductInfoSelect);return babelHelpers.possibleConstructorReturn(this,(ProductInfoSelect.__proto__||Object.getPrototypeOf(ProductInfoSelect)).apply(this,arguments));}babelHelpers.createClass(ProductInfoSelect,[{key:'onRowPress',value:function onRowPress()
+
+{
+console.log(this.props);var
+product=this.props.product;
+this.props.productMatchUpdate(product);
+
+}},{key:'render',value:function render()
+
+
+{var
+product=this.props.product;
+
+return(
+_react2.default.createElement(_reactNative.TouchableHighlight,{
+onPress:this.onRowPress.bind(this),
+underlayColor:'#3BA99C'},
+
+
+_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_ProductInfo2.default,{product:product}))));
+
+
+
+}}]);return ProductInfoSelect;}(_react.Component);
+
+
+var mapStateToProps=function mapStateToProps(state){
+console.log(state);var
+selected=state.selected;
+
+return{selected:selected};
+};exports.default=
+
+
+(0,_reactRedux.connect)(mapStateToProps,{productMatchUpdate:_actions.productMatchUpdate})(ProductInfoSelect);
+}, 701, null, "shop1stop/src/components/ProductInfoSelect.js");
 __d(/* shop1stop/src/images/back_chevron.png */function(global, require, module, exports) {module.exports = require(171 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/src/images","width":26,"height":42,"scales":[1],"hash":"2d93af1715db33576701c96a0dbf5eff","name":"back_chevron","type":"png"});
-}, 700, null, "shop1stop/src/images/back_chevron.png");
+}, 702, null, "shop1stop/src/images/back_chevron.png");
 ;require(191);
 ;require(0);
 //# sourceMappingURL=/index.android.map?platform=android
