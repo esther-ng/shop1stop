@@ -35,14 +35,14 @@ class ShoppingListView extends Component {
     console.log(this);
     const listItem = this;
     console.log(listItem);
-    Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem, notSelected: true });
+    Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem });
   }
 
   pickSafeway() {
     console.log(this);
     const listItem = this;
     console.log(listItem);
-    Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem, notSelected: true });
+    Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem });
   }
 
   createDataSource({ items }) {
