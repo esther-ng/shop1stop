@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ListView, Text, Picker, View } from 'react-native';
 import { Confirm, Button, Card, CardSection, Separator } from './common';
 import { productMatchesFetch, productMatchCreate } from '../actions';
-import ProductInfo from './ProductInfo';
+import ProductInfoSelect from './ProductInfoSelect';
 
 class SelectMatch extends Component {
 
@@ -35,7 +35,7 @@ class SelectMatch extends Component {
   }
 
   renderRow(product) {
-    return <ProductInfo product={product} />;
+    return <ProductInfoSelect product={product} />;
   }
 
   renderSelection() {
@@ -47,19 +47,19 @@ class SelectMatch extends Component {
       return (
         <View>
           <Text style={styles.textStyle}>Selected:</Text>
-          <ProductInfo product={this.props.selected} />
+          <ProductInfoSelect product={this.props.selected} />
         </View>
       );
     } else if (listItem[store]) {
       return (
         <View>
           <Text style={styles.textStyle}>Selected:</Text>
-          <ProductInfo product={this.props.listItem[store]} />
+          <ProductInfoSelect product={this.props.listItem[store]} />
         </View>
       );
+    } else {
+      return (<Text style={styles.textStyle}>No Selection Made</Text>);
     }
-
-    return (<Text style={styles.textStyle}>No Selection Made</Text>);
   }
 
   renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {

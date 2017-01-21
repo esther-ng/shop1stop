@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { listItemsFetch, listItemCreate, listItemAdd, compareProducts } from '../actions';
 import { Button, CardSection, Separator } from './common';
 import ListItem from './ListItem';
-import ProductInfo from './ProductInfo';
+import ProductInfoEdit from './ProductInfoEdit';
 
 class ShoppingListView extends Component {
   componentWillMount() {
@@ -35,14 +35,14 @@ class ShoppingListView extends Component {
     console.log(this);
     const listItem = this;
     console.log(listItem);
-    Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem });
+    Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem, notSelected: true });
   }
 
   pickSafeway() {
     console.log(this);
     const listItem = this;
     console.log(listItem);
-    Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem });
+    Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem, notSelected: true });
   }
 
   createDataSource({ items }) {
@@ -59,9 +59,9 @@ class ShoppingListView extends Component {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <ProductInfo product={listItem.qfc} item={listItem} />
+          <ProductInfoEdit product={listItem.qfc} item={listItem} />
           <Separator />
-          <ProductInfo product={listItem.safeway} item={listItem} />
+          <ProductInfoEdit product={listItem.safeway} item={listItem} />
         </View>
       );
     } else if (listItem.safeway) {
@@ -77,14 +77,14 @@ class ShoppingListView extends Component {
             Pick QFC Match
           </Button>
           </CardSection>
-          <ProductInfo product={listItem.safeway} item={listItem} />
+          <ProductInfoEdit product={listItem.safeway} item={listItem} />
         </View>
       );
     } else if (listItem.qfc) {
       return (
         <View>
           <ListItem listItem={listItem} />
-          <ProductInfo product={listItem.qfc} item={listItem} />
+          <ProductInfoEdit product={listItem.qfc} item={listItem} />
           <CardSection>
           <Button
             onPress={this.pickSafeway.bind(listItem)}

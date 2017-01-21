@@ -5,6 +5,7 @@ import {
   PRODUCT_MATCHES_FETCH_SUCCESS,
   PRODUCT_MATCH_UPDATE,
   PRODUCT_MATCH_CREATE,
+  PRODUCT_MATCH_ADD,
   PRODUCT_MATCH_FETCH_SUCCESS,
   PRODUCT_MATCHES_FETCH_FAIL
 } from './types';
@@ -55,5 +56,11 @@ export const productMatchUpdate = (product) => {
   return {
     type: PRODUCT_MATCH_UPDATE,
     payload: product
+  };
+};
+
+export const productMatchAdd = () => {
+  return {
+    type: PRODUCT_MATCH_UPDATE
   };
 };
