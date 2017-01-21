@@ -107,7 +107,9 @@ class SelectMatch extends Component {
 
 const styles = {
   textStyle: {
+    fontSize: 16,
     paddingLeft: 15,
+    paddingBottom: 2,
     backgroundColor: '#3BA99C',
     color: '#FDFCF2'
   }
