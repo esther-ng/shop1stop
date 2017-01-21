@@ -23,7 +23,6 @@ class ProductInfoSelect extends Component {
     return (
       <TouchableHighlight
         onPress={this.onRowPress.bind(this)}
-        onLongPress={this.onLongPress.bind(this)}
         underlayColor="#3BA99C"
       >
 
