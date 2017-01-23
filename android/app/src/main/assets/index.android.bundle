@@ -72670,6 +72670,7 @@ var _Router=require(598 /* ./Router */);var _Router2=babelHelpers.interopRequire
 App=function(_Component){babelHelpers.inherits(App,_Component);function App(){babelHelpers.classCallCheck(this,App);return babelHelpers.possibleConstructorReturn(this,(App.__proto__||Object.getPrototypeOf(App)).apply(this,arguments));}babelHelpers.createClass(App,[{key:'componentWillMount',value:function componentWillMount()
 
 {
+console.disableYellowBox=true;
 var config={
 apiKey:'AIzaSyBubrZfeGEvTisf-fdJMdEXcHYdhwF9Adk',
 authDomain:'shop1stop-bee2e.firebaseapp.com',
@@ -72688,6 +72689,7 @@ _react2.default.createElement(_Router2.default,null)));
 
 
 }}]);return App;}(_react.Component);exports.default=
+
 
 
 App;
@@ -75286,6 +75288,7 @@ var LIST_ITEM_SAVE_SUCCESS=exports.LIST_ITEM_SAVE_SUCCESS='list_item_save_succes
 
 var PRODUCT_MATCHES_FETCH_SUCCESS=exports.PRODUCT_MATCHES_FETCH_SUCCESS='product_matches_fetch_success';
 var PRODUCT_MATCHES_FETCH_FAIL=exports.PRODUCT_MATCHES_FETCH_FAIL='product_matches_fetch_fail';
+var PRODUCT_MATCHES_FETCHING=exports.PRODUCT_MATCHES_FETCHING='product_matches_fetching';
 var PRODUCT_MATCHES_RESET=exports.PRODUCT_MATCHES_RESET='product_matches_reset';
 var PRODUCT_MATCH_UPDATE=exports.PRODUCT_MATCH_UPDATE='product_match_update';
 var PRODUCT_MATCH_CREATE=exports.PRODUCT_MATCH_CREATE='product_match_create';
@@ -75401,7 +75404,11 @@ __d(/* shop1stop/src/reducers/ProductReducer.js */function(global, require, modu
 
 
 
-var INITIAL_STATE={};exports.default=
+
+var INITIAL_STATE={
+products:[],
+loading:true};exports.default=
+
 
 function(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:INITIAL_STATE;var action=arguments[1];
 switch(action.type){
@@ -75410,7 +75417,10 @@ console.log(action.payload);
 return action.payload;
 
 case _types.PRODUCT_MATCHES_FETCH_FAIL:
-return babelHelpers.extends({},state,{error:'Could not retrieves matches. Please check your network connection.'});
+return babelHelpers.extends({},state,{loading:false,error:'Could not retrieves matches. Please check your network connection.'});
+
+case _types.PRODUCT_MATCHES_FETCHING:
+return babelHelpers.extends({},state,{loading:true,error:''});
 
 case _types.PRODUCT_MATCHES_RESET:
 return INITIAL_STATE;
@@ -81732,10 +81742,12 @@ _reactNativeRouterFlux.Actions.pop({refresh:babelHelpers.extends({},list,{title:
 };
 };
 }, 659, null, "shop1stop/src/actions/ListItemActions.js");
-__d(/* shop1stop/src/actions/ProductActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.productMatchAdd=exports.productMatchUpdate=exports.productMatchFetch=exports.productMatchCreate=exports.productMatchesFetch=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
+__d(/* shop1stop/src/actions/ProductActions.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.productMatchAdd=exports.productMatchUpdate=exports.productMatchFetch=exports.productMatchCreate=exports.productMatchesReset=exports.productMatchesFetch=undefined;var _firebase=require(584 /* firebase */);var _firebase2=babelHelpers.interopRequireDefault(_firebase);
 var _axios=require(661 /* axios */);var _axios2=babelHelpers.interopRequireDefault(_axios);
 var _reactNativeRouterFlux=require(599 /* react-native-router-flux */);
 var _types=require(591 /* ./types */);
+
+
 
 
 
@@ -81751,13 +81763,21 @@ item=listItem.item;
 var baseURL='http://indechick.com/products/search?query=';
 
 return function(dispatch){
+dispatch({type:_types.PRODUCT_MATCHES_FETCHING});
+
 _axios2.default.get(''+baseURL+item+'&store='+storeID).
 then(function(response){
-dispatch({type:_types.PRODUCT_MATCHES_FETCH_SUCCESS,payload:response.data});
+dispatch({type:_types.PRODUCT_MATCHES_FETCH_SUCCESS,payload:{products:response.data,loading:false}});
 }).
 catch(function(){return dispatch({type:_types.PRODUCT_MATCHES_FETCH_FAIL});});
 
 };
+};
+
+var productMatchesReset=exports.productMatchesReset=function productMatchesReset(){
+return{
+type:_types.PRODUCT_MATCHES_RESET};
+
 };
 
 var productMatchCreate=exports.productMatchCreate=function productMatchCreate(_ref2){var listItem=_ref2.listItem,selected=_ref2.selected,list=_ref2.list;var _firebase$auth=
@@ -81795,7 +81815,7 @@ payload:product};
 
 var productMatchAdd=exports.productMatchAdd=function productMatchAdd(){
 return{
-type:_types.PRODUCT_MATCH_UPDATE};
+type:_types.PRODUCT_MATCH_ADD};
 
 };
 }, 660, null, "shop1stop/src/actions/ProductActions.js");
@@ -100618,16 +100638,6 @@ ShoppingListView=function(_Component){babelHelpers.inherits(ShoppingListView,_Co
 
 
 
-
-
-
-
-
-
-
-
-
-
 renderRow=function(listItem){
 
 if(listItem.safeway&&listItem.qfc){
@@ -100693,7 +100703,7 @@ borderColor:'#DF2935'},'Pick Safeway Match'))));
 
 
 
-},_temp),babelHelpers.possibleConstructorReturn(_this,_ret);}babelHelpers.createClass(ShoppingListView,[{key:'componentWillMount',value:function componentWillMount(){var list=this.props.list;this.props.listItemsFetch({list:list});this.createDataSource(this.props);}},{key:'componentWillReceiveProps',value:function componentWillReceiveProps(nextProps){this.createDataSource(nextProps);}},{key:'onAddAnother',value:function onAddAnother(){this.props.listItemAdd(this.props.list);}},{key:'onCompare',value:function onCompare(){this.props.compareProducts(this.props.items);}},{key:'pickQFC',value:function pickQFC(){console.log(this);var listItem=this;console.log(listItem);_reactNativeRouterFlux.Actions.selectMatch({storeID:1,title:'QFC Selection',listItem:listItem});}},{key:'pickSafeway',value:function pickSafeway(){console.log(this);var listItem=this;console.log(listItem);_reactNativeRouterFlux.Actions.selectMatch({storeID:2,title:'Safeway Selection',listItem:listItem});}},{key:'createDataSource',value:function createDataSource(_ref2){var items=_ref2.items;var ds=new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(r1,r2){return r1!==r2;}});this.dataSource=ds.cloneWithRows(items);}},{key:'renderList',value:function renderList()
+},_temp),babelHelpers.possibleConstructorReturn(_this,_ret);}babelHelpers.createClass(ShoppingListView,[{key:'componentWillMount',value:function componentWillMount(){var list=this.props.list;this.props.listItemsFetch({list:list});this.createDataSource(this.props);}},{key:'componentWillReceiveProps',value:function componentWillReceiveProps(nextProps){this.createDataSource(nextProps);}},{key:'pickQFC',value:function pickQFC(){var listItem=this;_reactNativeRouterFlux.Actions.selectMatch({storeID:1,title:'QFC Selection',listItem:listItem});}},{key:'pickSafeway',value:function pickSafeway(){var listItem=this;_reactNativeRouterFlux.Actions.selectMatch({storeID:2,title:'Safeway Selection',listItem:listItem});}},{key:'createDataSource',value:function createDataSource(_ref2){var items=_ref2.items;var ds=new _reactNative.ListView.DataSource({rowHasChanged:function rowHasChanged(r1,r2){return r1!==r2;}});this.dataSource=ds.cloneWithRows(items);}},{key:'renderList',value:function renderList()
 
 {
 if(this.dataSource!==undefined){
@@ -100728,6 +100738,7 @@ return _react2.default.createElement(_reactNative.Text,{style:{fontSize:20,paddi
 }},{key:'render',value:function render()
 
 {var
+
 
 totalStyle=styles.totalStyle,totalContainer=styles.totalContainer;
 return(
@@ -100776,7 +100787,7 @@ return{items:items,qfcTotal:qfcTotal,safewayTotal:safewayTotal};
 };exports.default=
 
 (0,_reactRedux.connect)(mapStateToProps,
-{listItemsFetch:_actions.listItemsFetch,listItemCreate:_actions.listItemCreate,listItemAdd:_actions.listItemAdd,compareProducts:_actions.compareProducts})(
+{listItemsFetch:_actions.listItemsFetch,listItemCreate:_actions.listItemCreate,listItemAdd:_actions.listItemAdd,compareProducts:_actions.compareProducts,productMatchesReset:_actions.productMatchesReset})(
 ShoppingListView);
 }, 691, null, "shop1stop/src/components/ShoppingListView.js");
 __d(/* shop1stop/src/components/ListItem.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
@@ -101301,14 +101312,19 @@ SelectMatch=function(_Component){babelHelpers.inherits(SelectMatch,_Component);f
 
 {var _props=
 this.props,listItem=_props.listItem,storeID=_props.storeID;
-console.log(listItem);
+this.props.productMatchAdd();
 this.props.productMatchesFetch({listItem:listItem,storeID:storeID});
+console.log(this.props);
 
 this.createDataSource(this.props);
 }},{key:'componentWillReceiveProps',value:function componentWillReceiveProps(
 
 nextProps){
 this.createDataSource(nextProps);
+}},{key:'componentWillUnmount',value:function componentWillUnmount()
+
+{
+this.props.productMatchesReset();
 }},{key:'onButtonPress',value:function onButtonPress()
 
 {var _props2=
@@ -101367,12 +101383,15 @@ backgroundColor:adjacentRowHighlighted?'#3B5998':'#CCCCCC'}}));
 
 {
 console.log(this.props);
+if(this.props.loading){
+return _react2.default.createElement(_common.Spinner,{size:'large'});
+}
 if(this.props.error){
 return(
 _react2.default.createElement(_reactNative.Text,{style:styles.textStyle},this.props.error));
 
 }else{
-if(this.props.products.length>0){
+if(this.props.products!=={}){
 return(
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_reactNative.ListView,{
@@ -101408,16 +101427,16 @@ color:'#FDFCF2'}};
 
 var mapStateToProps=function mapStateToProps(state){
 console.log(state);
-var products=_lodash2.default.map(state.products,function(val){
+var products=_lodash2.default.map(state.products.products,function(val){
 return babelHelpers.extends({},val);
 });var
-selected=state.selected,list=state.list;var
-error=state.products.error;
+selected=state.selected,list=state.list;var _state$products=
+state.products,error=_state$products.error,loading=_state$products.loading;
 
-return{products:products,selected:selected,list:list,error:error};
+return{products:products,selected:selected,list:list,error:error,loading:loading};
 };exports.default=
 
-(0,_reactRedux.connect)(mapStateToProps,{productMatchesFetch:_actions.productMatchesFetch,productMatchCreate:_actions.productMatchCreate})(SelectMatch);
+(0,_reactRedux.connect)(mapStateToProps,{productMatchesFetch:_actions.productMatchesFetch,productMatchCreate:_actions.productMatchCreate,productMatchesReset:_actions.productMatchesReset,productMatchAdd:_actions.productMatchAdd})(SelectMatch);
 }, 700, null, "shop1stop/src/components/SelectMatch.js");
 __d(/* shop1stop/src/components/ProductInfoSelect.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(433 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _lodash=require(689 /* lodash */);var _lodash2=babelHelpers.interopRequireDefault(_lodash);
@@ -101430,8 +101449,8 @@ var _ProductInfo=require(694 /* ./ProductInfo */);var _ProductInfo2=babelHelpers
 
 ProductInfoSelect=function(_Component){babelHelpers.inherits(ProductInfoSelect,_Component);function ProductInfoSelect(){babelHelpers.classCallCheck(this,ProductInfoSelect);return babelHelpers.possibleConstructorReturn(this,(ProductInfoSelect.__proto__||Object.getPrototypeOf(ProductInfoSelect)).apply(this,arguments));}babelHelpers.createClass(ProductInfoSelect,[{key:'onRowPress',value:function onRowPress()
 
-{
-console.log(this.props);var
+{var
+
 product=this.props.product;
 this.props.productMatchUpdate(product);
 
@@ -101455,8 +101474,8 @@ _react2.default.createElement(_ProductInfo2.default,{product:product}))));
 }}]);return ProductInfoSelect;}(_react.Component);
 
 
-var mapStateToProps=function mapStateToProps(state){
-console.log(state);var
+var mapStateToProps=function mapStateToProps(state){var
+
 selected=state.selected;
 
 return{selected:selected};
