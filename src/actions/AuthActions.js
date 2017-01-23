@@ -37,6 +37,17 @@ export const loginUser = ({ email, password }) => {
   };
 };
 
+export const signUp = ({ email, password }) => {
+  const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+  const { currentUser } = firebase.auth();
+  return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
+    currentUser.link(credential)
+      .then(user => loginUserSuccess(dispatch, user))
+      .catch(() => loginUserFail(dispatch));
+  };
+};
+
 export const loginAnonymous = () => {
   return (dispatch) => {
     dispatch({ type: LOGIN_ANONYMOUS });
