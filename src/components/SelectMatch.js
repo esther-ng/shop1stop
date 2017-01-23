@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView, Text, View } from 'react-native';
-import { Button, CardSection } from './common';
+import { Button, CardSection, Spinner } from './common';
 import { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd } from '../actions';
 import ProductInfoSelect from './ProductInfoSelect';
 
@@ -82,7 +82,7 @@ class SelectMatch extends Component {
   render() {
     console.log(this.props);
     if (this.props.loading) {
-      return <Text>Matches loading...</Text>;
+      return <Spinner size="large" />;
     }
     if (this.props.error) {
       return (
