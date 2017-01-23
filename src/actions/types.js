@@ -23,6 +23,7 @@ export const LIST_ITEM_SAVE_SUCCESS = 'list_item_save_success';
 
 export const PRODUCT_MATCHES_FETCH_SUCCESS = 'product_matches_fetch_success';
 export const PRODUCT_MATCHES_FETCH_FAIL = 'product_matches_fetch_fail';
+export const PRODUCT_MATCHES_FETCHING = 'product_matches_fetching';
 export const PRODUCT_MATCHES_RESET = 'product_matches_reset';
 export const PRODUCT_MATCH_UPDATE = 'product_match_update';
 export const PRODUCT_MATCH_CREATE = 'product_match_create';

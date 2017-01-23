@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { ListView, Text, Picker, View, ScrollView } from 'react-native';
-import { Confirm, Button, Card, CardSection, Separator } from './common';
+import { ListView, Text, View } from 'react-native';
+import { Button, CardSection } from './common';
 import { productMatchesFetch, productMatchCreate, productMatchesReset } from '../actions';
 import ProductInfoSelect from './ProductInfoSelect';
 
@@ -10,15 +10,19 @@ class SelectMatch extends Component {
 
   componentWillMount() {
     const { listItem, storeID } = this.props;
-    this.props.productMatchesReset();
+    // this.props.productMatchesReset();
     this.props.productMatchesFetch({ listItem, storeID });
     console.log(this.props);
     // console.log(this.props.products);
-    this.createDataSource({ products: {} });
+    this.createDataSource(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
     this.createDataSource(nextProps);
+  }
+
+  componentWillUnmount() {
+    this.props.productMatchesReset();
   }
 
   onButtonPress() {
@@ -77,6 +81,9 @@ class SelectMatch extends Component {
 
   render() {
     console.log(this.props);
+    if (this.props.loading) {
+      return <Text>Matches loading...</Text>;
+    }
     if (this.props.error) {
       return (
         <Text style={styles.textStyle}>{this.props.error}</Text>
@@ -85,7 +92,7 @@ class SelectMatch extends Component {
       if (this.props.products !== {}) {
         return (
           <View>
-          <ScrollView
+          <ListView
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}
@@ -118,13 +125,13 @@ const styles = {
 
 const mapStateToProps = state => {
   console.log(state);
-  const products = _.map(state.products, (val) => {
+  const products = _.map(state.products.products, (val) => {
     return { ...val };
   });
   const { selected, list } = state;
-  const { error } = state.products;
+  const { error, loading } = state.products;
 
-  return { products, selected, list, error };
+  return { products, selected, list, error, loading };
 };
 
 export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchesReset })(SelectMatch);

@@ -8,6 +8,7 @@ import {
   PRODUCT_MATCH_ADD,
   PRODUCT_MATCH_FETCH_SUCCESS,
   PRODUCT_MATCHES_FETCH_FAIL,
+  PRODUCT_MATCHES_FETCHING,
   PRODUCT_MATCHES_RESET
 } from './types';
 
@@ -18,9 +19,11 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
   const baseURL = 'http://indechick.com/products/search?query=';
 
   return (dispatch) => {
+    dispatch({ type: PRODUCT_MATCHES_FETCHING });
+
     axios.get(`${baseURL}${item}&store=${storeID}`)
       .then((response) => {
-        dispatch({ type: PRODUCT_MATCHES_FETCH_SUCCESS, payload: response.data });
+        dispatch({ type: PRODUCT_MATCHES_FETCH_SUCCESS, payload: { products: response.data, loading: false } });
       })
       .catch(() => dispatch({ type: PRODUCT_MATCHES_FETCH_FAIL }));
       // .then(Actions.selectMatch({ storeID, title: 'Selection', listItem }));
