@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { ListView, Text, Picker, View } from 'react-native';
+import { ListView, Text, Picker, View, ScrollView } from 'react-native';
 import { Confirm, Button, Card, CardSection, Separator } from './common';
-import { productMatchesFetch, productMatchCreate, productMatchAdd } from '../actions';
+import { productMatchesFetch, productMatchCreate, productMatchesReset } from '../actions';
 import ProductInfoSelect from './ProductInfoSelect';
 
 class SelectMatch extends Component {
 
   componentWillMount() {
     const { listItem, storeID } = this.props;
-    console.log(listItem);
+    this.props.productMatchesReset();
     this.props.productMatchesFetch({ listItem, storeID });
-    this.props.productMatchAdd();
+    console.log(this.props);
     // console.log(this.props.products);
-    this.createDataSource(this.props);
+    this.createDataSource({ products: {} });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -82,10 +82,10 @@ class SelectMatch extends Component {
         <Text style={styles.textStyle}>{this.props.error}</Text>
       );
     } else {
-      if (this.props.products.length > 0) {
+      if (this.props.products !== {}) {
         return (
           <View>
-          <ListView
+          <ScrollView
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}
@@ -127,4 +127,4 @@ const mapStateToProps = state => {
   return { products, selected, list, error };
 };
 
-export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchAdd })(SelectMatch);
+export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchesReset })(SelectMatch);

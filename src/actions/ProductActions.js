@@ -7,7 +7,8 @@ import {
   PRODUCT_MATCH_CREATE,
   PRODUCT_MATCH_ADD,
   PRODUCT_MATCH_FETCH_SUCCESS,
-  PRODUCT_MATCHES_FETCH_FAIL
+  PRODUCT_MATCHES_FETCH_FAIL,
+  PRODUCT_MATCHES_RESET
 } from './types';
 
 export const productMatchesFetch = ({ listItem, storeID }) => {
@@ -23,6 +24,12 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
       })
       .catch(() => dispatch({ type: PRODUCT_MATCHES_FETCH_FAIL }));
       // .then(Actions.selectMatch({ storeID, title: 'Selection', listItem }));
+  };
+};
+
+export const productMatchesReset = () => {
+  return {
+    type: PRODUCT_MATCHES_RESET
   };
 };
 

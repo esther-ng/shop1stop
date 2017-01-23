@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { View, Text, ListView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchAdd } from '../actions';
+import { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchesReset } from '../actions';
 import { Button, CardSection, Separator } from './common';
 import ListItem from './ListItem';
 import ProductInfoEdit from './ProductInfoEdit';
@@ -143,7 +143,7 @@ class ShoppingListView extends Component {
   }
 
   render() {
-    // this.props.productMatchAdd();
+    // this.props.productMatchesReset();
     // console.log(this.props);
     const { totalStyle, totalContainer } = styles;
     return (
@@ -192,5 +192,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps,
-  { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchAdd }
+  { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchesReset }
 )(ShoppingListView);
