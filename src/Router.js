@@ -16,7 +16,12 @@ const RouterComponent = () => {
     <Router
       sceneStyle={{ paddingTop: 54, backgroundColor: '#FDFCF2' }}
       navigationBarStyle={{
-        backgroundColor: '#FDFCF2' }}
+        backgroundColor: '#FDFCF2',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        elevation: 2
+      }}
       titleStyle={{ color: '#21897E', fontWeight: 'bold', fontSize: 20 }}
       backButtonImage={require('./images/back_chevron.png')}
     >
