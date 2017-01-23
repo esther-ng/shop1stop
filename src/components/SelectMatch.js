@@ -3,14 +3,14 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView, Text, View } from 'react-native';
 import { Button, CardSection } from './common';
-import { productMatchesFetch, productMatchCreate, productMatchesReset } from '../actions';
+import { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd } from '../actions';
 import ProductInfoSelect from './ProductInfoSelect';
 
 class SelectMatch extends Component {
 
   componentWillMount() {
     const { listItem, storeID } = this.props;
-    // this.props.productMatchesReset();
+    this.props.productMatchAdd();
     this.props.productMatchesFetch({ listItem, storeID });
     console.log(this.props);
     // console.log(this.props.products);
@@ -134,4 +134,4 @@ const mapStateToProps = state => {
   return { products, selected, list, error, loading };
 };
 
-export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchesReset })(SelectMatch);
+export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd })(SelectMatch);
