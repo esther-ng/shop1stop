@@ -24,9 +24,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, password: action.payload };
 
     case LOGIN_USER:
+    case LOGIN_ANONYMOUS:
       return { ...state, loading: true, error: '' };
 
-    case LOGIN_ANONYMOUS:
     case LOGIN_USER_SUCCESS:
       return { ...state, ...INITIAL_STATE, user: action.payload
         // error: '',
