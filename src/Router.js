@@ -7,11 +7,9 @@ import ShoppingListView from './components/ShoppingListView';
 import ShoppingIndex from './components/ShoppingIndex';
 import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
-// import SelectMatches from './components/SelectMatches';
 import SelectMatch from './components/SelectMatch';
 
 const RouterComponent = () => {
-  // console.log(this.state);
   return (
     <Router
       sceneStyle={{ paddingTop: 54, backgroundColor: '#FDFCF2' }}

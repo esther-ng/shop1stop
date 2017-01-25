@@ -16,7 +16,6 @@ const ProductInfo = ({ product }) => {
   const valid = (valid_from) ? `${valid_from.substring(0, 10)} - ${valid_til.substring(0, 10)}` : '';
 
   styles.storeStyle.borderColor = (store_id === 1) ? '#2F6690' : '#DF2935';
-  // styles.saleStyle.color = (sale_price) ? 'red' : 'grey';
 
     return (
             <CardSection>
@@ -78,8 +77,6 @@ const styles = {
     flexDirection: 'column'
   },
   storeStyle: {
-    // flex: 1,
-    // marginLeft: 2,
     marginBottom: 5,
     padding: 3,
     alignSelf: 'stretch',

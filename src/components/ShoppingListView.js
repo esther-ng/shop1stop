@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import { Actions } from 'react-native-router-flux';
 import { View, Text, ListView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchesReset } from '../actions';
+import { listItemsFetch, listItemCreate, listItemAdd, compareProducts, productMatchesReset }
+from '../actions';
 import { Button, CardSection, Separator } from './common';
 import ListItem from './ListItem';
 import ProductInfoEdit from './ProductInfoEdit';
@@ -14,7 +14,6 @@ class ShoppingListView extends Component {
     const { list } = this.props;
     this.props.listItemsFetch({ list });
     this.createDataSource(this.props);
-    // console.log(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,16 +21,12 @@ class ShoppingListView extends Component {
   }
 
   pickQFC() {
-    // console.log(this);
     const listItem = this;
-    // console.log(listItem);
     Actions.selectMatch({ storeID: 1, title: 'QFC Selection', listItem });
   }
 
   pickSafeway() {
-    // console.log(this);
     const listItem = this;
-    // console.log(listItem);
     Actions.selectMatch({ storeID: 2, title: 'Safeway Selection', listItem });
   }
 
@@ -44,7 +39,6 @@ class ShoppingListView extends Component {
   }
 
   renderRow = (listItem) => {
-    // console.log(listItem);
     if (listItem.safeway && listItem.qfc) {
       return (
         <View>
@@ -143,8 +137,6 @@ class ShoppingListView extends Component {
   }
 
   render() {
-    // this.props.productMatchesReset();
-    // console.log(this.props);
     const { totalStyle, totalContainer } = styles;
     return (
       <View>
@@ -170,24 +162,17 @@ const styles = {
   },
   totalContainer: {
     flexDirection: 'row',
-    // borderColor: '#ddd',
     position: 'relative',
-    // bottom: 0,
     backgroundColor: '#3BA99C',
     margin: 0
   }
 };
 
 const mapStateToProps = (state) => {
-  // console.log(this.props);
-  // console.log(state.listItems.keys);
-  // console.log(state);
-  // const { listItems } = state;
   const items = _.map(state.listItems.listItems, (val, uid) => {
     return { ...val, uid };
   });
   const { qfcTotal, safewayTotal } = state.listItems;
-  // console.log({ items });
   return { items, qfcTotal, safewayTotal };
 };
 

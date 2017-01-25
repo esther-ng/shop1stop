@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, TouchableHighlight, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { CardSection } from './common';
 import { shoppingListView, shoppingListEdit } from '../actions';
@@ -8,7 +7,6 @@ import { shoppingListView, shoppingListEdit } from '../actions';
 class ShoppingListRow extends Component {
 
   onRowPress() {
-    // console.log(this.props.list);
     const { name, uid, listItems } = this.props.list;
     this.props.shoppingListView({ name, uid, listItems });
   }
@@ -47,7 +45,6 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {};
 };
 

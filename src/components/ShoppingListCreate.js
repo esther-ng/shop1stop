@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { shoppingListUpdate, shoppingListCreate, shoppingListIndex } from '../actions';
 import { Card, CardSection, Button, Input } from './common';
-// import ShoppingListForm from './ShoppingListForm';
 
 class ShoppingListCreate extends Component {
   componentWillMount() {
     this.props.shoppingListIndex();
-    // console.log(this);
   }
 
   onButtonPress() {
@@ -40,7 +38,6 @@ class ShoppingListCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   const { name } = state.list;
 
   return { name };

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import Communications from 'react-native-communications';
-// import EmployeeForm from './EmployeeForm';
 import { shoppingListUpdate, shoppingListSave, shoppingListDelete } from '../actions';
 import { Input, Card, CardSection, Button, Confirm } from './common';
 
@@ -16,16 +14,9 @@ class ShoppingListEdit extends Component {
   }
 
   onButtonPress() {
-    // console.log(this.props);
     const { name } = this.props;
     this.props.shoppingListSave({ name, uid: this.props.list.uid });
   }
-
-  // onTextPress() {
-  //   const { phone, shift } = this.props;
-  //
-  //   Communications.text(phone, `Your upcoming shift is on ${shift}`);
-  // }
 
   onAccept() {
     const { uid } = this.props.list;
@@ -72,7 +63,6 @@ class ShoppingListEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   const { name, phone, shift } = state.list;
 
   return { name, phone, shift };

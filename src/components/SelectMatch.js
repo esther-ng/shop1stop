@@ -77,7 +77,6 @@ class SelectMatch extends Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.props.loading) {
       return <Spinner size="large" />;
     }

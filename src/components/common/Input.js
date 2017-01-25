@@ -3,14 +3,10 @@ import { TextInput, View, Text } from 'react-native';
 
 const Input = ({ label, value, onChangeText, placeholder, secureTextEntry, textColor, autoCapitalize }) => {
   const { inputStyle, labelStyle, containerStyle } = styles;
-  // const labStyle = {[labelStyle, color: textColor]};
-  // const inStyle = {[inputStyle, color: textColor]};
-  // inputStyle.color = textColor;
-  // labelStyle.color = textColor;
 
   return (
     <View style={containerStyle}>
-      <Text style={[labelStyle, {color: textColor}]}>{label}</Text>
+      <Text style={[labelStyle, { color: textColor }]}>{label}</Text>
       <TextInput
         autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
@@ -28,7 +24,6 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry, textC
 
 let styles = {
   inputStyle: {
-    // color: '#000',
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 18,
@@ -36,7 +31,6 @@ let styles = {
     flex: 2
   },
   labelStyle: {
-    // color: '#000',
     fontSize: 18,
     paddingLeft: 20,
     flex: 1
