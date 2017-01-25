@@ -13,11 +13,12 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case PRODUCT_MATCHES_FETCH_SUCCESS:
-      console.log(action.payload);
       return action.payload;
 
     case PRODUCT_MATCHES_FETCH_FAIL:
-      return { ...state, loading: false, error: 'Could not retrieves matches. Please check your network connection.' };
+      return { ...state,
+        loading: false,
+        error: 'Could not retrieves matches. Please check your network connection.' };
 
     case PRODUCT_MATCHES_FETCHING:
       return { ...state, loading: true, error: '' };

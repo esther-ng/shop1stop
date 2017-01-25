@@ -6,9 +6,7 @@ import {
   SHOPPING_LIST_VIEW,
   SHOPPING_LIST_INDEX,
   SHOPPING_LIST_FAIL,
-  // SHOPPING_LIST_SAVE_SUCCESS,
-  SHOPPING_LISTS_FETCH_SUCCESS,
-  // LIST_ITEMS_CLEAR
+  SHOPPING_LISTS_FETCH_SUCCESS
 } from './types';
 
 
@@ -52,7 +50,6 @@ export const shoppingListSave = ({ name, uid }) => {
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${uid}`)
       .update({ name })
       .then(() => {
-        // dispatch({ type: SHOPPING_LIST_SAVE_SUCCESS });
         Actions.shoppingIndex({ type: 'reset' });
       });
   };

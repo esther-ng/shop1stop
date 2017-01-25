@@ -14,9 +14,7 @@ import {
 } from './types';
 
 export const productMatchesFetch = ({ listItem, storeID }) => {
-  // console.log(listItem);
   const { item } = listItem;
-  // console.log(item);
   const baseURL = 'http://indechick.com/products/search?query=';
 
   return (dispatch) => {
@@ -27,7 +25,6 @@ export const productMatchesFetch = ({ listItem, storeID }) => {
         dispatch({ type: PRODUCT_MATCHES_FETCH_SUCCESS, payload: { products: response.data, loading: false } });
       })
       .catch(() => dispatch({ type: PRODUCT_MATCHES_FETCH_FAIL }));
-      // .then(Actions.selectMatch({ storeID, title: 'Selection', listItem }));
   };
 };
 
@@ -55,7 +52,6 @@ export const productMatchFetch = ({ listItem, list }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    // dispatch({ type: PRODUCT_MATCH_CLEAR });
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems/${listItem.uid}`)
     .on('value', snapshot => {
       dispatch({ type: PRODUCT_MATCH_FETCH_SUCCESS, payload: snapshot.val() });

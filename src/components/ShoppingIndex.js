@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView, View, Text } from 'react-native';
-// import { Confirm } from './common';
 import { shoppingListsFetch } from '../actions';
 import ShoppingListRow from './ShoppingListRow';
 
@@ -58,7 +57,6 @@ class ShoppingIndex extends Component {
   }
 
   render() {
-    console.log(this.props.lists);
     return (
       <View>
       {this.ifEmpty()}

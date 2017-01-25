@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { View, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { listItemUpdate } from '../actions';
@@ -8,7 +7,6 @@ import { CardSection, Input } from './common';
 class ListItemForm extends Component {
 
   render() {
-    // console.log(this.props);
     const { quantity, item, list } = this.props;
 
     return (
@@ -43,12 +41,8 @@ class ListItemForm extends Component {
     );
   }
 }
-//
-// const styles = {
-// };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   const { quantity, item, list } = state.listItem;
   return { quantity, item, list };
 };

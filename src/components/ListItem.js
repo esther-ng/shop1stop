@@ -9,14 +9,8 @@ class ListItem extends Component {
   };
 
   onRowPress() {
-    // console.log(this.props);
     Actions.editItemForm({ listItem: this.props.listItem });
   }
-
-  // onLongPress() {
-  //   // console.log(this.props);
-  //   Actions.selectMatches({ listItem: this.props.listItem });
-  // }
 
   render() {
     const { item, quantity } = this.props.listItem;

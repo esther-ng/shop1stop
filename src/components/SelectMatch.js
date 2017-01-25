@@ -3,7 +3,8 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView, Text, View } from 'react-native';
 import { Button, CardSection, Spinner } from './common';
-import { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd } from '../actions';
+import { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd }
+from '../actions';
 import ProductInfoSelect from './ProductInfoSelect';
 
 class SelectMatch extends Component {
@@ -12,8 +13,6 @@ class SelectMatch extends Component {
     const { listItem, storeID } = this.props;
     this.props.productMatchAdd();
     this.props.productMatchesFetch({ listItem, storeID });
-    console.log(this.props);
-    // console.log(this.props.products);
     this.createDataSource(this.props);
   }
 
@@ -33,7 +32,6 @@ class SelectMatch extends Component {
   createDataSource({ products }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
-      // sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     });
 
     this.dataSource = ds.cloneWithRows(products);
@@ -44,7 +42,6 @@ class SelectMatch extends Component {
   }
 
   renderSelection() {
-    console.log(this.props);
     const { listItem, storeID } = this.props;
     const store = (storeID === 1) ? 'qfc' : 'safeway';
 
@@ -97,7 +94,6 @@ class SelectMatch extends Component {
           dataSource={this.dataSource}
           renderRow={this.renderRow}
           renderSeparator={this.renderSeparator}
-          // renderSectionHeader={this.renderSectionHeader}
           />
           {this.renderSelection()}
           <CardSection>
@@ -124,7 +120,6 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   const products = _.map(state.products.products, (val) => {
     return { ...val };
   });
@@ -134,4 +129,6 @@ const mapStateToProps = state => {
   return { products, selected, list, error, loading };
 };
 
-export default connect(mapStateToProps, { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd })(SelectMatch);
+export default connect(mapStateToProps,
+  { productMatchesFetch, productMatchCreate, productMatchesReset, productMatchAdd }
+)(SelectMatch);

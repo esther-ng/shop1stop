@@ -11,7 +11,6 @@ class AddItem extends Component {
   }
 
   onButtonPress() {
-    console.log(this.props);
     const { quantity, item, list } = this.props;
     // pass list id
 
@@ -33,9 +32,6 @@ class AddItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(this.props);
-  // console.log(state.listItem);
-  // console.log(state);
   const { list } = state;
   const { item, quantity } = state.listItem;
 

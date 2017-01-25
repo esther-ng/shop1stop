@@ -44,22 +44,18 @@ export const listItemUpdate = ({ prop, value }) => {
 };
 
 export const listItemAdd = () => {
-  // Actions.addItemForm({ list });
   return { type: LIST_ITEM_ADD };
 };
 
 export const listItemCreate = ({ item, quantity, list }) => {
   if (item !== '') {
   const { currentUser } = firebase.auth();
-  // console.log(listItem);
     return (dispatch) => {
       firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems`)
       .push({ item, quantity })
       .then(() => {
         dispatch({ type: LIST_ITEM_CREATE });
-        console.log(this);
         Actions.pop({ refresh: { ...list, title: list.name } });
-        //shoppingListView({ list, title: list.name });
       });
     };
   } else {
@@ -77,7 +73,6 @@ export const listItemSave = ({ item, quantity, list, uid }) => {
     .update({ item, quantity })
     .then(() => {
       dispatch({ type: LIST_ITEM_SAVE_SUCCESS });
-      console.log(this);
       Actions.pop({ refresh: { ...list, title: list.name } });
     });
   };
