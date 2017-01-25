@@ -29,7 +29,8 @@ export const calculateTotals = (listItems, store) => {
   let total = 0;
   for (var key in listItems) {
     if (listItems[key][store]) {
-      total += (listItems[key][store].sale_price * listItems[key].quantity);
+      const price = (listItems[key][store].sale_price) ? listItems[key][store].sale_price : listItems[key][store].reg_price;
+      total += (price * listItems[key].quantity);
     }
   }
   return (total / 100).toFixed(2);

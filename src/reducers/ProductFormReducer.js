@@ -2,6 +2,7 @@ import {
   PRODUCT_MATCH_CREATE,
   PRODUCT_MATCH_UPDATE,
   PRODUCT_MATCH_ADD,
+  PRODUCT_MATCH_CLEAR,
   PRODUCT_MATCH_SAVE_SUCCESS,
   PRODUCT_MATCH_FETCH_SUCCESS
 } from '../actions/types';
@@ -12,6 +13,9 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case PRODUCT_MATCH_UPDATE:
         return action.payload;
+
+      case PRODUCT_MATCH_CLEAR:
+        return { ...state };
 
       case PRODUCT_MATCH_CREATE:
       case PRODUCT_MATCH_ADD:

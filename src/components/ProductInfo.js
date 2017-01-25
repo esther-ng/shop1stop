@@ -13,10 +13,10 @@ const ProductInfo = ({ product }) => {
   const price = (sale_price) ? `$${(sale_price / 100).toFixed(2)} on Sale` : `$${(reg_price / 100).toFixed(2)}`;
   const parens = (conditions) ? `(${conditions})` : '';
   const details = (description) ? description : '';
-  const valid = (valid_from) ? `${valid_from} - ${valid_til}` : '';
+  const valid = (valid_from) ? `${valid_from.substring(0, 10)} - ${valid_til.substring(0, 10)}` : '';
 
   styles.storeStyle.borderColor = (store_id === 1) ? '#2F6690' : '#DF2935';
-  styles.saleStyle.color = (sale_price) ? 'red' : 'grey';
+  // styles.saleStyle.color = (sale_price) ? 'red' : 'grey';
 
     return (
             <CardSection>
@@ -49,12 +49,14 @@ const styles = {
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15,
-    paddingRight: 20
+    paddingRight: 20,
+    color: 'black'
   },
   saleStyle: {
     fontSize: 18,
     paddingLeft: 15,
-    paddingRight: 20
+    paddingRight: 20,
+    color: '#21897E'
   },
   detailStyle: {
     fontSize: 16,

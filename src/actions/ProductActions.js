@@ -6,6 +6,7 @@ import {
   PRODUCT_MATCH_UPDATE,
   PRODUCT_MATCH_CREATE,
   PRODUCT_MATCH_ADD,
+  PRODUCT_MATCH_CLEAR,
   PRODUCT_MATCH_FETCH_SUCCESS,
   PRODUCT_MATCHES_FETCH_FAIL,
   PRODUCT_MATCHES_FETCHING,
@@ -54,6 +55,7 @@ export const productMatchFetch = ({ listItem, list }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
+    // dispatch({ type: PRODUCT_MATCH_CLEAR });
     firebase.database().ref(`/users/${currentUser.uid}/shoppingLists/${list.uid}/listItems/${listItem.uid}`)
     .on('value', snapshot => {
       dispatch({ type: PRODUCT_MATCH_FETCH_SUCCESS, payload: snapshot.val() });
