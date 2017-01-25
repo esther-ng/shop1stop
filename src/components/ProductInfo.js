@@ -7,11 +7,16 @@ import { CardSection, Card } from './common';
 import { productMatchUpdate } from '../actions';
 
 const ProductInfo = ({ product }) => {
-  const { name, sale_price, conditions, description, img_url, store_id, valid_from, valid_til } = product;
+  const { name, sale_price, reg_price, conditions, description, img_url, store_id, valid_from, valid_til } = product;
 
   const store = (store_id === 1) ? 'QFC' : 'Safeway';
+  const price = (sale_price) ? `$${(sale_price / 100).toFixed(2)} on Sale` : `$${(reg_price / 100).toFixed(2)}`;
+  const parens = (conditions) ? `(${conditions})` : '';
+  const details = (description) ? description : '';
+  const valid = (valid_from) ? `${valid_from} - ${valid_til}` : '';
 
   styles.storeStyle.borderColor = (store_id === 1) ? '#2F6690' : '#DF2935';
+  styles.saleStyle.color = (sale_price) ? 'red' : 'grey';
 
     return (
             <CardSection>
@@ -26,14 +31,14 @@ const ProductInfo = ({ product }) => {
               <Text style={styles.titleStyle}>
               {name}
               </Text>
-              <Text style={styles.titleStyle}>
-              ${(sale_price / 100).toFixed(2)} ({conditions})
+              <Text style={styles.saleStyle}>
+              {price} {parens}
               </Text>
               <Text style={styles.detailStyle}>
-              {description}
+              {details}
               </Text>
               <Text style={styles.detailStyle}>
-              Valid {valid_from.substring(0, 10)} - {valid_til.substring(0, 10)}
+              {valid}
               </Text>
               </View>
             </CardSection>
@@ -42,6 +47,11 @@ const ProductInfo = ({ product }) => {
 
 const styles = {
   titleStyle: {
+    fontSize: 18,
+    paddingLeft: 15,
+    paddingRight: 20
+  },
+  saleStyle: {
     fontSize: 18,
     paddingLeft: 15,
     paddingRight: 20
