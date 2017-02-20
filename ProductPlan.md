@@ -1,4 +1,4 @@
-cd# shop1stop
+# shop1stop
 
 ## Product Plan
 
