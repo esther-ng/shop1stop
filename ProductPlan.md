@@ -1,4 +1,4 @@
-cd# shop1stop
+# shop1stop
 
 ## Product Plan
 
@@ -33,8 +33,7 @@ __Front-end:__
 __Back-end:__
   - Firebase Auth and Database
 
-__API:__
-  [Groceries-on-Rails](https://github.com/esther-ng/groceries)
+__API:__ [Groceries-on-Rails](https://github.com/esther-ng/groceries)
   - Ruby on Rails
   - PostgreSQL
 
