@@ -15,7 +15,7 @@ import {
 
 export const productMatchesFetch = ({ listItem, storeID }) => {
   const { item } = listItem;
-  const baseURL = 'http://indechick.com/products/search?query=';
+  const baseURL = 'https://evening-sea-83050.herokuapp.com/products/search?query=';
 
   return (dispatch) => {
     dispatch({ type: PRODUCT_MATCHES_FETCHING });
