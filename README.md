@@ -4,6 +4,10 @@
 
 This app was created to help shoppers decide where to do their shopping if they only want to make one stop and go to one store (QFC or Safeway). Users can create multiple shopping lists, add list items to each list, select matches from each store for each list item, and see a total cost of their list at each store. Product matches are sorted by sale items first, then regular priced items, ordered by ascending price.
 
+## Demo
+
+[shop1stop demo video](https://youtu.be/QnCzEYqNeS8)
+
 ## Setup / Installation
 
 This app uses:
